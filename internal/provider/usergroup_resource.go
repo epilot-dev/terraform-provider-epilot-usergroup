@@ -6,23 +6,15 @@ import (
 	"context"
 	"fmt"
 	speakeasy_stringplanmodifier "github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/planmodifiers/stringplanmodifier"
-	tfTypes "github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/operations"
-	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/validators"
-	"github.com/hashicorp/terraform-plugin-framework-validators/mapvalidator"
-	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
-	"regexp"
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
@@ -40,15 +32,8 @@ type UserGroupResource struct {
 
 // UserGroupResourceModel describes the resource data model.
 type UserGroupResourceModel struct {
-	CreatedAt   types.String         `tfsdk:"created_at"`
-	CreatedBy   types.String         `tfsdk:"created_by"`
-	CrtAssignee *tfTypes.CrtAssignee `tfsdk:"crt_assignee"`
-	ID          types.String         `tfsdk:"id"`
-	Name        types.String         `tfsdk:"name"`
-	OrgID       types.String         `tfsdk:"org_id"`
-	UpdatedAt   types.String         `tfsdk:"updated_at"`
-	UserIds     []types.String       `tfsdk:"user_ids"`
-	Users       []tfTypes.UserV2     `tfsdk:"users"`
+	ID   types.String `tfsdk:"id"`
+	Name types.String `tfsdk:"name"`
 }
 
 func (r *UserGroupResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -59,175 +44,6 @@ func (r *UserGroupResource) Schema(ctx context.Context, req resource.SchemaReque
 	resp.Schema = schema.Schema{
 		MarkdownDescription: "UserGroup Resource",
 		Attributes: map[string]schema.Attribute{
-			"created_at": schema.StringAttribute{
-				Computed: true,
-			},
-			"created_by": schema.StringAttribute{
-				Computed:    true,
-				Description: `The user id of the user that created the group.`,
-			},
-			"crt_assignee": schema.SingleNestedAttribute{
-				Computed: true,
-				Attributes: map[string]schema.Attribute{
-					"activated_at": schema.StringAttribute{
-						Computed: true,
-						Validators: []validator.String{
-							validators.IsRFC3339(),
-						},
-					},
-					"created_at": schema.StringAttribute{
-						Computed: true,
-						Validators: []validator.String{
-							validators.IsRFC3339(),
-						},
-					},
-					"crt_index": schema.NumberAttribute{
-						Computed:    true,
-						Description: `The index of the current assignee in the group's user list.`,
-					},
-					"custom_start_page": schema.StringAttribute{
-						Computed:    true,
-						Default:     stringdefault.StaticString("/app/dashboard"),
-						Description: `User's start page after login. Default: "/app/dashboard"`,
-						Validators: []validator.String{
-							stringvalidator.RegexMatches(regexp.MustCompile(`^/app/*`), "must match pattern "+regexp.MustCompile(`^/app/*`).String()),
-						},
-					},
-					"department": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's department`,
-					},
-					"display_name": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's display name (default: email address)`,
-					},
-					"draft_email": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's pending email address`,
-					},
-					"email": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's email address`,
-					},
-					"email_notification_setting": schema.MapAttribute{
-						Computed:    true,
-						ElementType: types.StringType,
-						Validators: []validator.Map{
-							mapvalidator.ValueStringsAre(validators.IsValidJSON()),
-						},
-					},
-					"favorites": schema.MapAttribute{
-						Computed:    true,
-						ElementType: types.StringType,
-						Validators: []validator.Map{
-							mapvalidator.ValueStringsAre(validators.IsValidJSON()),
-						},
-					},
-					"feature_preferences": schema.MapAttribute{
-						Computed:    true,
-						ElementType: types.StringType,
-						Description: `User's feature preferences`,
-						Validators: []validator.Map{
-							mapvalidator.ValueStringsAre(validators.IsValidJSON()),
-						},
-					},
-					"id": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's unique identifier`,
-					},
-					"image_uri": schema.SingleNestedAttribute{
-						Computed: true,
-						Attributes: map[string]schema.Attribute{
-							"additional_properties": schema.StringAttribute{
-								Computed:    true,
-								Description: `Parsed as JSON.`,
-								Validators: []validator.String{
-									validators.IsValidJSON(),
-								},
-							},
-							"original": schema.StringAttribute{
-								Computed: true,
-							},
-							"thumbnail_32": schema.StringAttribute{
-								Computed: true,
-							},
-						},
-						Description: `User's custom profile image`,
-					},
-					"is_signature_enabled": schema.BoolAttribute{
-						Computed:    true,
-						Description: `Whether the user's signature is enabled`,
-					},
-					"mfa_enabled": schema.BoolAttribute{
-						Computed:    true,
-						Description: `User's multi-factor authentication status`,
-					},
-					"organization_id": schema.StringAttribute{
-						Computed: true,
-					},
-					"override_release_channel": schema.StringAttribute{
-						Computed:    true,
-						Description: `This field is used to override the release channel for the user. must be one of ["canary", "rc", "stable"]`,
-						Validators: []validator.String{
-							stringvalidator.OneOf(
-								"canary",
-								"rc",
-								"stable",
-							),
-						},
-					},
-					"phone": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's phone number`,
-					},
-					"phone_verified": schema.BoolAttribute{
-						Computed:    true,
-						Description: `User's phone number verification status`,
-					},
-					"preferred_language": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's preferred language`,
-					},
-					"properties": schema.ListNestedAttribute{
-						Computed: true,
-						NestedObject: schema.NestedAttributeObject{
-							Attributes: map[string]schema.Attribute{
-								"name": schema.StringAttribute{
-									Computed: true,
-								},
-								"value": schema.StringAttribute{
-									Computed: true,
-								},
-							},
-						},
-					},
-					"secondary_phone": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's secondary phone number, preferred for communication`,
-					},
-					"signature": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's email signature`,
-					},
-					"status": schema.StringAttribute{
-						Computed:    true,
-						Description: `must be one of ["Active", "Pending", "Deactivated", "Deleted"]`,
-						Validators: []validator.String{
-							stringvalidator.OneOf(
-								"Active",
-								"Pending",
-								"Deactivated",
-								"Deleted",
-							),
-						},
-					},
-					"token": schema.StringAttribute{
-						Computed:    true,
-						Description: `Token used to invite a user to epilot`,
-					},
-				},
-				Description: `The current user assignee of the group. This is the user, from within the group, that has last been assigned to a workflow task.`,
-			},
 			"id": schema.StringAttribute{
 				Computed:    true,
 				Description: `Group unique identifier`,
@@ -239,180 +55,6 @@ func (r *UserGroupResource) Schema(ctx context.Context, req resource.SchemaReque
 					speakeasy_stringplanmodifier.SuppressDiff(speakeasy_stringplanmodifier.ExplicitSuppress),
 				},
 				Description: `The name of the group. Could be a department or a team. Requires replacement if changed.`,
-			},
-			"org_id": schema.StringAttribute{
-				Computed: true,
-			},
-			"updated_at": schema.StringAttribute{
-				Computed: true,
-			},
-			"user_ids": schema.ListAttribute{
-				Optional: true,
-				PlanModifiers: []planmodifier.List{
-					listplanmodifier.RequiresReplaceIfConfigured(),
-				},
-				ElementType: types.StringType,
-				Description: `The list of user ids in the group. Requires replacement if changed.`,
-			},
-			"users": schema.ListNestedAttribute{
-				Computed: true,
-				NestedObject: schema.NestedAttributeObject{
-					Attributes: map[string]schema.Attribute{
-						"activated_at": schema.StringAttribute{
-							Computed: true,
-							Validators: []validator.String{
-								validators.IsRFC3339(),
-							},
-						},
-						"created_at": schema.StringAttribute{
-							Computed: true,
-							Validators: []validator.String{
-								validators.IsRFC3339(),
-							},
-						},
-						"custom_start_page": schema.StringAttribute{
-							Computed:    true,
-							Default:     stringdefault.StaticString("/app/dashboard"),
-							Description: `User's start page after login. Default: "/app/dashboard"`,
-							Validators: []validator.String{
-								stringvalidator.RegexMatches(regexp.MustCompile(`^/app/*`), "must match pattern "+regexp.MustCompile(`^/app/*`).String()),
-							},
-						},
-						"department": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's department`,
-						},
-						"display_name": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's display name (default: email address)`,
-						},
-						"draft_email": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's pending email address`,
-						},
-						"email": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's email address`,
-						},
-						"email_notification_setting": schema.MapAttribute{
-							Computed:    true,
-							ElementType: types.StringType,
-							Validators: []validator.Map{
-								mapvalidator.ValueStringsAre(validators.IsValidJSON()),
-							},
-						},
-						"favorites": schema.MapAttribute{
-							Computed:    true,
-							ElementType: types.StringType,
-							Validators: []validator.Map{
-								mapvalidator.ValueStringsAre(validators.IsValidJSON()),
-							},
-						},
-						"feature_preferences": schema.MapAttribute{
-							Computed:    true,
-							ElementType: types.StringType,
-							Description: `User's feature preferences`,
-							Validators: []validator.Map{
-								mapvalidator.ValueStringsAre(validators.IsValidJSON()),
-							},
-						},
-						"id": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's unique identifier`,
-						},
-						"image_uri": schema.SingleNestedAttribute{
-							Computed: true,
-							Attributes: map[string]schema.Attribute{
-								"additional_properties": schema.StringAttribute{
-									Computed:    true,
-									Description: `Parsed as JSON.`,
-									Validators: []validator.String{
-										validators.IsValidJSON(),
-									},
-								},
-								"original": schema.StringAttribute{
-									Computed: true,
-								},
-								"thumbnail_32": schema.StringAttribute{
-									Computed: true,
-								},
-							},
-							Description: `User's custom profile image`,
-						},
-						"is_signature_enabled": schema.BoolAttribute{
-							Computed:    true,
-							Description: `Whether the user's signature is enabled`,
-						},
-						"mfa_enabled": schema.BoolAttribute{
-							Computed:    true,
-							Description: `User's multi-factor authentication status`,
-						},
-						"organization_id": schema.StringAttribute{
-							Computed: true,
-						},
-						"override_release_channel": schema.StringAttribute{
-							Computed:    true,
-							Description: `This field is used to override the release channel for the user. must be one of ["canary", "rc", "stable"]`,
-							Validators: []validator.String{
-								stringvalidator.OneOf(
-									"canary",
-									"rc",
-									"stable",
-								),
-							},
-						},
-						"phone": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's phone number`,
-						},
-						"phone_verified": schema.BoolAttribute{
-							Computed:    true,
-							Description: `User's phone number verification status`,
-						},
-						"preferred_language": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's preferred language`,
-						},
-						"properties": schema.ListNestedAttribute{
-							Computed: true,
-							NestedObject: schema.NestedAttributeObject{
-								Attributes: map[string]schema.Attribute{
-									"name": schema.StringAttribute{
-										Computed: true,
-									},
-									"value": schema.StringAttribute{
-										Computed: true,
-									},
-								},
-							},
-						},
-						"secondary_phone": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's secondary phone number, preferred for communication`,
-						},
-						"signature": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's email signature`,
-						},
-						"status": schema.StringAttribute{
-							Computed:    true,
-							Description: `must be one of ["Active", "Pending", "Deactivated", "Deleted"]`,
-							Validators: []validator.String{
-								stringvalidator.OneOf(
-									"Active",
-									"Pending",
-									"Deactivated",
-									"Deleted",
-								),
-							},
-						},
-						"token": schema.StringAttribute{
-							Computed:    true,
-							Description: `Token used to invite a user to epilot`,
-						},
-					},
-				},
-				Description: `The list of users in the group. Only contains the full user when respective endpoint is called with a flag. Otherwise only contains the user id.`,
 			},
 		},
 	}
@@ -478,37 +120,6 @@ func (r *UserGroupResource) Create(ctx context.Context, req resource.CreateReque
 		return
 	}
 	data.RefreshFromSharedGroup(res.Group)
-	refreshPlan(ctx, plan, &data, resp.Diagnostics)
-	var id string
-	id = data.ID.ValueString()
-
-	// create.user_group.hydratecreate.user_group.hydrate impedance mismatch: boolean != classtrace=["UserGroup#create.req"]
-	var hydrate *bool
-	request1 := operations.GetGroupRequest{
-		ID:      id,
-		Hydrate: hydrate,
-	}
-	res1, err := r.client.Group.GetGroup(ctx, request1)
-	if err != nil {
-		resp.Diagnostics.AddError("failure to invoke API", err.Error())
-		if res1 != nil && res1.RawResponse != nil {
-			resp.Diagnostics.AddError("unexpected http request/response", debugResponse(res1.RawResponse))
-		}
-		return
-	}
-	if res1 == nil {
-		resp.Diagnostics.AddError("unexpected response from API", fmt.Sprintf("%v", res1))
-		return
-	}
-	if res1.StatusCode != 200 {
-		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res1.StatusCode), debugResponse(res1.RawResponse))
-		return
-	}
-	if !(res1.Group != nil) {
-		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res1.RawResponse))
-		return
-	}
-	data.RefreshFromSharedGroup(res1.Group)
 	refreshPlan(ctx, plan, &data, resp.Diagnostics)
 
 	// Save updated data into Terraform state

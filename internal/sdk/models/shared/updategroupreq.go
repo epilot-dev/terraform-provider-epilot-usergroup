@@ -5,8 +5,6 @@ package shared
 type UpdateGroupReq struct {
 	// The name of the group. Could be a department or a team.
 	Name *string `json:"name,omitempty"`
-	// The list of user ids in the group.
-	UserIds []string `json:"user_ids,omitempty"`
 }
 
 func (o *UpdateGroupReq) GetName() *string {
@@ -14,11 +12,4 @@ func (o *UpdateGroupReq) GetName() *string {
 		return nil
 	}
 	return o.Name
-}
-
-func (o *UpdateGroupReq) GetUserIds() []string {
-	if o == nil {
-		return nil
-	}
-	return o.UserIds
 }

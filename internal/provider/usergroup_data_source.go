@@ -5,7 +5,6 @@ package provider
 import (
 	"context"
 	"fmt"
-	tfTypes "github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/operations"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
@@ -29,15 +28,9 @@ type UserGroupDataSource struct {
 
 // UserGroupDataSourceModel describes the data model.
 type UserGroupDataSourceModel struct {
-	CreatedAt   types.String         `tfsdk:"created_at"`
-	CreatedBy   types.String         `tfsdk:"created_by"`
-	CrtAssignee *tfTypes.CrtAssignee `tfsdk:"crt_assignee"`
-	Hydrate     types.Bool           `tfsdk:"hydrate"`
-	ID          types.String         `tfsdk:"id"`
-	Name        types.String         `tfsdk:"name"`
-	OrgID       types.String         `tfsdk:"org_id"`
-	UpdatedAt   types.String         `tfsdk:"updated_at"`
-	Users       []tfTypes.UserV2     `tfsdk:"users"`
+	Hydrate types.Bool   `tfsdk:"hydrate"`
+	ID      types.String `tfsdk:"id"`
+	Name    types.String `tfsdk:"name"`
 }
 
 // Metadata returns the data source type name.
@@ -51,137 +44,6 @@ func (r *UserGroupDataSource) Schema(ctx context.Context, req datasource.SchemaR
 		MarkdownDescription: "UserGroup DataSource",
 
 		Attributes: map[string]schema.Attribute{
-			"created_at": schema.StringAttribute{
-				Computed: true,
-			},
-			"created_by": schema.StringAttribute{
-				Computed:    true,
-				Description: `The user id of the user that created the group.`,
-			},
-			"crt_assignee": schema.SingleNestedAttribute{
-				Computed: true,
-				Attributes: map[string]schema.Attribute{
-					"activated_at": schema.StringAttribute{
-						Computed: true,
-					},
-					"created_at": schema.StringAttribute{
-						Computed: true,
-					},
-					"crt_index": schema.NumberAttribute{
-						Computed:    true,
-						Description: `The index of the current assignee in the group's user list.`,
-					},
-					"custom_start_page": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's start page after login`,
-					},
-					"department": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's department`,
-					},
-					"display_name": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's display name (default: email address)`,
-					},
-					"draft_email": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's pending email address`,
-					},
-					"email": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's email address`,
-					},
-					"email_notification_setting": schema.MapAttribute{
-						Computed:    true,
-						ElementType: types.StringType,
-					},
-					"favorites": schema.MapAttribute{
-						Computed:    true,
-						ElementType: types.StringType,
-					},
-					"feature_preferences": schema.MapAttribute{
-						Computed:    true,
-						ElementType: types.StringType,
-						Description: `User's feature preferences`,
-					},
-					"id": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's unique identifier`,
-					},
-					"image_uri": schema.SingleNestedAttribute{
-						Computed: true,
-						Attributes: map[string]schema.Attribute{
-							"additional_properties": schema.StringAttribute{
-								Computed:    true,
-								Description: `Parsed as JSON.`,
-							},
-							"original": schema.StringAttribute{
-								Computed: true,
-							},
-							"thumbnail_32": schema.StringAttribute{
-								Computed: true,
-							},
-						},
-						Description: `User's custom profile image`,
-					},
-					"is_signature_enabled": schema.BoolAttribute{
-						Computed:    true,
-						Description: `Whether the user's signature is enabled`,
-					},
-					"mfa_enabled": schema.BoolAttribute{
-						Computed:    true,
-						Description: `User's multi-factor authentication status`,
-					},
-					"organization_id": schema.StringAttribute{
-						Computed: true,
-					},
-					"override_release_channel": schema.StringAttribute{
-						Computed:    true,
-						Description: `This field is used to override the release channel for the user.`,
-					},
-					"phone": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's phone number`,
-					},
-					"phone_verified": schema.BoolAttribute{
-						Computed:    true,
-						Description: `User's phone number verification status`,
-					},
-					"preferred_language": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's preferred language`,
-					},
-					"properties": schema.ListNestedAttribute{
-						Computed: true,
-						NestedObject: schema.NestedAttributeObject{
-							Attributes: map[string]schema.Attribute{
-								"name": schema.StringAttribute{
-									Computed: true,
-								},
-								"value": schema.StringAttribute{
-									Computed: true,
-								},
-							},
-						},
-					},
-					"secondary_phone": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's secondary phone number, preferred for communication`,
-					},
-					"signature": schema.StringAttribute{
-						Computed:    true,
-						Description: `User's email signature`,
-					},
-					"status": schema.StringAttribute{
-						Computed: true,
-					},
-					"token": schema.StringAttribute{
-						Computed:    true,
-						Description: `Token used to invite a user to epilot`,
-					},
-				},
-				Description: `The current user assignee of the group. This is the user, from within the group, that has last been assigned to a workflow task.`,
-			},
 			"hydrate": schema.BoolAttribute{
 				Optional:    true,
 				Description: `Pass it true when you want to hydrate the group with full user details`,
@@ -193,134 +55,6 @@ func (r *UserGroupDataSource) Schema(ctx context.Context, req datasource.SchemaR
 			"name": schema.StringAttribute{
 				Computed:    true,
 				Description: `The name of the group. Could be a department or a team.`,
-			},
-			"org_id": schema.StringAttribute{
-				Computed: true,
-			},
-			"updated_at": schema.StringAttribute{
-				Computed: true,
-			},
-			"users": schema.ListNestedAttribute{
-				Computed: true,
-				NestedObject: schema.NestedAttributeObject{
-					Attributes: map[string]schema.Attribute{
-						"activated_at": schema.StringAttribute{
-							Computed: true,
-						},
-						"created_at": schema.StringAttribute{
-							Computed: true,
-						},
-						"custom_start_page": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's start page after login`,
-						},
-						"department": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's department`,
-						},
-						"display_name": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's display name (default: email address)`,
-						},
-						"draft_email": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's pending email address`,
-						},
-						"email": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's email address`,
-						},
-						"email_notification_setting": schema.MapAttribute{
-							Computed:    true,
-							ElementType: types.StringType,
-						},
-						"favorites": schema.MapAttribute{
-							Computed:    true,
-							ElementType: types.StringType,
-						},
-						"feature_preferences": schema.MapAttribute{
-							Computed:    true,
-							ElementType: types.StringType,
-							Description: `User's feature preferences`,
-						},
-						"id": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's unique identifier`,
-						},
-						"image_uri": schema.SingleNestedAttribute{
-							Computed: true,
-							Attributes: map[string]schema.Attribute{
-								"additional_properties": schema.StringAttribute{
-									Computed:    true,
-									Description: `Parsed as JSON.`,
-								},
-								"original": schema.StringAttribute{
-									Computed: true,
-								},
-								"thumbnail_32": schema.StringAttribute{
-									Computed: true,
-								},
-							},
-							Description: `User's custom profile image`,
-						},
-						"is_signature_enabled": schema.BoolAttribute{
-							Computed:    true,
-							Description: `Whether the user's signature is enabled`,
-						},
-						"mfa_enabled": schema.BoolAttribute{
-							Computed:    true,
-							Description: `User's multi-factor authentication status`,
-						},
-						"organization_id": schema.StringAttribute{
-							Computed: true,
-						},
-						"override_release_channel": schema.StringAttribute{
-							Computed:    true,
-							Description: `This field is used to override the release channel for the user.`,
-						},
-						"phone": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's phone number`,
-						},
-						"phone_verified": schema.BoolAttribute{
-							Computed:    true,
-							Description: `User's phone number verification status`,
-						},
-						"preferred_language": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's preferred language`,
-						},
-						"properties": schema.ListNestedAttribute{
-							Computed: true,
-							NestedObject: schema.NestedAttributeObject{
-								Attributes: map[string]schema.Attribute{
-									"name": schema.StringAttribute{
-										Computed: true,
-									},
-									"value": schema.StringAttribute{
-										Computed: true,
-									},
-								},
-							},
-						},
-						"secondary_phone": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's secondary phone number, preferred for communication`,
-						},
-						"signature": schema.StringAttribute{
-							Computed:    true,
-							Description: `User's email signature`,
-						},
-						"status": schema.StringAttribute{
-							Computed: true,
-						},
-						"token": schema.StringAttribute{
-							Computed:    true,
-							Description: `Token used to invite a user to epilot`,
-						},
-					},
-				},
-				Description: `The list of users in the group. Only contains the full user when respective endpoint is called with a flag. Otherwise only contains the user id.`,
 			},
 		},
 	}

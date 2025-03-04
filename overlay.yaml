@@ -30,3 +30,26 @@ actions:
   - target: $["components"]["schemas"]["Group"]
     update:
       x-speakeasy-entity: UserGroup
+  - target: $["components"]["schemas"]["Group"]["properties"]["users"]
+    remove: true
+  - target: $["components"]["schemas"]["CreateGroupReq"]["properties"]["user_ids"]
+    remove: true 
+  - target: $["components"]["schemas"]["UpdateGroupReq"]["properties"]["user_ids"]
+    remove: true
+  - target: $["components"]["schemas"]["Group"]["properties"]["org_id"]
+    remove: true
+  - target: $["components"]["schemas"]["Group"]["properties"]["created_at"]
+    remove: true
+  - target: $["components"]["schemas"]["Group"]["properties"]["created_at"]
+    remove: true
+  - target: $["components"]["schemas"]["Group"]["properties"]["updated_at"]
+    remove: true
+  - target: $["components"]["schemas"]["Group"]["properties"]["created_by"]
+    remove: true
+  - target: $["components"]["schemas"]["Group"]["properties"]["crt_assignee"]
+    remove: true
+
+    
+
+
+
