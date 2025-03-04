@@ -14,19 +14,9 @@ provider "epilot-usergroup" {
   server_url = "https://user.dev.sls.epilot.io"
 }
 
-# import {
-#   to = epilot-usergroup_user_group.my_usergroup
-#   id= "v7s3qq2g2nxr5n4"
-# }
-
 resource "epilot-usergroup_user_group" "my_usergroup" {
   name = "Terraform User Group"
   user_ids = [
     "1234"
   ]
 }
-
-
-# resource "epilot-usergroup_user_group" "my_usergroup" {
-
-# }
