@@ -1,0 +1,32 @@
+overlay: 1.0.0
+info:
+  title: Overlay epilot User Groups to make a User group resource
+  version: 0.0.1
+actions:
+  - target: $
+    update:
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 5000 # 5 seconds
+          maxInterval: 60000 # 60 seconds
+          maxElapsedTime: 3600000 # 5 minutes
+          exponent: 1.5
+        statusCodes:
+          - 5XX
+        retryConnectionErrors: true
+  - target: $["paths"]["/v1/groups/{id}"]["get"]
+    update:
+      x-speakeasy-entity-operation: UserGroup#get
+  - target: $["paths"]["/v1/groups"]["post"]
+    update:
+      x-speakeasy-entity-operation: UserGroup#create
+  - target: $["paths"][" /v1/groups/{id}"]["patch"]
+    update:
+      x-speakeasy-entity-operation: UserGroup#update
+  - target: $["paths"][" /v1/groups/{id}"]["delete"]
+    update:
+      x-speakeasy-entity-operation: UserGroup#delete
+  - target: $["components"]["schemas"]["Group"]
+    update:
+      x-speakeasy-entity: UserGroup

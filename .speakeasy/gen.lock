@@ -1,0 +1,328 @@
+lockVersion: 2.0.0
+id: a994bf58-5e2d-4beb-ac64-cac102ef5b7f
+management:
+  docChecksum: c035ef93f3305db314b9917e64f793fd
+  docVersion: 2.0.0
+  speakeasyVersion: 1.477.0
+  generationVersion: 2.497.0
+  releaseVersion: 0.10.4
+  configChecksum: 1683e99b2e03690b75d91894dc63c0de
+features:
+  terraform:
+    additionalDependencies: 0.1.0
+    additionalProperties: 0.1.2
+    constsAndDefaults: 0.2.0
+    core: 3.29.0
+    deprecations: 2.81.1
+    envVarSecurityUsage: 0.1.0
+    globalSecurity: 2.81.9
+    globalServerURLs: 2.82.1
+    inputOutputModels: 2.83.0
+    nullables: 0.0.0
+    retries: 2.81.2
+generatedFiles:
+  - .gitattributes
+  - USAGE.md
+  - examples/README.md
+  - examples/data-sources/epilot-usergroup_user_group/data-source.tf
+  - examples/provider/provider.tf
+  - examples/resources/epilot-usergroup_user_group/import.sh
+  - examples/resources/epilot-usergroup_user_group/resource.tf
+  - go.mod
+  - go.sum
+  - internal/planmodifiers/boolplanmodifier/suppress_diff.go
+  - internal/planmodifiers/float64planmodifier/suppress_diff.go
+  - internal/planmodifiers/int64planmodifier/suppress_diff.go
+  - internal/planmodifiers/listplanmodifier/suppress_diff.go
+  - internal/planmodifiers/mapplanmodifier/suppress_diff.go
+  - internal/planmodifiers/numberplanmodifier/suppress_diff.go
+  - internal/planmodifiers/objectplanmodifier/suppress_diff.go
+  - internal/planmodifiers/setplanmodifier/suppress_diff.go
+  - internal/planmodifiers/stringplanmodifier/suppress_diff.go
+  - internal/planmodifiers/utils/state_check.go
+  - internal/provider/provider.go
+  - internal/provider/reflect/diags.go
+  - internal/provider/reflect/doc.go
+  - internal/provider/reflect/generic_attr_value.go
+  - internal/provider/reflect/helpers.go
+  - internal/provider/reflect/interfaces.go
+  - internal/provider/reflect/into.go
+  - internal/provider/reflect/map.go
+  - internal/provider/reflect/number.go
+  - internal/provider/reflect/options.go
+  - internal/provider/reflect/outof.go
+  - internal/provider/reflect/pointer.go
+  - internal/provider/reflect/primitive.go
+  - internal/provider/reflect/slice.go
+  - internal/provider/reflect/struct.go
+  - internal/provider/types/crt_assignee.go
+  - internal/provider/types/group_image_uri.go
+  - internal/provider/types/group_properties.go
+  - internal/provider/types/user_v2.go
+  - internal/provider/usergroup_data_source.go
+  - internal/provider/usergroup_data_source_sdk.go
+  - internal/provider/usergroup_resource.go
+  - internal/provider/usergroup_resource_sdk.go
+  - internal/provider/utils.go
+  - internal/sdk/.gitattributes
+  - internal/sdk/group.go
+  - internal/sdk/internal/hooks/hooks.go
+  - internal/sdk/internal/utils/contenttype.go
+  - internal/sdk/internal/utils/env.go
+  - internal/sdk/internal/utils/form.go
+  - internal/sdk/internal/utils/headers.go
+  - internal/sdk/internal/utils/json.go
+  - internal/sdk/internal/utils/pathparams.go
+  - internal/sdk/internal/utils/queryparams.go
+  - internal/sdk/internal/utils/requestbody.go
+  - internal/sdk/internal/utils/retries.go
+  - internal/sdk/internal/utils/security.go
+  - internal/sdk/internal/utils/utils.go
+  - internal/sdk/models/errors/sdkerror.go
+  - internal/sdk/models/operations/activateuser.go
+  - internal/sdk/models/operations/advanceuserassignment.go
+  - internal/sdk/models/operations/checkinvitetoken.go
+  - internal/sdk/models/operations/creategroup.go
+  - internal/sdk/models/operations/deletegroup.go
+  - internal/sdk/models/operations/deleteuserv2.go
+  - internal/sdk/models/operations/getgroup.go
+  - internal/sdk/models/operations/getgroups.go
+  - internal/sdk/models/operations/getgroupsforuser.go
+  - internal/sdk/models/operations/getme.go
+  - internal/sdk/models/operations/getmev2.go
+  - internal/sdk/models/operations/getuser.go
+  - internal/sdk/models/operations/getuserloginparameters.go
+  - internal/sdk/models/operations/getuserloginparametersv2.go
+  - internal/sdk/models/operations/getuserv2.go
+  - internal/sdk/models/operations/inviteuser.go
+  - internal/sdk/models/operations/listusers.go
+  - internal/sdk/models/operations/listusersv2.go
+  - internal/sdk/models/operations/options.go
+  - internal/sdk/models/operations/rejectinvite.go
+  - internal/sdk/models/operations/resenduserinvitation.go
+  - internal/sdk/models/operations/signupuser.go
+  - internal/sdk/models/operations/switchorganization.go
+  - internal/sdk/models/operations/updategroup.go
+  - internal/sdk/models/operations/updateuserv2.go
+  - internal/sdk/models/operations/verifyemailwithtoken.go
+  - internal/sdk/models/shared/cognitodetails.go
+  - internal/sdk/models/shared/creategroupreq.go
+  - internal/sdk/models/shared/group.go
+  - internal/sdk/models/shared/loginparameters.go
+  - internal/sdk/models/shared/organization.go
+  - internal/sdk/models/shared/organizationdetail.go
+  - internal/sdk/models/shared/security.go
+  - internal/sdk/models/shared/signupuserpayload.go
+  - internal/sdk/models/shared/updategroupreq.go
+  - internal/sdk/models/shared/user.go
+  - internal/sdk/models/shared/useractivationpayload.go
+  - internal/sdk/models/shared/userdetail.go
+  - internal/sdk/models/shared/userinvitationpayload.go
+  - internal/sdk/models/shared/userv2.go
+  - internal/sdk/models/shared/userverificationpayload.go
+  - internal/sdk/retry/config.go
+  - internal/sdk/sdk.go
+  - internal/sdk/types/bigint.go
+  - internal/sdk/types/date.go
+  - internal/sdk/types/datetime.go
+  - internal/sdk/types/decimal.go
+  - internal/sdk/types/pointers.go
+  - internal/sdk/userv1.go
+  - internal/sdk/userv2.go
+  - internal/validators/DateValidator.go
+  - internal/validators/ExactlyOneChild.go
+  - internal/validators/JSONParseValidator.go
+  - internal/validators/RFC3339Validator.go
+  - internal/validators/boolvalidators/not_null.go
+  - internal/validators/float64validators/not_null.go
+  - internal/validators/int64validators/not_null.go
+  - internal/validators/listvalidators/not_null.go
+  - internal/validators/mapvalidators/not_null.go
+  - internal/validators/numbervalidators/not_null.go
+  - internal/validators/objectvalidators/not_null.go
+  - internal/validators/setvalidators/not_null.go
+  - internal/validators/stringvalidators/not_null.go
+  - main.go
+  - terraform-registry-manifest.json
+  - tools/tools.go
+examples:
+  signUpUser:
+    speakeasy-default-sign-up-user:
+      requestBody:
+        application/json: {"organization_detail": {"type": "Partner", "name": "Epilot", "pricing_tier": "professional", "email": "Meta_Durgan26@gmail.com", "is_privacy_policy_checked": false, "is_terms_and_conditions_checked": false}, "user_detail": {"full_name": "Example user", "email": "Brown.Zulauf-Ruecker@yahoo.com", "password": "AKjhdakjsdh@!34"}, "language": "en"}
+      responses:
+        "200":
+          application/json: {"user": {"id": "<id>", "organization_id": "<id>", "email": "Kylee94@hotmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}, "organization": {"name": "Epilot", "signature": "<p>Thanks</p>", "symbol": "EPI", "pricing_tier": "professional", "email": "someone@epilot.cloud", "phone": "49123123123", "website": "https://epilot.cloud", "logo_url": "https://epilot-playground-organization-data.s3.eu-central-1.amazonaws.com/epilot-logo.png", "logo_thumbnail_url": "https://epilot-playground-organization-data.s3.eu-central-1.amazonaws.com/epilot-logo.png", "is_unlicensed_org": false, "cognito_details": {"cognito_region": "eu-central-1", "cognito_user_pool_id": "eu-central-sample", "cognito_user_pool_client_id": "asbkh213ehkquwhdi", "cognito_user_pool_arn": "arn:aws:cognito-idp:eu-central-1:123456789012:userpool/eu-central-sample"}}}
+  getMeV2:
+    speakeasy-default-get-me-v2:
+      responses:
+        "200":
+          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}
+  listUsersV2:
+    speakeasy-default-list-users-v2:
+      responses:
+        "200":
+          application/json: {"results": [{"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}, {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}]}
+  getUserV2:
+    speakeasy-default-get-user-v2:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+  updateUserV2:
+    speakeasy-default-update-user-v2:
+      parameters:
+        path:
+          id: "<id>"
+      requestBody:
+        application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}
+      responses:
+        "200":
+          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}
+  deleteUserV2:
+    speakeasy-default-delete-user-v2:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "organization_id": "<id>", "email": "Freddy64@gmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": []}
+  inviteUser:
+    speakeasy-default-invite-user:
+      requestBody:
+        application/json: {"email": "test@example.com", "language": "en", "roles": ["123:owner"]}
+      responses:
+        "201":
+          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+  resendUserInvitation:
+    speakeasy-default-resend-user-invitation:
+      requestBody:
+        application/json: {"email": "test@example.com", "language": "en"}
+      responses:
+        "200":
+          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}
+  getGroupsForUser:
+    speakeasy-default-get-groups-for-user:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: [{"id": "<id>", "org_id": "<id>", "name": "Finance", "created_at": "2024-02-08T04:44:32.246Z", "updated_at": "2024-02-08T04:44:32.246Z", "created_by": "123", "crt_assignee": {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}], "crt_index": 3}, "users": [{"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}]}]
+  verifyEmailWithToken:
+    speakeasy-default-verify-email-with-token:
+      parameters:
+        query:
+          token: "<value>"
+      requestBody:
+        application/json: {"password": "AKjhdakjsdh@!34"}
+  checkInviteToken:
+    speakeasy-default-check-invite-token:
+      parameters:
+        query:
+          token: "<value>"
+      responses:
+        "200":
+          application/json: {"invitation_org_id": "<id>", "invitation_org_name": "<value>", "invitee_user_id": "<id>"}
+  activateUser:
+    speakeasy-default-activate-user:
+      parameters:
+        query:
+          token: "<value>"
+      requestBody:
+        application/json: {"display_name": "Example User", "password": "AKjhdakjsdh@!34"}
+  rejectInvite:
+    speakeasy-default-reject-invite:
+      parameters:
+        query:
+          token: "<value>"
+      responses:
+        "200":
+          application/json: {"success": true}
+  getUserLoginParametersV2:
+    speakeasy-default-get-user-login-parameters-v2:
+      parameters:
+        path:
+          username: "Eve94"
+      responses:
+        "200":
+          application/json: {"login_parameters": [{"organization_id": "123", "organization_name": "epilot GmbH", "organization_type": "Vendor", "cognito_region": "eu-central-1", "cognito_user_pool_id": "eu-central-sample", "cognito_user_pool_client_id": "asbkh213ehkquwhdi", "cognito_oauth_domain": "epilot-org-123", "cognito_oauth_scopes": ["openid"]}]}
+  switchOrganization:
+    speakeasy-default-switch-organization:
+      responses:
+        "200":
+          application/json: {"login_token": "<value>"}
+  getGroups:
+    speakeasy-default-get-groups:
+      responses:
+        "200":
+          application/json: {"hits": 1, "groups": [{"id": "<id>", "org_id": "<id>", "name": "Finance", "created_at": "2024-02-08T04:44:32.246Z", "updated_at": "2024-02-08T04:44:32.246Z", "created_by": "123", "crt_assignee": {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}], "crt_index": 3}, "users": [{"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}, {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}, {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}]}]}
+  createGroup:
+    speakeasy-default-create-group:
+      requestBody:
+        application/json: {"name": "Finance", "user_ids": ["123", "456"]}
+      responses:
+        "201":
+          application/json: {"id": "<id>", "org_id": "<id>", "name": "Finance", "created_at": "2024-02-08T04:44:32.246Z", "updated_at": "2024-02-08T04:44:32.246Z", "created_by": "123", "crt_assignee": {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}], "crt_index": 3}, "users": [{"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}, {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}, {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}]}
+  getGroup:
+    speakeasy-default-get-group:
+      parameters:
+        path:
+          id: "<id>"
+        query: {}
+      responses:
+        "200":
+          application/json: {"id": "<id>", "org_id": "<id>", "name": "Finance", "created_at": "2024-02-08T04:44:32.246Z", "updated_at": "2024-02-08T04:44:32.246Z", "created_by": "123", "crt_assignee": {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}], "crt_index": 3}, "users": [{"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}, {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}, {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}]}
+  updateGroup:
+    speakeasy-default-update-group:
+      parameters:
+        path:
+          id: "<id>"
+      requestBody:
+        application/json: {"name": "Finance", "user_ids": ["123", "456"]}
+      responses:
+        "201":
+          application/json: {"id": "<id>", "org_id": "<id>", "name": "Finance", "created_at": "2024-02-08T04:44:32.246Z", "updated_at": "2024-02-08T04:44:32.246Z", "created_by": "123", "crt_assignee": {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}], "crt_index": 3}, "users": [{"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}, {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}, {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}]}
+  deleteGroup:
+    speakeasy-default-delete-group:
+      parameters:
+        path:
+          id: "<id>"
+  advanceUserAssignment:
+    speakeasy-default-advance-user-assignment:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "org_id": "<id>", "name": "Finance", "created_at": "2024-02-08T04:44:32.246Z", "updated_at": "2024-02-08T04:44:32.246Z", "created_by": "123", "crt_assignee": {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}], "crt_index": 3}, "users": [{"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}]}
+  getMe:
+    speakeasy-default-get-me:
+      responses:
+        "200":
+          application/json: {"id": "<id>", "organization_id": "<id>", "email": "Roger77@hotmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}
+  listUsers:
+    speakeasy-default-list-users:
+      responses:
+        "200":
+          application/json: {"users": [{"id": "<id>", "organization_id": "<id>", "email": "Oswaldo70@gmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": []}, {"id": "<id>", "organization_id": "<id>", "email": "Alan25@yahoo.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}]}
+  getUser:
+    speakeasy-default-get-user:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "organization_id": "<id>", "email": "Carolyne_Walsh@hotmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+  getUserLoginParameters:
+    speakeasy-default-get-user-login-parameters:
+      parameters:
+        path:
+          username: "Matilda79"
+      responses:
+        "200":
+          application/json: {"login_parameters": [{"organization_id": "123", "organization_name": "epilot GmbH", "organization_type": "Vendor", "cognito_region": "eu-central-1", "cognito_user_pool_id": "eu-central-sample", "cognito_user_pool_client_id": "asbkh213ehkquwhdi", "cognito_oauth_domain": "epilot-org-123", "cognito_oauth_scopes": ["openid"]}, {"organization_id": "123", "organization_name": "epilot GmbH", "organization_type": "Vendor", "cognito_region": "eu-central-1", "cognito_user_pool_id": "eu-central-sample", "cognito_user_pool_client_id": "asbkh213ehkquwhdi", "cognito_oauth_domain": "epilot-org-123", "cognito_oauth_scopes": ["openid"]}]}
+examplesVersion: 1.0.0
+generatedTests: {}
