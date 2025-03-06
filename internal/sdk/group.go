@@ -30,13 +30,6 @@ func newGroup(sdkConfig sdkConfiguration) *Group {
 // GetGroups - getGroups
 // Lists groups in organizations you have access to
 func (s *Group) GetGroups(ctx context.Context, request operations.GetGroupsRequest, opts ...operations.Option) (*operations.GetGroupsResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getGroups",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -58,6 +51,14 @@ func (s *Group) GetGroups(ctx context.Context, request operations.GetGroupsReque
 	opURL, err := url.JoinPath(baseURL, "/v1/groups")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getGroups",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -228,13 +229,6 @@ func (s *Group) GetGroups(ctx context.Context, request operations.GetGroupsReque
 // CreateGroup - createGroup
 // Create a new group
 func (s *Group) CreateGroup(ctx context.Context, request *shared.CreateGroupReq, opts ...operations.Option) (*operations.CreateGroupResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "createGroup",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -258,6 +252,13 @@ func (s *Group) CreateGroup(ctx context.Context, request *shared.CreateGroupReq,
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "createGroup",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -430,13 +431,6 @@ func (s *Group) CreateGroup(ctx context.Context, request *shared.CreateGroupReq,
 // GetGroup - getGroup
 // Get group by id
 func (s *Group) GetGroup(ctx context.Context, request operations.GetGroupRequest, opts ...operations.Option) (*operations.GetGroupResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getGroup",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -458,6 +452,14 @@ func (s *Group) GetGroup(ctx context.Context, request operations.GetGroupRequest
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/groups/{id}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getGroup",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -629,13 +631,6 @@ func (s *Group) GetGroup(ctx context.Context, request operations.GetGroupRequest
 // UpdateGroup - updateGroup
 // Update group by id
 func (s *Group) UpdateGroup(ctx context.Context, request operations.UpdateGroupRequest, opts ...operations.Option) (*operations.UpdateGroupResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "updateGroup",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -659,6 +654,13 @@ func (s *Group) UpdateGroup(ctx context.Context, request operations.UpdateGroupR
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "updateGroup",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UpdateGroupReq", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -832,13 +834,6 @@ func (s *Group) UpdateGroup(ctx context.Context, request operations.UpdateGroupR
 // DeleteGroup - deleteGroup
 // Delete group by id
 func (s *Group) DeleteGroup(ctx context.Context, request operations.DeleteGroupRequest, opts ...operations.Option) (*operations.DeleteGroupResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "deleteGroup",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -860,6 +855,14 @@ func (s *Group) DeleteGroup(ctx context.Context, request operations.DeleteGroupR
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/groups/{id}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "deleteGroup",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1006,13 +1009,6 @@ func (s *Group) DeleteGroup(ctx context.Context, request operations.DeleteGroupR
 // AdvanceUserAssignment - advanceUserAssignment
 // Advance user assignment to next user in line
 func (s *Group) AdvanceUserAssignment(ctx context.Context, request operations.AdvanceUserAssignmentRequest, opts ...operations.Option) (*operations.AdvanceUserAssignmentResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "advanceUserAssignment",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1034,6 +1030,14 @@ func (s *Group) AdvanceUserAssignment(ctx context.Context, request operations.Ad
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/groups/{id}/user:next", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "advanceUserAssignment",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
