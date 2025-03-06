@@ -29,13 +29,6 @@ func newUserV2(sdkConfig sdkConfiguration) *UserV2 {
 
 // SignUpUser - signUpUser
 func (s *UserV2) SignUpUser(ctx context.Context, request operations.SignUpUserRequest, opts ...operations.Option) (*operations.SignUpUserResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "signUpUser",
-		OAuth2Scopes:   []string{},
-		SecuritySource: nil,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -59,6 +52,13 @@ func (s *UserV2) SignUpUser(ctx context.Context, request operations.SignUpUserRe
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "signUpUser",
+		OAuth2Scopes:   []string{},
+		SecuritySource: nil,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "SignupUserPayload", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -231,13 +231,6 @@ func (s *UserV2) SignUpUser(ctx context.Context, request operations.SignUpUserRe
 // GetMeV2 - getMeV2
 // Get currently logged in user
 func (s *UserV2) GetMeV2(ctx context.Context, opts ...operations.Option) (*operations.GetMeV2Response, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getMeV2",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -259,6 +252,14 @@ func (s *UserV2) GetMeV2(ctx context.Context, opts ...operations.Option) (*opera
 	opURL, err := url.JoinPath(baseURL, "/v2/users/me")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getMeV2",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -425,13 +426,6 @@ func (s *UserV2) GetMeV2(ctx context.Context, opts ...operations.Option) (*opera
 // ListUsersV2 - listUsersV2
 // Get the list of organization users
 func (s *UserV2) ListUsersV2(ctx context.Context, request operations.ListUsersV2Request, opts ...operations.Option) (*operations.ListUsersV2Response, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "listUsersV2",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -453,6 +447,14 @@ func (s *UserV2) ListUsersV2(ctx context.Context, request operations.ListUsersV2
 	opURL, err := url.JoinPath(baseURL, "/v2/users")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "listUsersV2",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -623,13 +625,6 @@ func (s *UserV2) ListUsersV2(ctx context.Context, request operations.ListUsersV2
 // GetUserV2 - getUserV2
 // Get user details by user id
 func (s *UserV2) GetUserV2(ctx context.Context, request operations.GetUserV2Request, opts ...operations.Option) (*operations.GetUserV2Response, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getUserV2",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -651,6 +646,14 @@ func (s *UserV2) GetUserV2(ctx context.Context, request operations.GetUserV2Requ
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/users/{id}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getUserV2",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -817,13 +820,6 @@ func (s *UserV2) GetUserV2(ctx context.Context, request operations.GetUserV2Requ
 // UpdateUserV2 - updateUserV2
 // Update user details
 func (s *UserV2) UpdateUserV2(ctx context.Context, request operations.UpdateUserV2Request, opts ...operations.Option) (*operations.UpdateUserV2Response, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "updateUserV2",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -847,6 +843,13 @@ func (s *UserV2) UpdateUserV2(ctx context.Context, request operations.UpdateUser
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "updateUserV2",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UserV2", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1019,13 +1022,6 @@ func (s *UserV2) UpdateUserV2(ctx context.Context, request operations.UpdateUser
 // DeleteUserV2 - deleteUserV2
 // Delete user by user id
 func (s *UserV2) DeleteUserV2(ctx context.Context, request operations.DeleteUserV2Request, opts ...operations.Option) (*operations.DeleteUserV2Response, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "deleteUserV2",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1047,6 +1043,14 @@ func (s *UserV2) DeleteUserV2(ctx context.Context, request operations.DeleteUser
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/users/{id}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "deleteUserV2",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1213,13 +1217,6 @@ func (s *UserV2) DeleteUserV2(ctx context.Context, request operations.DeleteUser
 // InviteUser - inviteUser
 // Creates a new user in the caller's organization and sends an invite email to activate the user
 func (s *UserV2) InviteUser(ctx context.Context, request *shared.UserInvitationPayload, opts ...operations.Option) (*operations.InviteUserResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "inviteUser",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1243,6 +1240,13 @@ func (s *UserV2) InviteUser(ctx context.Context, request *shared.UserInvitationP
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "inviteUser",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1416,13 +1420,6 @@ func (s *UserV2) InviteUser(ctx context.Context, request *shared.UserInvitationP
 // ResendUserInvitation - resendUserInvitation
 // Resend user invitation email
 func (s *UserV2) ResendUserInvitation(ctx context.Context, request *operations.ResendUserInvitationRequestBody, opts ...operations.Option) (*operations.ResendUserInvitationResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "resendUserInvitation",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1446,6 +1443,13 @@ func (s *UserV2) ResendUserInvitation(ctx context.Context, request *operations.R
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "resendUserInvitation",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1619,13 +1623,6 @@ func (s *UserV2) ResendUserInvitation(ctx context.Context, request *operations.R
 // GetGroupsForUser - getGroupsForUser
 // Get groups of a user
 func (s *UserV2) GetGroupsForUser(ctx context.Context, request operations.GetGroupsForUserRequest, opts ...operations.Option) (*operations.GetGroupsForUserResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getGroupsForUser",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1647,6 +1644,14 @@ func (s *UserV2) GetGroupsForUser(ctx context.Context, request operations.GetGro
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/users/{id}/groups", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getGroupsForUser",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -1813,13 +1818,6 @@ func (s *UserV2) GetGroupsForUser(ctx context.Context, request operations.GetGro
 // VerifyEmailWithToken - verifyEmailWithToken
 // Update new email using an verification token
 func (s *UserV2) VerifyEmailWithToken(ctx context.Context, request operations.VerifyEmailWithTokenRequest, opts ...operations.Option) (*operations.VerifyEmailWithTokenResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "verifyEmailWithToken",
-		OAuth2Scopes:   []string{},
-		SecuritySource: nil,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -1843,6 +1841,13 @@ func (s *UserV2) VerifyEmailWithToken(ctx context.Context, request operations.Ve
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "verifyEmailWithToken",
+		OAuth2Scopes:   []string{},
+		SecuritySource: nil,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UserVerificationPayload", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -1996,13 +2001,6 @@ func (s *UserV2) VerifyEmailWithToken(ctx context.Context, request operations.Ve
 // CheckInviteToken - checkInviteToken
 // Check an invite token
 func (s *UserV2) CheckInviteToken(ctx context.Context, request operations.CheckInviteTokenRequest, opts ...operations.Option) (*operations.CheckInviteTokenResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "checkInviteToken",
-		OAuth2Scopes:   []string{},
-		SecuritySource: nil,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2024,6 +2022,14 @@ func (s *UserV2) CheckInviteToken(ctx context.Context, request operations.CheckI
 	opURL, err := url.JoinPath(baseURL, "/v2/users/public/checkToken")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "checkInviteToken",
+		OAuth2Scopes:   []string{},
+		SecuritySource: nil,
 	}
 
 	timeout := o.Timeout
@@ -2191,13 +2197,6 @@ func (s *UserV2) CheckInviteToken(ctx context.Context, request operations.CheckI
 // ActivateUser - activateUser
 // Activate user using an invite token
 func (s *UserV2) ActivateUser(ctx context.Context, request operations.ActivateUserRequest, opts ...operations.Option) (*operations.ActivateUserResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "activateUser",
-		OAuth2Scopes:   []string{},
-		SecuritySource: nil,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2221,6 +2220,13 @@ func (s *UserV2) ActivateUser(ctx context.Context, request operations.ActivateUs
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "activateUser",
+		OAuth2Scopes:   []string{},
+		SecuritySource: nil,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "UserActivationPayload", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err
@@ -2376,13 +2382,6 @@ func (s *UserV2) ActivateUser(ctx context.Context, request operations.ActivateUs
 // RejectInvite - rejectInvite
 // Reject an invite
 func (s *UserV2) RejectInvite(ctx context.Context, request operations.RejectInviteRequest, opts ...operations.Option) (*operations.RejectInviteResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "rejectInvite",
-		OAuth2Scopes:   []string{},
-		SecuritySource: nil,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2404,6 +2403,14 @@ func (s *UserV2) RejectInvite(ctx context.Context, request operations.RejectInvi
 	opURL, err := url.JoinPath(baseURL, "/v2/users/public/reject")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "rejectInvite",
+		OAuth2Scopes:   []string{},
+		SecuritySource: nil,
 	}
 
 	timeout := o.Timeout
@@ -2573,13 +2580,6 @@ func (s *UserV2) RejectInvite(ctx context.Context, request operations.RejectInvi
 //
 // The first item in the list corresponds to the user's primary organization and must be used for initial login.
 func (s *UserV2) GetUserLoginParametersV2(ctx context.Context, request operations.GetUserLoginParametersV2Request, opts ...operations.Option) (*operations.GetUserLoginParametersV2Response, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getUserLoginParametersV2",
-		OAuth2Scopes:   []string{},
-		SecuritySource: nil,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2601,6 +2601,14 @@ func (s *UserV2) GetUserLoginParametersV2(ctx context.Context, request operation
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v2/users/public/username/{username}:getLoginParameters", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getUserLoginParametersV2",
+		OAuth2Scopes:   []string{},
+		SecuritySource: nil,
 	}
 
 	timeout := o.Timeout
@@ -2763,13 +2771,6 @@ func (s *UserV2) GetUserLoginParametersV2(ctx context.Context, request operation
 // SwitchOrganization - switchOrganization
 // Switch to another organization the user is part of
 func (s *UserV2) SwitchOrganization(ctx context.Context, request *operations.SwitchOrganizationRequestBody, opts ...operations.Option) (*operations.SwitchOrganizationResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "switchOrganization",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -2793,6 +2794,13 @@ func (s *UserV2) SwitchOrganization(ctx context.Context, request *operations.Swi
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
 
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "switchOrganization",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
+	}
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, false, true, "Request", "json", `request:"mediaType=application/json"`)
 	if err != nil {
 		return nil, err

@@ -28,7 +28,7 @@ type UserGroupDataSource struct {
 
 // UserGroupDataSourceModel describes the data model.
 type UserGroupDataSourceModel struct {
-	Hydrate types.Bool   `tfsdk:"hydrate"`
+	Hydrate types.Bool   `queryParam:"style=form,explode=true,name=hydrate" tfsdk:"hydrate"`
 	ID      types.String `tfsdk:"id"`
 	Name    types.String `tfsdk:"name"`
 }

@@ -30,13 +30,6 @@ func newUserV1(sdkConfig sdkConfiguration) *UserV1 {
 // GetMe - getMe
 // Get currently logged in user
 func (s *UserV1) GetMe(ctx context.Context, opts ...operations.Option) (*operations.GetMeResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getMe",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -58,6 +51,14 @@ func (s *UserV1) GetMe(ctx context.Context, opts ...operations.Option) (*operati
 	opURL, err := url.JoinPath(baseURL, "/v1/users/me")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getMe",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -224,13 +225,6 @@ func (s *UserV1) GetMe(ctx context.Context, opts ...operations.Option) (*operati
 // ListUsers - listUsers
 // Lists users in organizations you have access to
 func (s *UserV1) ListUsers(ctx context.Context, request operations.ListUsersRequest, opts ...operations.Option) (*operations.ListUsersResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "listUsers",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -252,6 +246,14 @@ func (s *UserV1) ListUsers(ctx context.Context, request operations.ListUsersRequ
 	opURL, err := url.JoinPath(baseURL, "/v1/users")
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "listUsers",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -422,13 +424,6 @@ func (s *UserV1) ListUsers(ctx context.Context, request operations.ListUsersRequ
 // GetUser - getUser
 // Get user by id
 func (s *UserV1) GetUser(ctx context.Context, request operations.GetUserRequest, opts ...operations.Option) (*operations.GetUserResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getUser",
-		OAuth2Scopes:   []string{},
-		SecuritySource: s.sdkConfiguration.Security,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -450,6 +445,14 @@ func (s *UserV1) GetUser(ctx context.Context, request operations.GetUserRequest,
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/users/{id}", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getUser",
+		OAuth2Scopes:   []string{},
+		SecuritySource: s.sdkConfiguration.Security,
 	}
 
 	timeout := o.Timeout
@@ -616,13 +619,6 @@ func (s *UserV1) GetUser(ctx context.Context, request operations.GetUserRequest,
 // GetUserLoginParameters - getUserLoginParameters
 // Get user organization login parameters by username
 func (s *UserV1) GetUserLoginParameters(ctx context.Context, request operations.GetUserLoginParametersRequest, opts ...operations.Option) (*operations.GetUserLoginParametersResponse, error) {
-	hookCtx := hooks.HookContext{
-		Context:        ctx,
-		OperationID:    "getUserLoginParameters",
-		OAuth2Scopes:   []string{},
-		SecuritySource: nil,
-	}
-
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,
@@ -644,6 +640,14 @@ func (s *UserV1) GetUserLoginParameters(ctx context.Context, request operations.
 	opURL, err := utils.GenerateURL(ctx, baseURL, "/v1/users/username/{username}:getLoginParameters", request, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
+	}
+
+	hookCtx := hooks.HookContext{
+		BaseURL:        baseURL,
+		Context:        ctx,
+		OperationID:    "getUserLoginParameters",
+		OAuth2Scopes:   []string{},
+		SecuritySource: nil,
 	}
 
 	timeout := o.Timeout
