@@ -12,11 +12,11 @@ type DeleteUserV2Request struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *DeleteUserV2Request) GetID() string {
-	if o == nil {
+func (d *DeleteUserV2Request) GetID() string {
+	if d == nil {
 		return ""
 	}
-	return o.ID
+	return d.ID
 }
 
 type DeleteUserV2Response struct {
@@ -30,30 +30,30 @@ type DeleteUserV2Response struct {
 	User *shared.User
 }
 
-func (o *DeleteUserV2Response) GetContentType() string {
-	if o == nil {
+func (d *DeleteUserV2Response) GetContentType() string {
+	if d == nil {
 		return ""
 	}
-	return o.ContentType
+	return d.ContentType
 }
 
-func (o *DeleteUserV2Response) GetStatusCode() int {
-	if o == nil {
+func (d *DeleteUserV2Response) GetStatusCode() int {
+	if d == nil {
 		return 0
 	}
-	return o.StatusCode
+	return d.StatusCode
 }
 
-func (o *DeleteUserV2Response) GetRawResponse() *http.Response {
-	if o == nil {
+func (d *DeleteUserV2Response) GetRawResponse() *http.Response {
+	if d == nil {
 		return nil
 	}
-	return o.RawResponse
+	return d.RawResponse
 }
 
-func (o *DeleteUserV2Response) GetUser() *shared.User {
-	if o == nil {
+func (d *DeleteUserV2Response) GetUser() *shared.User {
+	if d == nil {
 		return nil
 	}
-	return o.User
+	return d.User
 }

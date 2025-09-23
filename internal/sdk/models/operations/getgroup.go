@@ -14,18 +14,18 @@ type GetGroupRequest struct {
 	Hydrate *bool `queryParam:"style=form,explode=true,name=hydrate"`
 }
 
-func (o *GetGroupRequest) GetID() string {
-	if o == nil {
+func (g *GetGroupRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *GetGroupRequest) GetHydrate() *bool {
-	if o == nil {
+func (g *GetGroupRequest) GetHydrate() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Hydrate
+	return g.Hydrate
 }
 
 type GetGroupResponse struct {
@@ -39,30 +39,30 @@ type GetGroupResponse struct {
 	Group *shared.Group
 }
 
-func (o *GetGroupResponse) GetContentType() string {
-	if o == nil {
+func (g *GetGroupResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetGroupResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetGroupResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetGroupResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetGroupResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetGroupResponse) GetGroup() *shared.Group {
-	if o == nil {
+func (g *GetGroupResponse) GetGroup() *shared.Group {
+	if g == nil {
 		return nil
 	}
-	return o.Group
+	return g.Group
 }

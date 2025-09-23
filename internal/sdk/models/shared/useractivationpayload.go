@@ -9,16 +9,16 @@ type UserActivationPayload struct {
 	Password *string `json:"password,omitempty"`
 }
 
-func (o *UserActivationPayload) GetDisplayName() *string {
-	if o == nil {
+func (u *UserActivationPayload) GetDisplayName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *UserActivationPayload) GetPassword() *string {
-	if o == nil {
+func (u *UserActivationPayload) GetPassword() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Password
+	return u.Password
 }

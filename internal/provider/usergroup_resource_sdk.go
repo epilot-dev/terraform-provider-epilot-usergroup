@@ -3,23 +3,46 @@
 package provider
 
 import (
+	"context"
+	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/shared"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func (r *UserGroupResourceModel) ToSharedCreateGroupReq() *shared.CreateGroupReq {
+func (r *UserGroupResourceModel) RefreshFromSharedGroup(ctx context.Context, resp *shared.Group) diag.Diagnostics {
+	var diags diag.Diagnostics
+
+	if resp != nil {
+		r.ID = types.StringValue(resp.ID)
+		r.Name = types.StringValue(resp.Name)
+	}
+
+	return diags
+}
+
+func (r *UserGroupResourceModel) ToOperationsGetGroupRequest(ctx context.Context) (*operations.GetGroupRequest, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	var id string
+	id = r.ID.ValueString()
+
+	out := operations.GetGroupRequest{
+		ID: id,
+	}
+
+	return &out, diags
+}
+
+func (r *UserGroupResourceModel) ToSharedCreateGroupReq(ctx context.Context) (*shared.CreateGroupReq, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
 	var name string
 	name = r.Name.ValueString()
 
 	out := shared.CreateGroupReq{
 		Name: name,
 	}
-	return &out
-}
 
-func (r *UserGroupResourceModel) RefreshFromSharedGroup(resp *shared.Group) {
-	if resp != nil {
-		r.ID = types.StringValue(resp.ID)
-		r.Name = types.StringValue(resp.Name)
-	}
+	return &out, diags
 }

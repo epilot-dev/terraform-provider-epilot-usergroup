@@ -17,31 +17,31 @@ func (i ImageURI) MarshalJSON() ([]byte, error) {
 }
 
 func (i *ImageURI) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &i, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &i, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ImageURI) GetOriginal() *string {
-	if o == nil {
+func (i *ImageURI) GetOriginal() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Original
+	return i.Original
 }
 
-func (o *ImageURI) GetThumbnail32() *string {
-	if o == nil {
+func (i *ImageURI) GetThumbnail32() *string {
+	if i == nil {
 		return nil
 	}
-	return o.Thumbnail32
+	return i.Thumbnail32
 }
 
-func (o *ImageURI) GetAdditionalProperties() any {
-	if o == nil {
+func (i *ImageURI) GetAdditionalProperties() any {
+	if i == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return i.AdditionalProperties
 }
 
 type Properties struct {
@@ -49,18 +49,18 @@ type Properties struct {
 	Value string `json:"value"`
 }
 
-func (o *Properties) GetName() string {
-	if o == nil {
+func (p *Properties) GetName() string {
+	if p == nil {
 		return ""
 	}
-	return o.Name
+	return p.Name
 }
 
-func (o *Properties) GetValue() string {
-	if o == nil {
+func (p *Properties) GetValue() string {
+	if p == nil {
 		return ""
 	}
-	return o.Value
+	return p.Value
 }
 
 type User struct {
@@ -82,72 +82,72 @@ type User struct {
 	Properties []Properties `json:"properties"`
 }
 
-func (o *User) GetID() string {
-	if o == nil {
+func (u *User) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *User) GetOrganizationID() string {
-	if o == nil {
+func (u *User) GetOrganizationID() string {
+	if u == nil {
 		return ""
 	}
-	return o.OrganizationID
+	return u.OrganizationID
 }
 
-func (o *User) GetEmail() string {
-	if o == nil {
+func (u *User) GetEmail() string {
+	if u == nil {
 		return ""
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *User) GetDisplayName() *string {
-	if o == nil {
+func (u *User) GetDisplayName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *User) GetName() string {
-	if o == nil {
+func (u *User) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *User) GetPreferredLanguage() string {
-	if o == nil {
+func (u *User) GetPreferredLanguage() string {
+	if u == nil {
 		return ""
 	}
-	return o.PreferredLanguage
+	return u.PreferredLanguage
 }
 
-func (o *User) GetSignature() *string {
-	if o == nil {
+func (u *User) GetSignature() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Signature
+	return u.Signature
 }
 
-func (o *User) GetRoles() []string {
-	if o == nil {
+func (u *User) GetRoles() []string {
+	if u == nil {
 		return []string{}
 	}
-	return o.Roles
+	return u.Roles
 }
 
-func (o *User) GetImageURI() *ImageURI {
-	if o == nil {
+func (u *User) GetImageURI() *ImageURI {
+	if u == nil {
 		return nil
 	}
-	return o.ImageURI
+	return u.ImageURI
 }
 
-func (o *User) GetProperties() []Properties {
-	if o == nil {
+func (u *User) GetProperties() []Properties {
+	if u == nil {
 		return []Properties{}
 	}
-	return o.Properties
+	return u.Properties
 }

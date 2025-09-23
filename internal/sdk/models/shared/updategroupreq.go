@@ -7,9 +7,9 @@ type UpdateGroupReq struct {
 	Name *string `json:"name,omitempty"`
 }
 
-func (o *UpdateGroupReq) GetName() *string {
-	if o == nil {
+func (u *UpdateGroupReq) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
 }
