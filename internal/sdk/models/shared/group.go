@@ -9,16 +9,16 @@ type Group struct {
 	Name string `json:"name"`
 }
 
-func (o *Group) GetID() string {
-	if o == nil {
+func (g *Group) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *Group) GetName() string {
-	if o == nil {
+func (g *Group) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
 }

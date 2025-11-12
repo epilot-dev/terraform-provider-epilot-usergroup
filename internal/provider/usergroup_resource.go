@@ -7,7 +7,6 @@ import (
 	"fmt"
 	speakeasy_stringplanmodifier "github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/planmodifiers/stringplanmodifier"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk"
-	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/operations"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
@@ -27,6 +26,7 @@ func NewUserGroupResource() resource.Resource {
 
 // UserGroupResource defines the resource implementation.
 type UserGroupResource struct {
+	// Provider configured SDK client.
 	client *sdk.SDK
 }
 
@@ -98,7 +98,12 @@ func (r *UserGroupResource) Create(ctx context.Context, req resource.CreateReque
 		return
 	}
 
-	request := data.ToSharedCreateGroupReq()
+	request, requestDiags := data.ToSharedCreateGroupReq(ctx)
+	resp.Diagnostics.Append(requestDiags...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
 	res, err := r.client.Group.CreateGroup(ctx, request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
@@ -119,8 +124,17 @@ func (r *UserGroupResource) Create(ctx context.Context, req resource.CreateReque
 		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res.RawResponse))
 		return
 	}
-	data.RefreshFromSharedGroup(res.Group)
-	refreshPlan(ctx, plan, &data, resp.Diagnostics)
+	resp.Diagnostics.Append(data.RefreshFromSharedGroup(ctx, res.Group)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	resp.Diagnostics.Append(refreshPlan(ctx, plan, &data)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
 
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
@@ -144,16 +158,13 @@ func (r *UserGroupResource) Read(ctx context.Context, req resource.ReadRequest, 
 		return
 	}
 
-	var id string
-	id = data.ID.ValueString()
+	request, requestDiags := data.ToOperationsGetGroupRequest(ctx)
+	resp.Diagnostics.Append(requestDiags...)
 
-	// read.user_group.hydrateread.user_group.hydrate impedance mismatch: boolean != classtrace=["UserGroup#create.req"]
-	var hydrate *bool
-	request := operations.GetGroupRequest{
-		ID:      id,
-		Hydrate: hydrate,
+	if resp.Diagnostics.HasError() {
+		return
 	}
-	res, err := r.client.Group.GetGroup(ctx, request)
+	res, err := r.client.Group.GetGroup(ctx, *request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
 		if res != nil && res.RawResponse != nil {
@@ -177,7 +188,11 @@ func (r *UserGroupResource) Read(ctx context.Context, req resource.ReadRequest, 
 		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res.RawResponse))
 		return
 	}
-	data.RefreshFromSharedGroup(res.Group)
+	resp.Diagnostics.Append(data.RefreshFromSharedGroup(ctx, res.Group)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
 
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)

@@ -49,24 +49,24 @@ func (r ResendUserInvitationRequestBody) MarshalJSON() ([]byte, error) {
 }
 
 func (r *ResendUserInvitationRequestBody) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &r, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *ResendUserInvitationRequestBody) GetEmail() *string {
-	if o == nil {
+func (r *ResendUserInvitationRequestBody) GetEmail() *string {
+	if r == nil {
 		return nil
 	}
-	return o.Email
+	return r.Email
 }
 
-func (o *ResendUserInvitationRequestBody) GetLanguage() *Language {
-	if o == nil {
+func (r *ResendUserInvitationRequestBody) GetLanguage() *Language {
+	if r == nil {
 		return nil
 	}
-	return o.Language
+	return r.Language
 }
 
 type ResendUserInvitationResponse struct {
@@ -80,30 +80,30 @@ type ResendUserInvitationResponse struct {
 	UserV2 *shared.UserV2
 }
 
-func (o *ResendUserInvitationResponse) GetContentType() string {
-	if o == nil {
+func (r *ResendUserInvitationResponse) GetContentType() string {
+	if r == nil {
 		return ""
 	}
-	return o.ContentType
+	return r.ContentType
 }
 
-func (o *ResendUserInvitationResponse) GetStatusCode() int {
-	if o == nil {
+func (r *ResendUserInvitationResponse) GetStatusCode() int {
+	if r == nil {
 		return 0
 	}
-	return o.StatusCode
+	return r.StatusCode
 }
 
-func (o *ResendUserInvitationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (r *ResendUserInvitationResponse) GetRawResponse() *http.Response {
+	if r == nil {
 		return nil
 	}
-	return o.RawResponse
+	return r.RawResponse
 }
 
-func (o *ResendUserInvitationResponse) GetUserV2() *shared.UserV2 {
-	if o == nil {
+func (r *ResendUserInvitationResponse) GetUserV2() *shared.UserV2 {
+	if r == nil {
 		return nil
 	}
-	return o.UserV2
+	return r.UserV2
 }

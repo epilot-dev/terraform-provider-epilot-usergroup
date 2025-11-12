@@ -16,25 +16,25 @@ type ListUsersV2Request struct {
 	Offset *float64 `queryParam:"style=form,explode=true,name=offset"`
 }
 
-func (o *ListUsersV2Request) GetQuery() *string {
-	if o == nil {
+func (l *ListUsersV2Request) GetQuery() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Query
+	return l.Query
 }
 
-func (o *ListUsersV2Request) GetLimit() *float64 {
-	if o == nil {
+func (l *ListUsersV2Request) GetLimit() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Limit
+	return l.Limit
 }
 
-func (o *ListUsersV2Request) GetOffset() *float64 {
-	if o == nil {
+func (l *ListUsersV2Request) GetOffset() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 // ListUsersV2ResponseBody - List of organization users
@@ -42,11 +42,11 @@ type ListUsersV2ResponseBody struct {
 	Results []shared.UserV2 `json:"results,omitempty"`
 }
 
-func (o *ListUsersV2ResponseBody) GetResults() []shared.UserV2 {
-	if o == nil {
+func (l *ListUsersV2ResponseBody) GetResults() []shared.UserV2 {
+	if l == nil {
 		return nil
 	}
-	return o.Results
+	return l.Results
 }
 
 type ListUsersV2Response struct {
@@ -60,30 +60,30 @@ type ListUsersV2Response struct {
 	Object *ListUsersV2ResponseBody
 }
 
-func (o *ListUsersV2Response) GetContentType() string {
-	if o == nil {
+func (l *ListUsersV2Response) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListUsersV2Response) GetStatusCode() int {
-	if o == nil {
+func (l *ListUsersV2Response) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListUsersV2Response) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListUsersV2Response) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListUsersV2Response) GetObject() *ListUsersV2ResponseBody {
-	if o == nil {
+func (l *ListUsersV2Response) GetObject() *ListUsersV2ResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

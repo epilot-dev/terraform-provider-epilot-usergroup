@@ -13,18 +13,18 @@ type ActivateUserRequest struct {
 	UserActivationPayload *shared.UserActivationPayload `request:"mediaType=application/json"`
 }
 
-func (o *ActivateUserRequest) GetToken() string {
-	if o == nil {
+func (a *ActivateUserRequest) GetToken() string {
+	if a == nil {
 		return ""
 	}
-	return o.Token
+	return a.Token
 }
 
-func (o *ActivateUserRequest) GetUserActivationPayload() *shared.UserActivationPayload {
-	if o == nil {
+func (a *ActivateUserRequest) GetUserActivationPayload() *shared.UserActivationPayload {
+	if a == nil {
 		return nil
 	}
-	return o.UserActivationPayload
+	return a.UserActivationPayload
 }
 
 type ActivateUserResponse struct {
@@ -36,23 +36,23 @@ type ActivateUserResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *ActivateUserResponse) GetContentType() string {
-	if o == nil {
+func (a *ActivateUserResponse) GetContentType() string {
+	if a == nil {
 		return ""
 	}
-	return o.ContentType
+	return a.ContentType
 }
 
-func (o *ActivateUserResponse) GetStatusCode() int {
-	if o == nil {
+func (a *ActivateUserResponse) GetStatusCode() int {
+	if a == nil {
 		return 0
 	}
-	return o.StatusCode
+	return a.StatusCode
 }
 
-func (o *ActivateUserResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (a *ActivateUserResponse) GetRawResponse() *http.Response {
+	if a == nil {
 		return nil
 	}
-	return o.RawResponse
+	return a.RawResponse
 }

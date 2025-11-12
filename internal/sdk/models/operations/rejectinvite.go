@@ -11,11 +11,11 @@ type RejectInviteRequest struct {
 	Token string `queryParam:"style=form,explode=true,name=token"`
 }
 
-func (o *RejectInviteRequest) GetToken() string {
-	if o == nil {
+func (r *RejectInviteRequest) GetToken() string {
+	if r == nil {
 		return ""
 	}
-	return o.Token
+	return r.Token
 }
 
 // RejectInviteResponseBody - Rejected invite successfully
@@ -23,11 +23,11 @@ type RejectInviteResponseBody struct {
 	Success *bool `json:"success,omitempty"`
 }
 
-func (o *RejectInviteResponseBody) GetSuccess() *bool {
-	if o == nil {
+func (r *RejectInviteResponseBody) GetSuccess() *bool {
+	if r == nil {
 		return nil
 	}
-	return o.Success
+	return r.Success
 }
 
 type RejectInviteResponse struct {
@@ -41,30 +41,30 @@ type RejectInviteResponse struct {
 	Object *RejectInviteResponseBody
 }
 
-func (o *RejectInviteResponse) GetContentType() string {
-	if o == nil {
+func (r *RejectInviteResponse) GetContentType() string {
+	if r == nil {
 		return ""
 	}
-	return o.ContentType
+	return r.ContentType
 }
 
-func (o *RejectInviteResponse) GetStatusCode() int {
-	if o == nil {
+func (r *RejectInviteResponse) GetStatusCode() int {
+	if r == nil {
 		return 0
 	}
-	return o.StatusCode
+	return r.StatusCode
 }
 
-func (o *RejectInviteResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (r *RejectInviteResponse) GetRawResponse() *http.Response {
+	if r == nil {
 		return nil
 	}
-	return o.RawResponse
+	return r.RawResponse
 }
 
-func (o *RejectInviteResponse) GetObject() *RejectInviteResponseBody {
-	if o == nil {
+func (r *RejectInviteResponse) GetObject() *RejectInviteResponseBody {
+	if r == nil {
 		return nil
 	}
-	return o.Object
+	return r.Object
 }

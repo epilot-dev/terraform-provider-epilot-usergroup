@@ -6,7 +6,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk"
-	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/operations"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -23,12 +22,13 @@ func NewUserGroupDataSource() datasource.DataSource {
 
 // UserGroupDataSource is the data source implementation.
 type UserGroupDataSource struct {
+	// Provider configured SDK client.
 	client *sdk.SDK
 }
 
 // UserGroupDataSourceModel describes the data model.
 type UserGroupDataSourceModel struct {
-	Hydrate types.Bool   `tfsdk:"hydrate"`
+	Hydrate types.Bool   `queryParam:"style=form,explode=true,name=hydrate" tfsdk:"hydrate"`
 	ID      types.String `tfsdk:"id"`
 	Name    types.String `tfsdk:"name"`
 }
@@ -98,20 +98,13 @@ func (r *UserGroupDataSource) Read(ctx context.Context, req datasource.ReadReque
 		return
 	}
 
-	var id string
-	id = data.ID.ValueString()
+	request, requestDiags := data.ToOperationsGetGroupRequest(ctx)
+	resp.Diagnostics.Append(requestDiags...)
 
-	hydrate := new(bool)
-	if !data.Hydrate.IsUnknown() && !data.Hydrate.IsNull() {
-		*hydrate = data.Hydrate.ValueBool()
-	} else {
-		hydrate = nil
+	if resp.Diagnostics.HasError() {
+		return
 	}
-	request := operations.GetGroupRequest{
-		ID:      id,
-		Hydrate: hydrate,
-	}
-	res, err := r.client.Group.GetGroup(ctx, request)
+	res, err := r.client.Group.GetGroup(ctx, *request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
 		if res != nil && res.RawResponse != nil {
@@ -123,10 +116,6 @@ func (r *UserGroupDataSource) Read(ctx context.Context, req datasource.ReadReque
 		resp.Diagnostics.AddError("unexpected response from API", fmt.Sprintf("%v", res))
 		return
 	}
-	if res.StatusCode == 404 {
-		resp.State.RemoveResource(ctx)
-		return
-	}
 	if res.StatusCode != 200 {
 		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res.StatusCode), debugResponse(res.RawResponse))
 		return
@@ -135,7 +124,11 @@ func (r *UserGroupDataSource) Read(ctx context.Context, req datasource.ReadReque
 		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res.RawResponse))
 		return
 	}
-	data.RefreshFromSharedGroup(res.Group)
+	resp.Diagnostics.Append(data.RefreshFromSharedGroup(ctx, res.Group)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
 
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
