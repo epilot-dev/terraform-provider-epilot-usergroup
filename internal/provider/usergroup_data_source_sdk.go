@@ -3,13 +3,40 @@
 package provider
 
 import (
+	"context"
+	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/shared"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func (r *UserGroupDataSourceModel) RefreshFromSharedGroup(resp *shared.Group) {
+func (r *UserGroupDataSourceModel) RefreshFromSharedGroup(ctx context.Context, resp *shared.Group) diag.Diagnostics {
+	var diags diag.Diagnostics
+
 	if resp != nil {
 		r.ID = types.StringValue(resp.ID)
 		r.Name = types.StringValue(resp.Name)
 	}
+
+	return diags
+}
+
+func (r *UserGroupDataSourceModel) ToOperationsGetGroupRequest(ctx context.Context) (*operations.GetGroupRequest, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	var id string
+	id = r.ID.ValueString()
+
+	hydrate := new(bool)
+	if !r.Hydrate.IsUnknown() && !r.Hydrate.IsNull() {
+		*hydrate = r.Hydrate.ValueBool()
+	} else {
+		hydrate = nil
+	}
+	out := operations.GetGroupRequest{
+		ID:      id,
+		Hydrate: hydrate,
+	}
+
+	return &out, diags
 }

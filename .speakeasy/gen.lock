@@ -1,25 +1,778 @@
 lockVersion: 2.0.0
 id: a994bf58-5e2d-4beb-ac64-cac102ef5b7f
 management:
-  docChecksum: 780e9f1d320c0dcdb4791fb0cffed21d
+  docChecksum: 61640edaf1ba95e446d396cfa38dc6b5
   docVersion: 2.0.0
-  speakeasyVersion: 1.477.0
-  generationVersion: 2.497.0
-  releaseVersion: 0.10.5
-  configChecksum: 0d54f4c0a4e528de85d26e7b6add6cf5
+  speakeasyVersion: 1.684.1
+  generationVersion: 2.793.2
+  releaseVersion: 0.11.0
+  configChecksum: 262bd189a000ed7a69a2d66df06d9075
+  repoURL: https://github.com/epilot-dev/terraform-provider-epilot-usergroup.git
+persistentEdits:
+  generation_id: 611c7140-604e-4429-a1f7-d74445235537
+  pristine_commit_hash: bda0b2ed4a37ddb994d031079723323aa86e28a5
+  pristine_tree_hash: 76f0ba2e3259c215e0a47df18bc4bc4345b1b726
 features:
   terraform:
     additionalDependencies: 0.1.0
-    additionalProperties: 0.1.2
-    constsAndDefaults: 0.2.0
-    core: 3.29.0
-    deprecations: 2.81.1
-    envVarSecurityUsage: 0.1.0
-    globalSecurity: 2.81.9
-    globalServerURLs: 2.82.1
+    additionalProperties: 0.1.4
+    constsAndDefaults: 0.3.0
+    core: 3.46.27
+    deprecations: 2.82.0
+    globalSecurity: 2.82.1
+    globalServerURLs: 2.83.0
     inputOutputModels: 2.83.0
     nullables: 0.0.0
-    retries: 2.81.2
+    retries: 2.81.4
+trackedFiles:
+  .gitattributes:
+    id: 24139dae6567
+    last_write_checksum: sha1:84b0115789fc3ea52e31df701d8a27f76077e29f
+    pristine_git_object: e6a994416d0f527912d2d272e2583458f4fc9bcb
+  USAGE.md:
+    id: 3aed33ce6e6f
+    last_write_checksum: sha1:02c32c9430f37507b3eacd41cdc36f080809e92d
+    pristine_git_object: 8e707bb129af1da185ba30b4c289b0160819c437
+  examples/data-sources/epilot-usergroup_user_group/data-source.tf:
+    id: c32c2a3a2dc1
+    last_write_checksum: sha1:04800d618fde1927380751b4b7b5bad0b41e55e1
+    pristine_git_object: 0325793819ea651c562c5c41603b1732d6fe7584
+  examples/provider/provider.tf:
+    id: 954e955c0240
+    last_write_checksum: sha1:eb7f403435732347716419620587037ed1d3780d
+    pristine_git_object: 5ce96daec769313cd27faaa8ccb48b49ce5e3b72
+  examples/resources/epilot-usergroup_user_group/import-by-string-id.tf:
+    id: feab3208780e
+    last_write_checksum: sha1:7fa0d178c15f709a9062bbfb95b56d634d72c449
+    pristine_git_object: 20e4e97c8e13e5dbf79c14f39be38339224a5169
+  examples/resources/epilot-usergroup_user_group/import.sh:
+    id: fdb76e64c9e7
+    last_write_checksum: sha1:7ccf2fa6a2919fcdf7a8d55bc31ceea2ab39ad1b
+    pristine_git_object: 7a6bc40898bec0718c71571786191f09e8e8e2a4
+  examples/resources/epilot-usergroup_user_group/resource.tf:
+    id: 36182f13441a
+    last_write_checksum: sha1:ab677344474d14e340107164b28f9c631eed15be
+    pristine_git_object: ca91587ea86e72b0275f940f53ace05a1720cf30
+  go.mod:
+    id: c47645c391ad
+    last_write_checksum: sha1:e1c305938a51edef5ebe96112a60657afe6edd1c
+    pristine_git_object: 8d5757414b5976d8ad1ffc082ede563f16d6d845
+  internal/planmodifiers/boolplanmodifier/suppress_diff.go:
+    id: 3cf85b98963e
+    last_write_checksum: sha1:510bfdfceea2c37b6d7d26e16167178d301be2b2
+    pristine_git_object: f8cad4593dd24c54ff7670d7c333c278bef806d0
+  internal/planmodifiers/boolplanmodifier/use_config_value.go:
+    id: c0a10558e419
+    last_write_checksum: sha1:506e2cac3ec4075a8837403860ef0b07e19bc337
+    pristine_git_object: 210846ca24831a6bda811d3e8a42326716d7bf97
+  internal/planmodifiers/float32planmodifier/suppress_diff.go:
+    id: b7f3f671e479
+    last_write_checksum: sha1:fc2466763e747ae53bdf1de9042ae30ce34df56b
+    pristine_git_object: 4f39d85724c9fd478fe9bef614a081a74c3ffa7a
+  internal/planmodifiers/float32planmodifier/use_config_value.go:
+    id: e75edfe23c08
+    last_write_checksum: sha1:2683d9de3605886cb01438a9015c8e8b02b4e069
+    pristine_git_object: 0aafffa779b10b01d1e9c831c3a4bda3e6d97789
+  internal/planmodifiers/float64planmodifier/suppress_diff.go:
+    id: 7ae872c2243d
+    last_write_checksum: sha1:c0c0b8b46eb76b2001f755dbc038b539b2f8a17a
+    pristine_git_object: 632f961757b955f0a2e7ce572e0adcad5cfd89dd
+  internal/planmodifiers/float64planmodifier/use_config_value.go:
+    id: 8fd8670f7434
+    last_write_checksum: sha1:cc1f1cadfd17a0b9b1e729029dccc03f17d734a5
+    pristine_git_object: ecd655b8d658d84aa5cbcc3e1808b69674071325
+  internal/planmodifiers/int32planmodifier/suppress_diff.go:
+    id: 3ee3ede7dc9d
+    last_write_checksum: sha1:7d23abcec61cb8a81a4638535fb3aeb0fa80c0c1
+    pristine_git_object: 501c72ff44ecc3127ef79ea99cff755eb780f316
+  internal/planmodifiers/int32planmodifier/use_config_value.go:
+    id: 40be4e07e289
+    last_write_checksum: sha1:019ba1949b00493bf1a866821f9331d50c8a1f09
+    pristine_git_object: ebc98aae308008b2cda39d5f4cfa781982afa44f
+  internal/planmodifiers/int64planmodifier/suppress_diff.go:
+    id: fade0cc85582
+    last_write_checksum: sha1:62033e2131cccefb29625754207accdbf524ea5f
+    pristine_git_object: 23ad1b1281db2ae3d7ffeff5fe9fe2e9e633843a
+  internal/planmodifiers/int64planmodifier/use_config_value.go:
+    id: e38d6f43d093
+    last_write_checksum: sha1:b5a63f0c356cd72698e25e1b4f4fc3e29b35d482
+    pristine_git_object: 2ec2d53d3ac13f58f64feb32b7fb07ca37b8fe99
+  internal/planmodifiers/listplanmodifier/suppress_diff.go:
+    id: 7b93ed9460b9
+    last_write_checksum: sha1:35de5702983636ad0bc7cd8cc03619d15807e952
+    pristine_git_object: f62168317ad8c9efc78b8adb4d04688b675ce63a
+  internal/planmodifiers/listplanmodifier/use_config_value.go:
+    id: c9b31b246860
+    last_write_checksum: sha1:c56e2d23520ac7023f800328bb7599e7eba2f202
+    pristine_git_object: 7e851c7613c71921fd4ccf7ca1f95b8b22ce9745
+  internal/planmodifiers/mapplanmodifier/suppress_diff.go:
+    id: 37bee37da583
+    last_write_checksum: sha1:a5330a1361cd5b91024bd2c3b3f68dc199120216
+    pristine_git_object: 484a2a2bc968cf6e9dba3a61a8f61618488e6a8b
+  internal/planmodifiers/mapplanmodifier/use_config_value.go:
+    id: 8fef370eccaa
+    last_write_checksum: sha1:7c2163c8fa4be8e8f7e7499cdb08cc5ed1924b39
+    pristine_git_object: 0f2a717f45ca60218f4b8d9e81a6a5cd01494905
+  internal/planmodifiers/numberplanmodifier/suppress_diff.go:
+    id: 0debe6a63221
+    last_write_checksum: sha1:92434fab08300f9d2446278a54dd655d10c64d8c
+    pristine_git_object: 63ce5bde6515a662695917d1ac3b5f2f7c9e76f0
+  internal/planmodifiers/numberplanmodifier/use_config_value.go:
+    id: e6b779d30d26
+    last_write_checksum: sha1:9b92d53a4a5f57e211e6f41ebb6c36cb12357ae6
+    pristine_git_object: e93c117a0665121b4c43c4a0fd5faec999ad016e
+  internal/planmodifiers/objectplanmodifier/suppress_diff.go:
+    id: c5bc1c3980dd
+    last_write_checksum: sha1:6fed32b4313ed7a765549d21dff0bf455b0b0ba7
+    pristine_git_object: e4d44be8dfb5d1191a7628f9794a8e1abb3abdbc
+  internal/planmodifiers/objectplanmodifier/use_config_value.go:
+    id: 7f103d324869
+    last_write_checksum: sha1:1f2b6727605c0b56ff2212ab2e2528046f05b157
+    pristine_git_object: eaf24076aeaf233c342886079be38561b94d3856
+  internal/planmodifiers/setplanmodifier/suppress_diff.go:
+    id: 2db9381ea39f
+    last_write_checksum: sha1:04dc30793051f48872abe5b7a9d106089e9cd761
+    pristine_git_object: 385a4774ec80d3f70486cf31082e37de40ffcb1d
+  internal/planmodifiers/setplanmodifier/use_config_value.go:
+    id: 62a591230001
+    last_write_checksum: sha1:fe02165f8fd260bbce09f34adfa378376363422f
+    pristine_git_object: a95de11e54a028586b41352c084de59fdc7af66c
+  internal/planmodifiers/stringplanmodifier/suppress_diff.go:
+    id: 05379039a176
+    last_write_checksum: sha1:e34bab80107b66a26986204ef90245b8ccfdea94
+    pristine_git_object: ecccf877d4bc63fce2b0c1e337884290d7e5a849
+  internal/planmodifiers/stringplanmodifier/use_config_value.go:
+    id: a783ed056524
+    last_write_checksum: sha1:250673402508661f9d12cfa026dc029d5e7855d9
+    pristine_git_object: 8b4457aeb6b22b7f2b581434762e71f3f782897b
+  internal/planmodifiers/utils/state_check.go:
+    id: ead742412d0f
+    last_write_checksum: sha1:acc38ad698bf4fa8c51aa662076cf57b79024bd5
+    pristine_git_object: 0ea64fbeb1fd7709d7241a8e06d34bfe9d0323d3
+  internal/provider/provider.go:
+    id: 1e7e86841cf3
+    last_write_checksum: sha1:ac01d8969e290e584c4382c9956fb94b61e692b6
+    pristine_git_object: bf02e5e40285cd9bd767489c29224b210d4933b0
+  internal/provider/reflect/diags.go:
+    id: 35b6b44972e2
+    last_write_checksum: sha1:ace8bc53054bb1d8ee8689acf3e4323de75a6297
+    pristine_git_object: 50c50c8c2ee48a2e0bd9f7e01e9de02489c887d8
+  internal/provider/reflect/doc.go:
+    id: cbfb54ee320b
+    last_write_checksum: sha1:67814656717ff0d0ff38fd9db09872e28666642b
+    pristine_git_object: e384126d4201af70574ce3a9fb8102edaa3b932e
+  internal/provider/reflect/generic_attr_value.go:
+    id: e422f9e35e9e
+    last_write_checksum: sha1:33300f91738c9b79e41ea4d8f3581d6800ac06ef
+    pristine_git_object: 48824d543386df6c125ed86da32d85d24659454c
+  internal/provider/reflect/helpers.go:
+    id: 3c19b91a8408
+    last_write_checksum: sha1:3a2083aa9f84f5a54638803f2225daf86408d360
+    pristine_git_object: 8085789a770637a76b1728b0f89b30c564696ca6
+  internal/provider/reflect/interfaces.go:
+    id: d1096171c6f2
+    last_write_checksum: sha1:e03017ee98ee8d1bd64fde7a025975638bcfaed7
+    pristine_git_object: ff4416e40b7dd139a553979327b0dac70aff37c5
+  internal/provider/reflect/into.go:
+    id: 50e3644442fc
+    last_write_checksum: sha1:7a29c6e2fd31069faddc441132ff04a92a6198be
+    pristine_git_object: 29a437fe2bdb30a956b8c7668d11032962962472
+  internal/provider/reflect/map.go:
+    id: 0d8232fb373f
+    last_write_checksum: sha1:803a218b09d4d9de46d27a5c0227ed3fc6617f62
+    pristine_git_object: 91e27a6c1d51441d6091752a0e199c300c1f09dc
+  internal/provider/reflect/number.go:
+    id: f7e5eb196c35
+    last_write_checksum: sha1:ff756986a30b648c423b9af8996584ffc5983514
+    pristine_git_object: 53673b8476a3115f39f7ed03921221243bbe29a3
+  internal/provider/reflect/options.go:
+    id: ae46de5fdb32
+    last_write_checksum: sha1:735603671bc13388dca9edeb7fefc0b229196793
+    pristine_git_object: 002addd9ab508962b4dc80b0b1f788c738cb8382
+  internal/provider/reflect/outof.go:
+    id: 2b83f83dde82
+    last_write_checksum: sha1:46f09acf317888545161fc1cd288113bd3836ead
+    pristine_git_object: 215406a5867a4b5b6e0978a1664492049cc3738a
+  internal/provider/reflect/pointer.go:
+    id: b758e7c3bf1c
+    last_write_checksum: sha1:92cc23f30396e1a9204f70ac68ebfe7d58cbb967
+    pristine_git_object: 215653e7c5d5ba9863ef5053d9084c9d69eba5ca
+  internal/provider/reflect/primitive.go:
+    id: c302568a3411
+    last_write_checksum: sha1:8b7708414f8be915065952b31986869feaa2fae6
+    pristine_git_object: adf648e88b61a8234951db180e4c25bbb7c1b353
+  internal/provider/reflect/slice.go:
+    id: cd2dec5ab676
+    last_write_checksum: sha1:70ce36709e204b74e3ded36c4683df7e48df294f
+    pristine_git_object: 79ad6b80c2a9492522820c3060a89f2de1131e92
+  internal/provider/reflect/struct.go:
+    id: 973d7dbf96c1
+    last_write_checksum: sha1:504fa0ca7711df0887f8c265c7acb3774e89afe7
+    pristine_git_object: c588f768bd7b39be33962188f97d81e1c4c25f4b
+  internal/provider/typeconvert/date.go:
+    id: dfe2bc95ad1b
+    last_write_checksum: sha1:e1d52f3c058712a6842b7f8491fffc1767c23837
+    pristine_git_object: c8cf5282939fe6908963920b428a8f8707ebb28a
+  internal/provider/typeconvert/datetime.go:
+    id: d2fb73d4f01c
+    last_write_checksum: sha1:a2a20e6785f1e12c3f94c016cbc106e54942e981
+    pristine_git_object: 7bfdc553a393a1db69a25574998eb6cc5df79566
+  internal/provider/typeconvert/int.go:
+    id: c44fcd78fccc
+    last_write_checksum: sha1:c28123f17006dc96a233f916a17c38408e37b71f
+    pristine_git_object: 54763e7a7555fae6d8bf51c4590220ff610202aa
+  internal/provider/usergroup_data_source.go:
+    id: 5d6f7987739b
+    last_write_checksum: sha1:477621081e9790f4a6b2741e89efb905f8c5aafb
+    pristine_git_object: c4c2c9c7c0ee02e16229cacf5de41160e81d7c3e
+  internal/provider/usergroup_data_source_sdk.go:
+    id: 53e43493be47
+    last_write_checksum: sha1:d68c96c1437b2da472ce4f39e3645b978efce242
+    pristine_git_object: 05a8dc49067846656f1e112c634d5842dbf66834
+  internal/provider/usergroup_resource.go:
+    id: 901d3a30bad3
+    last_write_checksum: sha1:22ddf11c7da128bd7522aabce0c6ddf9a49ad53a
+    pristine_git_object: 1d5196410932f9d24a372303c601f88d7f8ad23a
+  internal/provider/usergroup_resource_sdk.go:
+    id: 550916f456e2
+    last_write_checksum: sha1:7d25b34245fdc9227227b2b14095e8a1fafb9e17
+    pristine_git_object: 18f096c943a6d3868d4db8e1f92febe815abdab1
+  internal/provider/utils.go:
+    id: 312d50f148af
+    last_write_checksum: sha1:71dae9b9ed3c5b0600a766a9db322351e7df21e5
+    pristine_git_object: abe63cc7c58e61186f031c110b3908eff4b4cca2
+  internal/sdk/.gitattributes:
+    id: 1ea4c4e0a39d
+    last_write_checksum: sha1:84b0115789fc3ea52e31df701d8a27f76077e29f
+    pristine_git_object: e6a994416d0f527912d2d272e2583458f4fc9bcb
+  internal/sdk/docs/models/operations/option.md:
+    id: a35737eb2e35
+    last_write_checksum: sha1:08cfee5d266c9d82987e448f6c98a143aa42c5f8
+    pristine_git_object: 35d8a1e2ad48a64702c6a654ac8880dabec053b0
+  internal/sdk/group.go:
+    id: 76c574427983
+    last_write_checksum: sha1:9647aba19e072856e6bacb138e08dcad781ba7f6
+    pristine_git_object: f4610315090d87731fc9418302c4c2295ed51b80
+  internal/sdk/internal/config/sdkconfiguration.go:
+    id: 6af0bc8635d9
+    last_write_checksum: sha1:66cce6394d5f020b9e1a210b010bcbdd7ad63ec8
+    pristine_git_object: d3c9e8942e502382cc62c1e48fea9599211dcc1b
+  internal/sdk/internal/hooks/hooks.go:
+    id: 4e88208e997f
+    last_write_checksum: sha1:c7ef0b4e19bb270a178c0ac53bacac010a5bbc78
+    pristine_git_object: 61ceb937f72b0cd5f6487d92a120fa0830285475
+  internal/sdk/internal/utils/contenttype.go:
+    id: b767d5c02609
+    last_write_checksum: sha1:ab5cfd860d02c6e6a37f89e2b5649a9859947fb1
+    pristine_git_object: f6487e01eb987c0aa49e7aa50b5ff24830314c63
+  internal/sdk/internal/utils/env.go:
+    id: 4b4be1422b75
+    last_write_checksum: sha1:1e0bcb2d2caed9f3657f1dbc99b55811bed0298c
+    pristine_git_object: 110d464eacf2387b347bad1cb903666354a339e9
+  internal/sdk/internal/utils/form.go:
+    id: a29055426367
+    last_write_checksum: sha1:5789123e6e9ff16c215035e4b9c29bd1482bca0c
+    pristine_git_object: 25723e9ca75f176d9065655f1a1bfa545195591f
+  internal/sdk/internal/utils/headers.go:
+    id: f035883ac0ff
+    last_write_checksum: sha1:89ddd588affe738a7229d2be37230ed7eece4805
+    pristine_git_object: 1b1692ae8b98389c7e2ad0d9196f73796d301413
+  internal/sdk/internal/utils/json.go:
+    id: 2231afac3add
+    last_write_checksum: sha1:a48afe8f2fb0a1e7351b3f5333f08278dd50cec2
+    pristine_git_object: 1ec8581eec261553e47398a0501418019cfec7b6
+  internal/sdk/internal/utils/pathparams.go:
+    id: e7fec2afe4a6
+    last_write_checksum: sha1:74058e0ef830b93ab1ec0bab7d0b164dac457480
+    pristine_git_object: 73eecc18d4c012aa5b7dad951dc86b40220ee29e
+  internal/sdk/internal/utils/queryparams.go:
+    id: fb88ad971185
+    last_write_checksum: sha1:a813ba1d901aae28b3fcd862d4eb405a39458514
+    pristine_git_object: 866365c93acd1e6febccefbe7fe3cb6525726725
+  internal/sdk/internal/utils/requestbody.go:
+    id: c971a8b3bbf5
+    last_write_checksum: sha1:14252adb41d0c35c444a547385a24ffe7077811f
+    pristine_git_object: 547629ba2256a34ee910d26e23f2e7b879a4ed58
+  internal/sdk/internal/utils/retries.go:
+    id: 6832c2142453
+    last_write_checksum: sha1:7aff443601904e4e45c04473a2096bc9273b6e99
+    pristine_git_object: ff01d2c7bb82e19b7a2d6f0bb8a111344208cee2
+  internal/sdk/internal/utils/security.go:
+    id: 6ebe9eaeb99b
+    last_write_checksum: sha1:bb9cc1870101f6d2a990766f3eb0ea37292f7507
+    pristine_git_object: 19dfa6f4607dea64b1dd61c211e072212e7a3cb2
+  internal/sdk/internal/utils/union.go:
+    id: 183142835cfe
+    last_write_checksum: sha1:5e4ba3365fbd91e7c3d7812cb874914291a2c0b5
+    pristine_git_object: f8e31d6ccd62e40f11b94eb114f2fea2d3ebc9cc
+  internal/sdk/internal/utils/union_test.go:
+    id: 4c885192f6f0
+    last_write_checksum: sha1:83ac73c1901de4c6db90f65cf5879163f3d47a00
+    pristine_git_object: f66814c73ace94d8e71d785fd6161fb405745754
+  internal/sdk/internal/utils/utils.go:
+    id: feefcdf75dbd
+    last_write_checksum: sha1:d88d96cc244301d137581432095043f27a3e17b0
+    pristine_git_object: 0415b536598baa76c5d1a8fc32816ed1b83f9137
+  internal/sdk/models/errors/sdkerror.go:
+    id: 19b5a8d3586b
+    last_write_checksum: sha1:5d65fce5049df7c5113e11c9ccb1e4c46b91901c
+    pristine_git_object: c633d568d96b5297c7d2edfc9d22fc717428edf1
+  internal/sdk/models/operations/activateuser.go:
+    id: c4a3c605a9e4
+    last_write_checksum: sha1:255fed563d9f3d5649c7f888a8476fa4ba4c098f
+    pristine_git_object: bafe6e686c5b7dfec2793195d42a5ec5e4b11151
+  internal/sdk/models/operations/advanceuserassignment.go:
+    id: 4c1f6e301563
+    last_write_checksum: sha1:e7c71b989575e5462f293eff6652072a760e0a58
+    pristine_git_object: 9053f40fdba49542db8956b221559f2ab837c9c9
+  internal/sdk/models/operations/checkinvitetoken.go:
+    id: d30663532427
+    last_write_checksum: sha1:51ac1f0a89b5be367f9101b080d8e585b1a64886
+    pristine_git_object: 192ad8dd0d7646644e91ea89d6c761245dfaff14
+  internal/sdk/models/operations/creategroup.go:
+    id: b5d908361ccf
+    last_write_checksum: sha1:ece611d949820f27713b66d6c42101a82f4bcbde
+    pristine_git_object: 39fd10a006f9b97a377f07a575681c93e27da43d
+  internal/sdk/models/operations/deletegroup.go:
+    id: 0a472bbb782d
+    last_write_checksum: sha1:9a6d3f9b55be0a3ff661e101cf2bc73bb27516e6
+    pristine_git_object: ada20d15446f624d1b3b0a786890b77ef2108f08
+  internal/sdk/models/operations/deleteuserv2.go:
+    id: 2ccb25d6605c
+    last_write_checksum: sha1:8332d38a73dcb1043100a23b62af4ffda87753a0
+    pristine_git_object: b978ad4db25677ef652f55a0ac61fe774961084a
+  internal/sdk/models/operations/getgroup.go:
+    id: 9dd8a5ce6f45
+    last_write_checksum: sha1:cc766cdd7de1bcee3b4ce1c9614a09f5dfb51dc6
+    pristine_git_object: 346c9cb41db45cc87d067bae00db5a5f8f4100d1
+  internal/sdk/models/operations/getgroups.go:
+    id: 1c6d519e6a39
+    last_write_checksum: sha1:08d37184b5cfa31d4e61d6be4ad900e8609acd94
+    pristine_git_object: 119279409ad8ae07e892871ca1947e998fa0ede3
+  internal/sdk/models/operations/getgroupsforuser.go:
+    id: 01723eda0184
+    last_write_checksum: sha1:9bf21f11c7d7badb2885818c0f18dccc1cf2c1fe
+    pristine_git_object: b599e4637b03889beb066f20f7d3fe7ebcd2dfb0
+  internal/sdk/models/operations/getme.go:
+    id: 9640bdd28163
+    last_write_checksum: sha1:acd6bd42fcb18a4f635b37aeb011e909ce6b1b91
+    pristine_git_object: 547222d2f257f666d37f8c929504a6bacc7319b9
+  internal/sdk/models/operations/getmev2.go:
+    id: 1fc2339dfe62
+    last_write_checksum: sha1:f1363bfe7c4c5fed9b668a64754cc92339fd1c1d
+    pristine_git_object: a1475a54a33fe2da861868a59f4ce1ec1cd9d76c
+  internal/sdk/models/operations/getuser.go:
+    id: e85bc544815c
+    last_write_checksum: sha1:33f9d2b22ed7565c43bdc6659e921c43dc205803
+    pristine_git_object: efbe34198fdee4ca8c6a000e3695348886864424
+  internal/sdk/models/operations/getuserloginparameters.go:
+    id: a8e49d981d89
+    last_write_checksum: sha1:9033a69b29f94745093d9efea327bdb20b2bd13c
+    pristine_git_object: 0052959544c1593fc3af6766590218084eb17e46
+  internal/sdk/models/operations/getuserloginparametersv2.go:
+    id: 75ae03d5ba11
+    last_write_checksum: sha1:e1de189c92ba6041e00cd4df630b043ed1836264
+    pristine_git_object: 73dcd4a78d1af183a1131ea82ea60f549e265fa9
+  internal/sdk/models/operations/getuserv2.go:
+    id: 3a6066640be1
+    last_write_checksum: sha1:7e6c6238323507d2ba1954574f539c1656343db2
+    pristine_git_object: ddf0153245be4b434794b263bb1f382700a85ee6
+  internal/sdk/models/operations/inviteuser.go:
+    id: 0e0e95754a2e
+    last_write_checksum: sha1:e305d855c070ba7e04af4d237f8343ae62a2f443
+    pristine_git_object: ffcfb1fed5b8806724b6fcadb3f488c86607a34e
+  internal/sdk/models/operations/listusers.go:
+    id: f4b407021954
+    last_write_checksum: sha1:25f70cbe41fa2c54bad78ddab78633424b47277b
+    pristine_git_object: 681542da3b7a25827770bae125cdd358695e51d5
+  internal/sdk/models/operations/listusersv2.go:
+    id: f2c2822dc3d2
+    last_write_checksum: sha1:7e29fee56e73a32c04831e623a3c662df945c7ad
+    pristine_git_object: a0194fb205b7a5c32586ed8fcdb199aacbdade59
+  internal/sdk/models/operations/options.go:
+    id: 6d0d29414e00
+    last_write_checksum: sha1:d2c39e8dd5c601f4fe77128cc2f11b29c05a5b67
+    pristine_git_object: e8367c47ad21276c4731989320da950aaf8b30f5
+  internal/sdk/models/operations/rejectinvite.go:
+    id: 7562d512c518
+    last_write_checksum: sha1:59aeb72668738f3ae81a6fb677615d11edc7d310
+    pristine_git_object: 13d6f32527ae76f27cc96cd17b71341be8e5ba64
+  internal/sdk/models/operations/resenduserinvitation.go:
+    id: 7626d7b548ea
+    last_write_checksum: sha1:b5af943bbd2caea492af843299c029c9df1461f6
+    pristine_git_object: 1920e3d653c03c61b45721d8e7469e959a9e937b
+  internal/sdk/models/operations/signupuser.go:
+    id: 1c58b0bbfe96
+    last_write_checksum: sha1:aba3e8eece53d72818160590f7cbd8cda80fa84f
+    pristine_git_object: 14ce7357459e99eb3097248a45a4fbe50b781c4f
+  internal/sdk/models/operations/switchorganization.go:
+    id: ad29a0b15113
+    last_write_checksum: sha1:4684bd07b8e6ace97c7e04e434e38b4b6f5423b4
+    pristine_git_object: 1af4c102ab838f8ae6cb4937c18cfd9b23b7b9e8
+  internal/sdk/models/operations/updategroup.go:
+    id: 11f9ce0e440a
+    last_write_checksum: sha1:a0a7dc7deef74229428b94c38e1fecfcbad7f5ed
+    pristine_git_object: 0a929af6555c74b7e60bb7a7795cb0b9a00c0486
+  internal/sdk/models/operations/updateuserv2.go:
+    id: d28fac83cb35
+    last_write_checksum: sha1:2f9bff961e19a5be94b2476cbd25f9b916e88dfc
+    pristine_git_object: 67e642d431b35ee6afe512bce290ff0fe1a51d58
+  internal/sdk/models/operations/verifyemailwithtoken.go:
+    id: bec93bb6f3df
+    last_write_checksum: sha1:31235fb636bc1ebdf53e320f729aada91a55c7c5
+    pristine_git_object: 8fc26f313fe36ee1c3408278ee0ae45961df086b
+  internal/sdk/models/shared/cognitodetails.go:
+    id: d4cb5dbce3fa
+    last_write_checksum: sha1:66cee00eb390cb47f11f926fa55734aba471d690
+    pristine_git_object: 501955b7bfb9c24d142ce6028abfc9968e1629c0
+  internal/sdk/models/shared/creategroupreq.go:
+    id: d7a2e52571ec
+    last_write_checksum: sha1:38b586c9af17d676eaac3368a3e06bfab8f3e476
+    pristine_git_object: 76a6d8d7f3fe854723a88c7ffff64d1865d2a511
+  internal/sdk/models/shared/group.go:
+    id: 941f75eafff0
+    last_write_checksum: sha1:4d5758bd8b4176c4854b19bc56153c9d88ec5edd
+    pristine_git_object: a27cba62c39c0d0bdd44207299fab10838220fe1
+  internal/sdk/models/shared/loginparameters.go:
+    id: 957fd7990075
+    last_write_checksum: sha1:06530f0322e46d2bf1b60e46ac97da178b6c0959
+    pristine_git_object: 29bf633dfb7e229aef95fa0311029400022191a4
+  internal/sdk/models/shared/organization.go:
+    id: e4f0dc144992
+    last_write_checksum: sha1:1f72b6883cb7b9db86ba4f2135af2669685438af
+    pristine_git_object: e532cef950d9126cd34b6ef5673622b60d447923
+  internal/sdk/models/shared/organizationdetail.go:
+    id: c7571fd668be
+    last_write_checksum: sha1:a01ee6c6ebbb3c3df61c8bf795a1197703dfb107
+    pristine_git_object: e73313a0f185fc50210c518baecb2445d7111d2c
+  internal/sdk/models/shared/security.go:
+    id: 9098af98367e
+    last_write_checksum: sha1:961d82eed3050b7bd4cb075bf457c993a1c8add1
+    pristine_git_object: d8751e61ed1d6a04689da8a83076ab8cda0062f9
+  internal/sdk/models/shared/signupuserpayload.go:
+    id: 79100f82b5e3
+    last_write_checksum: sha1:b70915e762417a84867a0892f21f228ae5709b60
+    pristine_git_object: 09ed7b4c515b254dada3cf54f5406f70fe4578b1
+  internal/sdk/models/shared/updategroupreq.go:
+    id: 5fda308e1322
+    last_write_checksum: sha1:4ed649b22941d7b8e1e5d9fc840402c755051d16
+    pristine_git_object: abb9423676cdbca097eeb0d2bd14376269ae351d
+  internal/sdk/models/shared/user.go:
+    id: 9a5b526115dc
+    last_write_checksum: sha1:60afd964db6512ad7db0f9bd30830cff2027f2a9
+    pristine_git_object: 260ca4804fca2275682f49f00cbfd6867a25ed51
+  internal/sdk/models/shared/useractivationpayload.go:
+    id: 39a57c122d47
+    last_write_checksum: sha1:f3581e7ac629bb96fbe333d31b87f2dacdf75ebb
+    pristine_git_object: c6b28536dab965422a78fbccaf44666522f42125
+  internal/sdk/models/shared/userdetail.go:
+    id: 0be82640ca9f
+    last_write_checksum: sha1:de9a012504f484ac33f0b2a064661c5bf0084f79
+    pristine_git_object: 8ea8baced5e2ce226c4071a613a535591ae335ea
+  internal/sdk/models/shared/userinvitationpayload.go:
+    id: 5743eb63402a
+    last_write_checksum: sha1:737323c71d5a3c4a170bc241bd911af1248160a1
+    pristine_git_object: d469988ce9697f4aa9a7836a35731d47da5838cc
+  internal/sdk/models/shared/userv2.go:
+    id: f3e8c4ffe5c0
+    last_write_checksum: sha1:b0601b99dbf326989b75b6a7f394d5bfd1636146
+    pristine_git_object: b73c9ca54676cf1c411302e00ac2bef69e0dd627
+  internal/sdk/models/shared/userverificationpayload.go:
+    id: 0bfa5c34e229
+    last_write_checksum: sha1:f754da742d1b27f0734990652c7bfdabea4b110b
+    pristine_git_object: 3c3881a1178086a25e2c409f382668f5d822a18f
+  internal/sdk/optionalnullable/optionalnullable.go:
+    id: 4b83aa3f3df3
+    last_write_checksum: sha1:d6aff1a420c31e025ea21d46cf056e305ae76fe8
+    pristine_git_object: c6739be0619b6726565e0f11855ffe44b0e5607e
+  internal/sdk/optionalnullable/optionalnullable_test.go:
+    id: 3920a41dfc4c
+    last_write_checksum: sha1:2e9433eff1651ac77d6678ea76880d9a4980cbc2
+    pristine_git_object: e6e5a01c6e721e879e24a38a1f97e3e27d4686d4
+  internal/sdk/retry/config.go:
+    id: 7ea5fa9128b6
+    last_write_checksum: sha1:f565273be789ffe0e3c160de1ac72a63cfe67fbe
+    pristine_git_object: aa809fccb3445b1e2530a979dad620512f50e70f
+  internal/sdk/sdk.go:
+    id: 02d7190ee502
+    last_write_checksum: sha1:56e873ebebf44f134b4d909f91c1528f7f288ebe
+    pristine_git_object: c7a98ae8d0f07bcf9efb53d62538dcd5cf1f084f
+  internal/sdk/types/bigint.go:
+    id: fc530b70337e
+    last_write_checksum: sha1:49b004005d0461fb04b846eca062b070b0360b31
+    pristine_git_object: 9c6a086d51595888a6ff787ebcb8693559afee95
+  internal/sdk/types/date.go:
+    id: c4bff082c66f
+    last_write_checksum: sha1:3036a2e1ed15a1d484c093367eba000c38f384d0
+    pristine_git_object: 5b2782f219efe6bfbce46fc2dec68998eb759438
+  internal/sdk/types/datetime.go:
+    id: a8109857c712
+    last_write_checksum: sha1:196d050af6450669214e9ae4fd28e56263ae2b5d
+    pristine_git_object: 3eff332daa04e34cec5ffb10add670bafd8ac454
+  internal/sdk/types/pointers.go:
+    id: 2f3f971639f6
+    last_write_checksum: sha1:fc2275ea006257ba9ba4ff6f2a2cdb6205371eef
+    pristine_git_object: 35c439d2661e08fcb6a854096fd7b9a8561b3938
+  internal/sdk/userv1.go:
+    id: 8046bf6819ef
+    last_write_checksum: sha1:7e8f5354ea42e77db213fe5993cec7d2c06d7712
+    pristine_git_object: 22e3d593a72fd1fd722602284e72824bf097b126
+  internal/sdk/userv2.go:
+    id: b140d436bb54
+    last_write_checksum: sha1:46d3516b8de82fcba6e915511a08a9e4ac9f0063
+    pristine_git_object: c77cd2175cd05b89063eba0f893114bde1e0f0fd
+  internal/validators/DateValidator.go:
+    id: 4fdfa187ab97
+    last_write_checksum: sha1:7e1614c5d5063c849596b7f77567b32b39559f75
+    pristine_git_object: 7f80d78d45eaf526340ed123ac48bde6db0c4036
+  internal/validators/ExactlyOneChild.go:
+    id: 66e7bd50b47d
+    last_write_checksum: sha1:ab8e18d1763fbd5b262c3e7d917c81ac40ba839f
+    pristine_git_object: 1765a3a0b83d38a6cc8f118ea2cfab67ab44c910
+  internal/validators/JSONParseValidator.go:
+    id: ce72f37482f5
+    last_write_checksum: sha1:77af551821798350f868410aab90352f7ec7b370
+    pristine_git_object: b8bb96b5e0930635eb754f169b3eaf285d48dd1c
+  internal/validators/RFC3339Validator.go:
+    id: 0cf126c9a956
+    last_write_checksum: sha1:8d9accfc3aa477a74b0f927652f5e2ae3d28061d
+    pristine_git_object: f5e61466b5c639cb17d0cb2cfe28611957297ce9
+  internal/validators/boolvalidators/not_null.go:
+    id: 865145e65396
+    last_write_checksum: sha1:89a7362be9d519ed7c9fb7c4989d273a3aa5f279
+    pristine_git_object: 6eca17e0cff87f7682f8baa2cd81cd33bc972f4c
+  internal/validators/float32validators/not_null.go:
+    id: 330748f4ff91
+    last_write_checksum: sha1:4f0a859aa9d7348056c6559bad9ca336104beaef
+    pristine_git_object: c9a8973c7dc830b9c5aac546ea7cbe6021f01629
+  internal/validators/float64validators/not_null.go:
+    id: 8f5e6362f0f5
+    last_write_checksum: sha1:f2436a4a1323d58ffcff3b153167c4e463325c12
+    pristine_git_object: 8f786d278597ffac3c525755e429c9a3caa60b20
+  internal/validators/int32validators/not_null.go:
+    id: ea876d1f8b07
+    last_write_checksum: sha1:d08335af46ab809d0076da8543b3455662fb66a0
+    pristine_git_object: ec9a3f10adfdd29c3cca40e53dc42db329cf37d7
+  internal/validators/int64validators/not_null.go:
+    id: d3f822eb4c69
+    last_write_checksum: sha1:b5bf5b539f2631813ee8771cf00d8ea9744c6dd3
+    pristine_git_object: 707ff9573f026b7b7ee3f59462c7a8ba10a1aba9
+  internal/validators/listvalidators/not_null.go:
+    id: b3ee156dafa7
+    last_write_checksum: sha1:11f33dfa3cb1b9eadc7e4a8287518135ddae191e
+    pristine_git_object: 9b88e520b7d58c14c6844d3dbc26ce4f96d39af1
+  internal/validators/mapvalidators/not_null.go:
+    id: 9cff80d0791c
+    last_write_checksum: sha1:64117afe6cdb1a0e1b57df970da8df0e18d10442
+    pristine_git_object: dc6959e9cdadb16e0e1ea90f98b2d27f2d357b64
+  internal/validators/numbervalidators/not_null.go:
+    id: b335c948bcf4
+    last_write_checksum: sha1:54d925f13a630f21e14709ce6181e5eaf96bd6e3
+    pristine_git_object: 57d4da0ae000f671698384abc550196744884871
+  internal/validators/objectvalidators/not_null.go:
+    id: dd14631b3a38
+    last_write_checksum: sha1:5f897f5dcd2686d43c9bd683900572a8d7ef6473
+    pristine_git_object: bf0189497acb3b1214f2480e9db071186d85ecad
+  internal/validators/setvalidators/not_null.go:
+    id: e612a6618fac
+    last_write_checksum: sha1:de772bcb14615735a8ebd2a9ffaae06f464a86d5
+    pristine_git_object: f859d64810168dd4ec7bfb1ea1c0186c551f8987
+  internal/validators/stringvalidators/not_null.go:
+    id: 80be7ffedf6c
+    last_write_checksum: sha1:df498b49dd87f9508f3eaec3a63ed0a08ae3c16e
+    pristine_git_object: 1e40ac1b6ce68540327e01910f0dc91a60b62607
+  main.go:
+    id: 0607f785dfa3
+    last_write_checksum: sha1:56ae7cb2f1aba357f10f1bb0636554de13027566
+    pristine_git_object: 03c71e1401ba7a24059a38503f08c919f7fd74ea
+  terraform-registry-manifest.json:
+    id: fc3d63fd06e1
+    last_write_checksum: sha1:45b609f3f65164bc2f00b6e2b24faf64627e15b8
+    pristine_git_object: fec2a5691e493a1941bd79b312b3925403a91aa6
+  tools/tools.go:
+    id: 683390d33800
+    last_write_checksum: sha1:8239addbb5e66af0488adc7dc4aba098e4634d88
+    pristine_git_object: 36b25801b3a26b57ee042a610a3c35ca65b1376a
+examples:
+  signUpUser:
+    speakeasy-default-sign-up-user:
+      requestBody:
+        application/json: {"organization_detail": {"type": "Vendor", "name": "Epilot", "pricing_tier": "professional", "email": "Raquel_Haag@hotmail.com", "is_privacy_policy_checked": false, "is_terms_and_conditions_checked": false}, "user_detail": {"full_name": "Example user", "email": "Shemar_Mayert28@yahoo.com", "password": "AKjhdakjsdh@!34"}, "language": "en"}
+      responses:
+        "200":
+          application/json: {"user": {"id": "<id>", "organization_id": "<id>", "email": "Melvina51@hotmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}, "organization": {"name": "Epilot", "signature": "<p>Thanks</p>", "symbol": "EPI", "pricing_tier": "professional", "email": "someone@epilot.cloud", "phone": "49123123123", "website": "https://epilot.cloud", "logo_url": "https://epilot-playground-organization-data.s3.eu-central-1.amazonaws.com/epilot-logo.png", "logo_thumbnail_url": "https://epilot-playground-organization-data.s3.eu-central-1.amazonaws.com/epilot-logo.png", "is_unlicensed_org": false, "cognito_details": {"cognito_region": "eu-central-1", "cognito_user_pool_id": "eu-central-sample", "cognito_user_pool_client_id": "asbkh213ehkquwhdi", "cognito_user_pool_arn": "arn:aws:cognito-idp:eu-central-1:123456789012:userpool/eu-central-sample"}}}
+  getMeV2:
+    speakeasy-default-get-me-v2:
+      responses:
+        "200":
+          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+  listUsersV2:
+    speakeasy-default-list-users-v2:
+      responses:
+        "200":
+          application/json: {"results": [{"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}]}
+  getUserV2:
+    speakeasy-default-get-user-v2:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+  updateUserV2:
+    speakeasy-default-update-user-v2:
+      parameters:
+        path:
+          id: "<id>"
+      requestBody:
+        application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+      responses:
+        "200":
+          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+  deleteUserV2:
+    speakeasy-default-delete-user-v2:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "organization_id": "<id>", "email": "Adeline.Morar37@hotmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+  inviteUser:
+    speakeasy-default-invite-user:
+      requestBody:
+        application/json: {"email": "test@example.com", "language": "en", "roles": ["123:owner"]}
+      responses:
+        "201":
+          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+  resendUserInvitation:
+    speakeasy-default-resend-user-invitation:
+      requestBody:
+        application/json: {"email": "test@example.com", "language": "en"}
+      responses:
+        "200":
+          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+  getGroupsForUser:
+    speakeasy-default-get-groups-for-user:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: [{"id": "<id>", "name": "Finance"}]
+  verifyEmailWithToken:
+    speakeasy-default-verify-email-with-token:
+      parameters:
+        query:
+          token: "<value>"
+      requestBody:
+        application/json: {"password": "AKjhdakjsdh@!34"}
+  checkInviteToken:
+    speakeasy-default-check-invite-token:
+      parameters:
+        query:
+          token: "<value>"
+      responses:
+        "200":
+          application/json: {"invitation_org_id": "<id>", "invitation_org_name": "<value>", "invitee_user_id": "<id>"}
+  activateUser:
+    speakeasy-default-activate-user:
+      parameters:
+        query:
+          token: "<value>"
+      requestBody:
+        application/json: {"display_name": "Example User", "password": "AKjhdakjsdh@!34"}
+  rejectInvite:
+    speakeasy-default-reject-invite:
+      parameters:
+        query:
+          token: "<value>"
+      responses:
+        "200":
+          application/json: {"success": true}
+  getUserLoginParametersV2:
+    speakeasy-default-get-user-login-parameters-v2:
+      parameters:
+        path:
+          username: "Pamela_Conn38"
+      responses:
+        "200":
+          application/json: {"login_parameters": [{"organization_id": "123", "organization_name": "epilot GmbH", "organization_type": "Vendor", "organization_use": "Production", "cognito_region": "eu-central-1", "cognito_user_pool_id": "eu-central-sample", "cognito_user_pool_client_id": "asbkh213ehkquwhdi", "cognito_oauth_domain": "epilot-org-123", "cognito_oauth_scopes": ["openid"]}]}
+  switchOrganization:
+    speakeasy-default-switch-organization:
+      responses:
+        "200":
+          application/json: {"login_token": "<value>"}
+  getGroups:
+    speakeasy-default-get-groups:
+      responses:
+        "200":
+          application/json: {"hits": 1, "groups": [{"id": "<id>", "name": "Finance"}]}
+  createGroup:
+    speakeasy-default-create-group:
+      requestBody:
+        application/json: {"name": "Finance"}
+      responses:
+        "201":
+          application/json: {"id": "<id>", "name": "Finance"}
+  getGroup:
+    speakeasy-default-get-group:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "name": "Finance"}
+  updateGroup:
+    speakeasy-default-update-group:
+      parameters:
+        path:
+          id: "<id>"
+      requestBody:
+        application/json: {"name": "Finance"}
+      responses:
+        "201":
+          application/json: {"id": "<id>", "name": "Finance"}
+  deleteGroup:
+    speakeasy-default-delete-group:
+      parameters:
+        path:
+          id: "<id>"
+  advanceUserAssignment:
+    speakeasy-default-advance-user-assignment:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "name": "Finance"}
+  getMe:
+    speakeasy-default-get-me:
+      responses:
+        "200":
+          application/json: {"id": "<id>", "organization_id": "<id>", "email": "Cornelius65@gmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+  listUsers:
+    speakeasy-default-list-users:
+      responses:
+        "200":
+          application/json: {"users": [{"id": "<id>", "organization_id": "<id>", "email": "Lue27@hotmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}]}
+  getUser:
+    speakeasy-default-get-user:
+      parameters:
+        path:
+          id: "<id>"
+      responses:
+        "200":
+          application/json: {"id": "<id>", "organization_id": "<id>", "email": "Cortney_Jakubowski@gmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": null, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
+  getUserLoginParameters:
+    speakeasy-default-get-user-login-parameters:
+      parameters:
+        path:
+          username: "Maybelle66"
+      responses:
+        "200":
+          application/json: {"login_parameters": [{"organization_id": "123", "organization_name": "epilot GmbH", "organization_type": "Vendor", "organization_use": "Production", "cognito_region": "eu-central-1", "cognito_user_pool_id": "eu-central-sample", "cognito_user_pool_client_id": "asbkh213ehkquwhdi", "cognito_oauth_domain": "epilot-org-123", "cognito_oauth_scopes": ["openid"]}]}
+examplesVersion: 1.0.2
+generatedTests: {}
 generatedFiles:
   - .gitattributes
   - USAGE.md
@@ -141,184 +894,3 @@ generatedFiles:
   - main.go
   - terraform-registry-manifest.json
   - tools/tools.go
-examples:
-  signUpUser:
-    speakeasy-default-sign-up-user:
-      requestBody:
-        application/json: {"organization_detail": {"type": "Partner", "name": "Epilot", "pricing_tier": "professional", "email": "Meta_Durgan26@gmail.com", "is_privacy_policy_checked": false, "is_terms_and_conditions_checked": false}, "user_detail": {"full_name": "Example user", "email": "Brown.Zulauf-Ruecker@yahoo.com", "password": "AKjhdakjsdh@!34"}, "language": "en"}
-      responses:
-        "200":
-          application/json: {"user": {"id": "<id>", "organization_id": "<id>", "email": "Kylee94@hotmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}, "organization": {"name": "Epilot", "signature": "<p>Thanks</p>", "symbol": "EPI", "pricing_tier": "professional", "email": "someone@epilot.cloud", "phone": "49123123123", "website": "https://epilot.cloud", "logo_url": "https://epilot-playground-organization-data.s3.eu-central-1.amazonaws.com/epilot-logo.png", "logo_thumbnail_url": "https://epilot-playground-organization-data.s3.eu-central-1.amazonaws.com/epilot-logo.png", "is_unlicensed_org": false, "cognito_details": {"cognito_region": "eu-central-1", "cognito_user_pool_id": "eu-central-sample", "cognito_user_pool_client_id": "asbkh213ehkquwhdi", "cognito_user_pool_arn": "arn:aws:cognito-idp:eu-central-1:123456789012:userpool/eu-central-sample"}}}
-  getMeV2:
-    speakeasy-default-get-me-v2:
-      responses:
-        "200":
-          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}
-  listUsersV2:
-    speakeasy-default-list-users-v2:
-      responses:
-        "200":
-          application/json: {"results": [{"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}, {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}]}
-  getUserV2:
-    speakeasy-default-get-user-v2:
-      parameters:
-        path:
-          id: "<id>"
-      responses:
-        "200":
-          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
-  updateUserV2:
-    speakeasy-default-update-user-v2:
-      parameters:
-        path:
-          id: "<id>"
-      requestBody:
-        application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}
-      responses:
-        "200":
-          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}
-  deleteUserV2:
-    speakeasy-default-delete-user-v2:
-      parameters:
-        path:
-          id: "<id>"
-      responses:
-        "200":
-          application/json: {"id": "<id>", "organization_id": "<id>", "email": "Freddy64@gmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": []}
-  inviteUser:
-    speakeasy-default-invite-user:
-      requestBody:
-        application/json: {"email": "test@example.com", "language": "en", "roles": ["123:owner"]}
-      responses:
-        "201":
-          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
-  resendUserInvitation:
-    speakeasy-default-resend-user-invitation:
-      requestBody:
-        application/json: {"email": "test@example.com", "language": "en"}
-      responses:
-        "200":
-          application/json: {"display_name": "Example User", "department": "Sales", "phone": "1234567890", "secondary_phone": "1234567890", "mfa_enabled": false, "phone_verified": true, "signature": "<p>Thanks</p>", "is_signature_enabled": true, "preferred_language": "de", "custom_start_page": "/app/dashboard", "feature_preferences": {"feature_name": true}, "image_uri": {"original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "favorites": {"entity_views": {"opportunity": "891a5409850abf8b92bd2cb7bdd2844d32ce6bec", "order": "628aee91-7c2f-4047-ab0d-433582a19c49"}, "dashboard": "751ff121-9ac2-4511-a2e6-851f11287380"}, "email_notification_setting": {"added_participant_opportunity": true, "assigned_opportunity": true, "assigned_task": true, "comment_opportunity": true, "deleted_task": true, "escalated_task": true, "message_receive_opportunity": true, "message_send_opportunity": true, "created_task": true, "created_opportunity_manual": true, "created_opportunity_auto": true, "deleted_opportunity": true}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}
-  getGroupsForUser:
-    speakeasy-default-get-groups-for-user:
-      parameters:
-        path:
-          id: "<id>"
-      responses:
-        "200":
-          application/json: [{"id": "<id>", "name": "Finance"}]
-  verifyEmailWithToken:
-    speakeasy-default-verify-email-with-token:
-      parameters:
-        query:
-          token: "<value>"
-      requestBody:
-        application/json: {"password": "AKjhdakjsdh@!34"}
-  checkInviteToken:
-    speakeasy-default-check-invite-token:
-      parameters:
-        query:
-          token: "<value>"
-      responses:
-        "200":
-          application/json: {"invitation_org_id": "<id>", "invitation_org_name": "<value>", "invitee_user_id": "<id>"}
-  activateUser:
-    speakeasy-default-activate-user:
-      parameters:
-        query:
-          token: "<value>"
-      requestBody:
-        application/json: {"display_name": "Example User", "password": "AKjhdakjsdh@!34"}
-  rejectInvite:
-    speakeasy-default-reject-invite:
-      parameters:
-        query:
-          token: "<value>"
-      responses:
-        "200":
-          application/json: {"success": true}
-  getUserLoginParametersV2:
-    speakeasy-default-get-user-login-parameters-v2:
-      parameters:
-        path:
-          username: "Eve94"
-      responses:
-        "200":
-          application/json: {"login_parameters": [{"organization_id": "123", "organization_name": "epilot GmbH", "organization_type": "Vendor", "cognito_region": "eu-central-1", "cognito_user_pool_id": "eu-central-sample", "cognito_user_pool_client_id": "asbkh213ehkquwhdi", "cognito_oauth_domain": "epilot-org-123", "cognito_oauth_scopes": ["openid"]}]}
-  switchOrganization:
-    speakeasy-default-switch-organization:
-      responses:
-        "200":
-          application/json: {"login_token": "<value>"}
-  getGroups:
-    speakeasy-default-get-groups:
-      responses:
-        "200":
-          application/json: {"hits": 1, "groups": [{"id": "<id>", "name": "Finance"}]}
-  createGroup:
-    speakeasy-default-create-group:
-      requestBody:
-        application/json: {"name": "Finance"}
-      responses:
-        "201":
-          application/json: {"id": "<id>", "name": "Finance"}
-  getGroup:
-    speakeasy-default-get-group:
-      parameters:
-        path:
-          id: "<id>"
-        query: {}
-      responses:
-        "200":
-          application/json: {"id": "<id>", "name": "Finance"}
-  updateGroup:
-    speakeasy-default-update-group:
-      parameters:
-        path:
-          id: "<id>"
-      requestBody:
-        application/json: {"name": "Finance"}
-      responses:
-        "201":
-          application/json: {"id": "<id>", "name": "Finance"}
-  deleteGroup:
-    speakeasy-default-delete-group:
-      parameters:
-        path:
-          id: "<id>"
-  advanceUserAssignment:
-    speakeasy-default-advance-user-assignment:
-      parameters:
-        path:
-          id: "<id>"
-      responses:
-        "200":
-          application/json: {"id": "<id>", "name": "Finance"}
-  getMe:
-    speakeasy-default-get-me:
-      responses:
-        "200":
-          application/json: {"id": "<id>", "organization_id": "<id>", "email": "Roger77@hotmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}
-  listUsers:
-    speakeasy-default-list-users:
-      responses:
-        "200":
-          application/json: {"users": [{"id": "<id>", "organization_id": "<id>", "email": "Oswaldo70@gmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": []}, {"id": "<id>", "organization_id": "<id>", "email": "Alan25@yahoo.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}, {"name": "profileImageName", "value": "avatar.png"}]}]}
-  getUser:
-    speakeasy-default-get-user:
-      parameters:
-        path:
-          id: "<id>"
-      responses:
-        "200":
-          application/json: {"id": "<id>", "organization_id": "<id>", "email": "Carolyne_Walsh@hotmail.com", "name": "Example user", "preferred_language": "de", "signature": "<p>Thanks</p>", "roles": ["Owner"], "image_uri": {"0": "<", "1": "v", "2": "a", "3": "l", "4": "u", "5": "e", "6": ">", "original": "https://account-profile-images.epilot.cloud/1/avatar.png", "thumbnail_32": "https://account-profile-images.epilot.cloud/1/avatar_32x32.png"}, "properties": [{"name": "profileImageName", "value": "avatar.png"}]}
-  getUserLoginParameters:
-    speakeasy-default-get-user-login-parameters:
-      parameters:
-        path:
-          username: "Matilda79"
-      responses:
-        "200":
-          application/json: {"login_parameters": [{"organization_id": "123", "organization_name": "epilot GmbH", "organization_type": "Vendor", "cognito_region": "eu-central-1", "cognito_user_pool_id": "eu-central-sample", "cognito_user_pool_client_id": "asbkh213ehkquwhdi", "cognito_oauth_domain": "epilot-org-123", "cognito_oauth_scopes": ["openid"]}, {"organization_id": "123", "organization_name": "epilot GmbH", "organization_type": "Vendor", "cognito_region": "eu-central-1", "cognito_user_pool_id": "eu-central-sample", "cognito_user_pool_client_id": "asbkh213ehkquwhdi", "cognito_oauth_domain": "epilot-org-123", "cognito_oauth_scopes": ["openid"]}]}
-examplesVersion: 1.0.0
-generatedTests: {}

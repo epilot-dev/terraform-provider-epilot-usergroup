@@ -41,39 +41,39 @@ type Address struct {
 	StreetNumber *string `json:"street_number,omitempty"`
 }
 
-func (o *Address) GetCountry() *string {
-	if o == nil {
+func (a *Address) GetCountry() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Country
+	return a.Country
 }
 
-func (o *Address) GetCity() *string {
-	if o == nil {
+func (a *Address) GetCity() *string {
+	if a == nil {
 		return nil
 	}
-	return o.City
+	return a.City
 }
 
-func (o *Address) GetPostalCode() *string {
-	if o == nil {
+func (a *Address) GetPostalCode() *string {
+	if a == nil {
 		return nil
 	}
-	return o.PostalCode
+	return a.PostalCode
 }
 
-func (o *Address) GetStreet() *string {
-	if o == nil {
+func (a *Address) GetStreet() *string {
+	if a == nil {
 		return nil
 	}
-	return o.Street
+	return a.Street
 }
 
-func (o *Address) GetStreetNumber() *string {
-	if o == nil {
+func (a *Address) GetStreetNumber() *string {
+	if a == nil {
 		return nil
 	}
-	return o.StreetNumber
+	return a.StreetNumber
 }
 
 type Organization struct {

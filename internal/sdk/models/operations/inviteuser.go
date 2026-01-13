@@ -18,30 +18,30 @@ type InviteUserResponse struct {
 	UserV2 *shared.UserV2
 }
 
-func (o *InviteUserResponse) GetContentType() string {
-	if o == nil {
+func (i *InviteUserResponse) GetContentType() string {
+	if i == nil {
 		return ""
 	}
-	return o.ContentType
+	return i.ContentType
 }
 
-func (o *InviteUserResponse) GetStatusCode() int {
-	if o == nil {
+func (i *InviteUserResponse) GetStatusCode() int {
+	if i == nil {
 		return 0
 	}
-	return o.StatusCode
+	return i.StatusCode
 }
 
-func (o *InviteUserResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (i *InviteUserResponse) GetRawResponse() *http.Response {
+	if i == nil {
 		return nil
 	}
-	return o.RawResponse
+	return i.RawResponse
 }
 
-func (o *InviteUserResponse) GetUserV2() *shared.UserV2 {
-	if o == nil {
+func (i *InviteUserResponse) GetUserV2() *shared.UserV2 {
+	if i == nil {
 		return nil
 	}
-	return o.UserV2
+	return i.UserV2
 }

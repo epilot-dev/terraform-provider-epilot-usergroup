@@ -12,11 +12,11 @@ type GetGroupsForUserRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetGroupsForUserRequest) GetID() string {
-	if o == nil {
+func (g *GetGroupsForUserRequest) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
 type GetGroupsForUserResponse struct {
@@ -30,30 +30,30 @@ type GetGroupsForUserResponse struct {
 	Groups []shared.Group
 }
 
-func (o *GetGroupsForUserResponse) GetContentType() string {
-	if o == nil {
+func (g *GetGroupsForUserResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetGroupsForUserResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetGroupsForUserResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetGroupsForUserResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetGroupsForUserResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetGroupsForUserResponse) GetGroups() []shared.Group {
-	if o == nil {
+func (g *GetGroupsForUserResponse) GetGroups() []shared.Group {
+	if g == nil {
 		return nil
 	}
-	return o.Groups
+	return g.Groups
 }

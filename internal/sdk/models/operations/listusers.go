@@ -18,32 +18,32 @@ type ListUsersRequest struct {
 	Offset *float64 `queryParam:"style=form,explode=true,name=offset"`
 }
 
-func (o *ListUsersRequest) GetOrgIds() []string {
-	if o == nil {
+func (l *ListUsersRequest) GetOrgIds() []string {
+	if l == nil {
 		return nil
 	}
-	return o.OrgIds
+	return l.OrgIds
 }
 
-func (o *ListUsersRequest) GetQuery() *string {
-	if o == nil {
+func (l *ListUsersRequest) GetQuery() *string {
+	if l == nil {
 		return nil
 	}
-	return o.Query
+	return l.Query
 }
 
-func (o *ListUsersRequest) GetLimit() *float64 {
-	if o == nil {
+func (l *ListUsersRequest) GetLimit() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Limit
+	return l.Limit
 }
 
-func (o *ListUsersRequest) GetOffset() *float64 {
-	if o == nil {
+func (l *ListUsersRequest) GetOffset() *float64 {
+	if l == nil {
 		return nil
 	}
-	return o.Offset
+	return l.Offset
 }
 
 // ListUsersResponseBody - List of users
@@ -51,11 +51,11 @@ type ListUsersResponseBody struct {
 	Users []shared.User `json:"users,omitempty"`
 }
 
-func (o *ListUsersResponseBody) GetUsers() []shared.User {
-	if o == nil {
+func (l *ListUsersResponseBody) GetUsers() []shared.User {
+	if l == nil {
 		return nil
 	}
-	return o.Users
+	return l.Users
 }
 
 type ListUsersResponse struct {
@@ -69,30 +69,30 @@ type ListUsersResponse struct {
 	Object *ListUsersResponseBody
 }
 
-func (o *ListUsersResponse) GetContentType() string {
-	if o == nil {
+func (l *ListUsersResponse) GetContentType() string {
+	if l == nil {
 		return ""
 	}
-	return o.ContentType
+	return l.ContentType
 }
 
-func (o *ListUsersResponse) GetStatusCode() int {
-	if o == nil {
+func (l *ListUsersResponse) GetStatusCode() int {
+	if l == nil {
 		return 0
 	}
-	return o.StatusCode
+	return l.StatusCode
 }
 
-func (o *ListUsersResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (l *ListUsersResponse) GetRawResponse() *http.Response {
+	if l == nil {
 		return nil
 	}
-	return o.RawResponse
+	return l.RawResponse
 }
 
-func (o *ListUsersResponse) GetObject() *ListUsersResponseBody {
-	if o == nil {
+func (l *ListUsersResponse) GetObject() *ListUsersResponseBody {
+	if l == nil {
 		return nil
 	}
-	return o.Object
+	return l.Object
 }

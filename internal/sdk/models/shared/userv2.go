@@ -83,31 +83,31 @@ func (u UserV2ImageURI) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UserV2ImageURI) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UserV2ImageURI) GetOriginal() *string {
-	if o == nil {
+func (u *UserV2ImageURI) GetOriginal() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Original
+	return u.Original
 }
 
-func (o *UserV2ImageURI) GetThumbnail32() *string {
-	if o == nil {
+func (u *UserV2ImageURI) GetThumbnail32() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Thumbnail32
+	return u.Thumbnail32
 }
 
-func (o *UserV2ImageURI) GetAdditionalProperties() any {
-	if o == nil {
+func (u *UserV2ImageURI) GetAdditionalProperties() any {
+	if u == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return u.AdditionalProperties
 }
 
 type UserV2Properties struct {
@@ -115,18 +115,18 @@ type UserV2Properties struct {
 	Value string `json:"value"`
 }
 
-func (o *UserV2Properties) GetName() string {
-	if o == nil {
+func (u *UserV2Properties) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UserV2Properties) GetValue() string {
-	if o == nil {
+func (u *UserV2Properties) GetValue() string {
+	if u == nil {
 		return ""
 	}
-	return o.Value
+	return u.Value
 }
 
 type UserV2 struct {
@@ -178,178 +178,178 @@ func (u UserV2) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UserV2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UserV2) GetID() *string {
-	if o == nil {
+func (u *UserV2) GetID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UserV2) GetOrganizationID() *string {
-	if o == nil {
+func (u *UserV2) GetOrganizationID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.OrganizationID
+	return u.OrganizationID
 }
 
-func (o *UserV2) GetCreatedAt() *time.Time {
-	if o == nil {
+func (u *UserV2) GetCreatedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return u.CreatedAt
 }
 
-func (o *UserV2) GetActivatedAt() *time.Time {
-	if o == nil {
+func (u *UserV2) GetActivatedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.ActivatedAt
+	return u.ActivatedAt
 }
 
-func (o *UserV2) GetDisplayName() *string {
-	if o == nil {
+func (u *UserV2) GetDisplayName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *UserV2) GetStatus() *Status {
-	if o == nil {
+func (u *UserV2) GetStatus() *Status {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }
 
-func (o *UserV2) GetEmail() *string {
-	if o == nil {
+func (u *UserV2) GetEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UserV2) GetDraftEmail() *string {
-	if o == nil {
+func (u *UserV2) GetDraftEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DraftEmail
+	return u.DraftEmail
 }
 
-func (o *UserV2) GetDepartment() *string {
-	if o == nil {
+func (u *UserV2) GetDepartment() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Department
+	return u.Department
 }
 
-func (o *UserV2) GetPhone() *string {
-	if o == nil {
+func (u *UserV2) GetPhone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Phone
+	return u.Phone
 }
 
-func (o *UserV2) GetSecondaryPhone() *string {
-	if o == nil {
+func (u *UserV2) GetSecondaryPhone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.SecondaryPhone
+	return u.SecondaryPhone
 }
 
-func (o *UserV2) GetMfaEnabled() *bool {
-	if o == nil {
+func (u *UserV2) GetMfaEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.MfaEnabled
+	return u.MfaEnabled
 }
 
-func (o *UserV2) GetPhoneVerified() *bool {
-	if o == nil {
+func (u *UserV2) GetPhoneVerified() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.PhoneVerified
+	return u.PhoneVerified
 }
 
-func (o *UserV2) GetToken() *string {
-	if o == nil {
+func (u *UserV2) GetToken() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Token
+	return u.Token
 }
 
-func (o *UserV2) GetSignature() *string {
-	if o == nil {
+func (u *UserV2) GetSignature() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Signature
+	return u.Signature
 }
 
-func (o *UserV2) GetIsSignatureEnabled() *bool {
-	if o == nil {
+func (u *UserV2) GetIsSignatureEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.IsSignatureEnabled
+	return u.IsSignatureEnabled
 }
 
-func (o *UserV2) GetPreferredLanguage() *string {
-	if o == nil {
+func (u *UserV2) GetPreferredLanguage() *string {
+	if u == nil {
 		return nil
 	}
-	return o.PreferredLanguage
+	return u.PreferredLanguage
 }
 
-func (o *UserV2) GetCustomStartPage() *string {
-	if o == nil {
+func (u *UserV2) GetCustomStartPage() *string {
+	if u == nil {
 		return nil
 	}
-	return o.CustomStartPage
+	return u.CustomStartPage
 }
 
-func (o *UserV2) GetOverrideReleaseChannel() *OverrideReleaseChannel {
-	if o == nil {
+func (u *UserV2) GetOverrideReleaseChannel() *OverrideReleaseChannel {
+	if u == nil {
 		return nil
 	}
-	return o.OverrideReleaseChannel
+	return u.OverrideReleaseChannel
 }
 
-func (o *UserV2) GetFeaturePreferences() map[string]any {
-	if o == nil {
+func (u *UserV2) GetFeaturePreferences() map[string]any {
+	if u == nil {
 		return nil
 	}
-	return o.FeaturePreferences
+	return u.FeaturePreferences
 }
 
-func (o *UserV2) GetImageURI() *UserV2ImageURI {
-	if o == nil {
+func (u *UserV2) GetImageURI() *UserV2ImageURI {
+	if u == nil {
 		return nil
 	}
-	return o.ImageURI
+	return u.ImageURI
 }
 
-func (o *UserV2) GetFavorites() map[string]any {
-	if o == nil {
+func (u *UserV2) GetFavorites() map[string]any {
+	if u == nil {
 		return nil
 	}
-	return o.Favorites
+	return u.Favorites
 }
 
-func (o *UserV2) GetEmailNotificationSetting() map[string]any {
-	if o == nil {
+func (u *UserV2) GetEmailNotificationSetting() map[string]any {
+	if u == nil {
 		return nil
 	}
-	return o.EmailNotificationSetting
+	return u.EmailNotificationSetting
 }
 
-func (o *UserV2) GetProperties() []UserV2Properties {
-	if o == nil {
+func (u *UserV2) GetProperties() []UserV2Properties {
+	if u == nil {
 		return nil
 	}
-	return o.Properties
+	return u.Properties
 }
 
 type UserV2Input struct {
@@ -399,169 +399,169 @@ func (u UserV2Input) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UserV2Input) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UserV2Input) GetOrganizationID() *string {
-	if o == nil {
+func (u *UserV2Input) GetOrganizationID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.OrganizationID
+	return u.OrganizationID
 }
 
-func (o *UserV2Input) GetCreatedAt() *time.Time {
-	if o == nil {
+func (u *UserV2Input) GetCreatedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return u.CreatedAt
 }
 
-func (o *UserV2Input) GetActivatedAt() *time.Time {
-	if o == nil {
+func (u *UserV2Input) GetActivatedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.ActivatedAt
+	return u.ActivatedAt
 }
 
-func (o *UserV2Input) GetDisplayName() *string {
-	if o == nil {
+func (u *UserV2Input) GetDisplayName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *UserV2Input) GetStatus() *Status {
-	if o == nil {
+func (u *UserV2Input) GetStatus() *Status {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }
 
-func (o *UserV2Input) GetEmail() *string {
-	if o == nil {
+func (u *UserV2Input) GetEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UserV2Input) GetDraftEmail() *string {
-	if o == nil {
+func (u *UserV2Input) GetDraftEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DraftEmail
+	return u.DraftEmail
 }
 
-func (o *UserV2Input) GetDepartment() *string {
-	if o == nil {
+func (u *UserV2Input) GetDepartment() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Department
+	return u.Department
 }
 
-func (o *UserV2Input) GetPhone() *string {
-	if o == nil {
+func (u *UserV2Input) GetPhone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Phone
+	return u.Phone
 }
 
-func (o *UserV2Input) GetSecondaryPhone() *string {
-	if o == nil {
+func (u *UserV2Input) GetSecondaryPhone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.SecondaryPhone
+	return u.SecondaryPhone
 }
 
-func (o *UserV2Input) GetMfaEnabled() *bool {
-	if o == nil {
+func (u *UserV2Input) GetMfaEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.MfaEnabled
+	return u.MfaEnabled
 }
 
-func (o *UserV2Input) GetPhoneVerified() *bool {
-	if o == nil {
+func (u *UserV2Input) GetPhoneVerified() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.PhoneVerified
+	return u.PhoneVerified
 }
 
-func (o *UserV2Input) GetToken() *string {
-	if o == nil {
+func (u *UserV2Input) GetToken() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Token
+	return u.Token
 }
 
-func (o *UserV2Input) GetSignature() *string {
-	if o == nil {
+func (u *UserV2Input) GetSignature() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Signature
+	return u.Signature
 }
 
-func (o *UserV2Input) GetIsSignatureEnabled() *bool {
-	if o == nil {
+func (u *UserV2Input) GetIsSignatureEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.IsSignatureEnabled
+	return u.IsSignatureEnabled
 }
 
-func (o *UserV2Input) GetPreferredLanguage() *string {
-	if o == nil {
+func (u *UserV2Input) GetPreferredLanguage() *string {
+	if u == nil {
 		return nil
 	}
-	return o.PreferredLanguage
+	return u.PreferredLanguage
 }
 
-func (o *UserV2Input) GetCustomStartPage() *string {
-	if o == nil {
+func (u *UserV2Input) GetCustomStartPage() *string {
+	if u == nil {
 		return nil
 	}
-	return o.CustomStartPage
+	return u.CustomStartPage
 }
 
-func (o *UserV2Input) GetOverrideReleaseChannel() *OverrideReleaseChannel {
-	if o == nil {
+func (u *UserV2Input) GetOverrideReleaseChannel() *OverrideReleaseChannel {
+	if u == nil {
 		return nil
 	}
-	return o.OverrideReleaseChannel
+	return u.OverrideReleaseChannel
 }
 
-func (o *UserV2Input) GetFeaturePreferences() map[string]any {
-	if o == nil {
+func (u *UserV2Input) GetFeaturePreferences() map[string]any {
+	if u == nil {
 		return nil
 	}
-	return o.FeaturePreferences
+	return u.FeaturePreferences
 }
 
-func (o *UserV2Input) GetImageURI() *UserV2ImageURI {
-	if o == nil {
+func (u *UserV2Input) GetImageURI() *UserV2ImageURI {
+	if u == nil {
 		return nil
 	}
-	return o.ImageURI
+	return u.ImageURI
 }
 
-func (o *UserV2Input) GetFavorites() map[string]any {
-	if o == nil {
+func (u *UserV2Input) GetFavorites() map[string]any {
+	if u == nil {
 		return nil
 	}
-	return o.Favorites
+	return u.Favorites
 }
 
-func (o *UserV2Input) GetEmailNotificationSetting() map[string]any {
-	if o == nil {
+func (u *UserV2Input) GetEmailNotificationSetting() map[string]any {
+	if u == nil {
 		return nil
 	}
-	return o.EmailNotificationSetting
+	return u.EmailNotificationSetting
 }
 
-func (o *UserV2Input) GetProperties() []UserV2Properties {
-	if o == nil {
+func (u *UserV2Input) GetProperties() []UserV2Properties {
+	if u == nil {
 		return nil
 	}
-	return o.Properties
+	return u.Properties
 }

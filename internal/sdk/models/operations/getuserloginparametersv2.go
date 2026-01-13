@@ -12,11 +12,11 @@ type GetUserLoginParametersV2Request struct {
 	Username string `pathParam:"style=simple,explode=false,name=username"`
 }
 
-func (o *GetUserLoginParametersV2Request) GetUsername() string {
-	if o == nil {
+func (g *GetUserLoginParametersV2Request) GetUsername() string {
+	if g == nil {
 		return ""
 	}
-	return o.Username
+	return g.Username
 }
 
 // GetUserLoginParametersV2ResponseBody - User
@@ -24,11 +24,11 @@ type GetUserLoginParametersV2ResponseBody struct {
 	LoginParameters []shared.LoginParameters `json:"login_parameters,omitempty"`
 }
 
-func (o *GetUserLoginParametersV2ResponseBody) GetLoginParameters() []shared.LoginParameters {
-	if o == nil {
+func (g *GetUserLoginParametersV2ResponseBody) GetLoginParameters() []shared.LoginParameters {
+	if g == nil {
 		return nil
 	}
-	return o.LoginParameters
+	return g.LoginParameters
 }
 
 type GetUserLoginParametersV2Response struct {
@@ -42,30 +42,30 @@ type GetUserLoginParametersV2Response struct {
 	Object *GetUserLoginParametersV2ResponseBody
 }
 
-func (o *GetUserLoginParametersV2Response) GetContentType() string {
-	if o == nil {
+func (g *GetUserLoginParametersV2Response) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetUserLoginParametersV2Response) GetStatusCode() int {
-	if o == nil {
+func (g *GetUserLoginParametersV2Response) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetUserLoginParametersV2Response) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetUserLoginParametersV2Response) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetUserLoginParametersV2Response) GetObject() *GetUserLoginParametersV2ResponseBody {
-	if o == nil {
+func (g *GetUserLoginParametersV2Response) GetObject() *GetUserLoginParametersV2ResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

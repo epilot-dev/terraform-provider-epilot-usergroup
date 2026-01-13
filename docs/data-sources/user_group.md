@@ -24,7 +24,7 @@ data "epilot-usergroup_user_group" "my_usergroup" {
 
 ### Required
 
-- `id` (String) Group id
+- `id` (String) Group unique identifier
 
 ### Optional
 

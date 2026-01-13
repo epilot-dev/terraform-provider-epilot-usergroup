@@ -13,18 +13,18 @@ type VerifyEmailWithTokenRequest struct {
 	UserVerificationPayload *shared.UserVerificationPayload `request:"mediaType=application/json"`
 }
 
-func (o *VerifyEmailWithTokenRequest) GetToken() string {
-	if o == nil {
+func (v *VerifyEmailWithTokenRequest) GetToken() string {
+	if v == nil {
 		return ""
 	}
-	return o.Token
+	return v.Token
 }
 
-func (o *VerifyEmailWithTokenRequest) GetUserVerificationPayload() *shared.UserVerificationPayload {
-	if o == nil {
+func (v *VerifyEmailWithTokenRequest) GetUserVerificationPayload() *shared.UserVerificationPayload {
+	if v == nil {
 		return nil
 	}
-	return o.UserVerificationPayload
+	return v.UserVerificationPayload
 }
 
 type VerifyEmailWithTokenResponse struct {
@@ -36,23 +36,23 @@ type VerifyEmailWithTokenResponse struct {
 	RawResponse *http.Response
 }
 
-func (o *VerifyEmailWithTokenResponse) GetContentType() string {
-	if o == nil {
+func (v *VerifyEmailWithTokenResponse) GetContentType() string {
+	if v == nil {
 		return ""
 	}
-	return o.ContentType
+	return v.ContentType
 }
 
-func (o *VerifyEmailWithTokenResponse) GetStatusCode() int {
-	if o == nil {
+func (v *VerifyEmailWithTokenResponse) GetStatusCode() int {
+	if v == nil {
 		return 0
 	}
-	return o.StatusCode
+	return v.StatusCode
 }
 
-func (o *VerifyEmailWithTokenResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (v *VerifyEmailWithTokenResponse) GetRawResponse() *http.Response {
+	if v == nil {
 		return nil
 	}
-	return o.RawResponse
+	return v.RawResponse
 }

@@ -18,30 +18,30 @@ type GetMeV2Response struct {
 	UserV2 *shared.UserV2
 }
 
-func (o *GetMeV2Response) GetContentType() string {
-	if o == nil {
+func (g *GetMeV2Response) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetMeV2Response) GetStatusCode() int {
-	if o == nil {
+func (g *GetMeV2Response) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetMeV2Response) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetMeV2Response) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetMeV2Response) GetUserV2() *shared.UserV2 {
-	if o == nil {
+func (g *GetMeV2Response) GetUserV2() *shared.UserV2 {
+	if g == nil {
 		return nil
 	}
-	return o.UserV2
+	return g.UserV2
 }
