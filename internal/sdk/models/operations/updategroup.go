@@ -13,18 +13,18 @@ type UpdateGroupRequest struct {
 	UpdateGroupReq *shared.UpdateGroupReq `request:"mediaType=application/json"`
 }
 
-func (o *UpdateGroupRequest) GetID() string {
-	if o == nil {
+func (u *UpdateGroupRequest) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateGroupRequest) GetUpdateGroupReq() *shared.UpdateGroupReq {
-	if o == nil {
+func (u *UpdateGroupRequest) GetUpdateGroupReq() *shared.UpdateGroupReq {
+	if u == nil {
 		return nil
 	}
-	return o.UpdateGroupReq
+	return u.UpdateGroupReq
 }
 
 type UpdateGroupResponse struct {
@@ -38,30 +38,30 @@ type UpdateGroupResponse struct {
 	Group *shared.Group
 }
 
-func (o *UpdateGroupResponse) GetContentType() string {
-	if o == nil {
+func (u *UpdateGroupResponse) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateGroupResponse) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateGroupResponse) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateGroupResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateGroupResponse) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateGroupResponse) GetGroup() *shared.Group {
-	if o == nil {
+func (u *UpdateGroupResponse) GetGroup() *shared.Group {
+	if u == nil {
 		return nil
 	}
-	return o.Group
+	return u.Group
 }

@@ -12,12 +12,15 @@ type GetUserV2Request struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *GetUserV2Request) GetID() string {
-	if o == nil {
+func (g *GetUserV2Request) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
+
+// #region class-body-getuserv2request
+// #endregion class-body-getuserv2request
 
 type GetUserV2Response struct {
 	// HTTP response content type for this operation
@@ -30,30 +33,33 @@ type GetUserV2Response struct {
 	UserV2 *shared.UserV2
 }
 
-func (o *GetUserV2Response) GetContentType() string {
-	if o == nil {
+func (g *GetUserV2Response) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetUserV2Response) GetStatusCode() int {
-	if o == nil {
+func (g *GetUserV2Response) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetUserV2Response) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetUserV2Response) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetUserV2Response) GetUserV2() *shared.UserV2 {
-	if o == nil {
+func (g *GetUserV2Response) GetUserV2() *shared.UserV2 {
+	if g == nil {
 		return nil
 	}
-	return o.UserV2
+	return g.UserV2
 }
+
+// #region class-body-getuserv2response
+// #endregion class-body-getuserv2response

@@ -11,11 +11,11 @@ type CheckInviteTokenRequest struct {
 	Token string `queryParam:"style=form,explode=true,name=token"`
 }
 
-func (o *CheckInviteTokenRequest) GetToken() string {
-	if o == nil {
+func (c *CheckInviteTokenRequest) GetToken() string {
+	if c == nil {
 		return ""
 	}
-	return o.Token
+	return c.Token
 }
 
 // CheckInviteTokenResponseBody - Invite token found
@@ -34,46 +34,46 @@ type CheckInviteTokenResponseBody struct {
 	InviteePrimaryOrgID *string `json:"invitee_primary_org_id,omitempty"`
 }
 
-func (o *CheckInviteTokenResponseBody) GetInvitationOrgID() string {
-	if o == nil {
+func (c *CheckInviteTokenResponseBody) GetInvitationOrgID() string {
+	if c == nil {
 		return ""
 	}
-	return o.InvitationOrgID
+	return c.InvitationOrgID
 }
 
-func (o *CheckInviteTokenResponseBody) GetInvitationOrgName() string {
-	if o == nil {
+func (c *CheckInviteTokenResponseBody) GetInvitationOrgName() string {
+	if c == nil {
 		return ""
 	}
-	return o.InvitationOrgName
+	return c.InvitationOrgName
 }
 
-func (o *CheckInviteTokenResponseBody) GetInvitationOrgLogoURL() *string {
-	if o == nil {
+func (c *CheckInviteTokenResponseBody) GetInvitationOrgLogoURL() *string {
+	if c == nil {
 		return nil
 	}
-	return o.InvitationOrgLogoURL
+	return c.InvitationOrgLogoURL
 }
 
-func (o *CheckInviteTokenResponseBody) GetInvitationOrgLogoThumbnailURL() *string {
-	if o == nil {
+func (c *CheckInviteTokenResponseBody) GetInvitationOrgLogoThumbnailURL() *string {
+	if c == nil {
 		return nil
 	}
-	return o.InvitationOrgLogoThumbnailURL
+	return c.InvitationOrgLogoThumbnailURL
 }
 
-func (o *CheckInviteTokenResponseBody) GetInviteeUserID() string {
-	if o == nil {
+func (c *CheckInviteTokenResponseBody) GetInviteeUserID() string {
+	if c == nil {
 		return ""
 	}
-	return o.InviteeUserID
+	return c.InviteeUserID
 }
 
-func (o *CheckInviteTokenResponseBody) GetInviteePrimaryOrgID() *string {
-	if o == nil {
+func (c *CheckInviteTokenResponseBody) GetInviteePrimaryOrgID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.InviteePrimaryOrgID
+	return c.InviteePrimaryOrgID
 }
 
 type CheckInviteTokenResponse struct {
@@ -87,30 +87,30 @@ type CheckInviteTokenResponse struct {
 	Object *CheckInviteTokenResponseBody
 }
 
-func (o *CheckInviteTokenResponse) GetContentType() string {
-	if o == nil {
+func (c *CheckInviteTokenResponse) GetContentType() string {
+	if c == nil {
 		return ""
 	}
-	return o.ContentType
+	return c.ContentType
 }
 
-func (o *CheckInviteTokenResponse) GetStatusCode() int {
-	if o == nil {
+func (c *CheckInviteTokenResponse) GetStatusCode() int {
+	if c == nil {
 		return 0
 	}
-	return o.StatusCode
+	return c.StatusCode
 }
 
-func (o *CheckInviteTokenResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (c *CheckInviteTokenResponse) GetRawResponse() *http.Response {
+	if c == nil {
 		return nil
 	}
-	return o.RawResponse
+	return c.RawResponse
 }
 
-func (o *CheckInviteTokenResponse) GetObject() *CheckInviteTokenResponseBody {
-	if o == nil {
+func (c *CheckInviteTokenResponse) GetObject() *CheckInviteTokenResponseBody {
+	if c == nil {
 		return nil
 	}
-	return o.Object
+	return c.Object
 }

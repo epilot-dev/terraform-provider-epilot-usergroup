@@ -5,11 +5,20 @@ package shared
 type CreateGroupReq struct {
 	// The name of the group. Could be a department or a team.
 	Name string `json:"name"`
+	// Group's profile image or gradient colors. Supports uploaded image URLs and generated gradient avatars.
+	ImageURI *GroupImageURI `json:"image_uri,omitempty"`
 }
 
-func (o *CreateGroupReq) GetName() string {
-	if o == nil {
+func (c *CreateGroupReq) GetName() string {
+	if c == nil {
 		return ""
 	}
-	return o.Name
+	return c.Name
+}
+
+func (c *CreateGroupReq) GetImageURI() *GroupImageURI {
+	if c == nil {
+		return nil
+	}
+	return c.ImageURI
 }

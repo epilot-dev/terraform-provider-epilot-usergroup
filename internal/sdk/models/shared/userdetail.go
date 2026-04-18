@@ -9,23 +9,23 @@ type UserDetail struct {
 	Password string `json:"password"`
 }
 
-func (o *UserDetail) GetFullName() string {
-	if o == nil {
+func (u *UserDetail) GetFullName() string {
+	if u == nil {
 		return ""
 	}
-	return o.FullName
+	return u.FullName
 }
 
-func (o *UserDetail) GetEmail() string {
-	if o == nil {
+func (u *UserDetail) GetEmail() string {
+	if u == nil {
 		return ""
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UserDetail) GetPassword() string {
-	if o == nil {
+func (u *UserDetail) GetPassword() string {
+	if u == nil {
 		return ""
 	}
-	return o.Password
+	return u.Password
 }

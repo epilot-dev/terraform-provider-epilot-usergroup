@@ -14,6 +14,16 @@ UserGroup Resource
 
 ```terraform
 resource "epilot-usergroup_user_group" "my_usergroup" {
+  image_uri = {
+    additional_properties = { "gradient_colors" : ["#0588f0", "#3358d4"] }
+    gradient_colors = [
+      "#0588f0",
+      "#3358d4",
+    ]
+    original     = "https://account-profile-images.epilot.cloud/org/group-avatar.png"
+    thumbnail_32 = "https://account-profile-images.epilot.cloud/org/group-avatar_32x32.png"
+    thumbnail_64 = "https://account-profile-images.epilot.cloud/org/group-avatar_64x64.png"
+  }
   name = "Finance"
 }
 ```
@@ -25,14 +35,40 @@ resource "epilot-usergroup_user_group" "my_usergroup" {
 
 - `name` (String) The name of the group. Could be a department or a team. Requires replacement if changed.
 
+### Optional
+
+- `image_uri` (Attributes) Group's profile image or gradient colors. Supports uploaded image URLs and generated gradient avatars. Requires replacement if changed. (see [below for nested schema](#nestedatt--image_uri))
+
 ### Read-Only
 
 - `id` (String) Group unique identifier
+
+<a id="nestedatt--image_uri"></a>
+### Nested Schema for `image_uri`
+
+Optional:
+
+- `additional_properties` (String) Requires replacement if changed.; Parsed as JSON.
+- `gradient_colors` (List of String) Two hex color strings [base_color, accent_color] for mesh gradient avatar. Requires replacement if changed.
+- `original` (String) Requires replacement if changed.
+- `thumbnail_32` (String) Requires replacement if changed.
+- `thumbnail_64` (String) Requires replacement if changed.
 
 ## Import
 
 Import is supported using the following syntax:
 
+In Terraform v1.5.0 and later, the [`import` block](https://developer.hashicorp.com/terraform/language/import) can be used with the `id` attribute, for example:
+
+```terraform
+import {
+  to = epilot-usergroup_user_group.my_epilot-usergroup_user_group
+  id = "..."
+}
+```
+
+The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can be used, for example:
+
 ```shell
-terraform import epilot-usergroup_user_group.my_epilot-usergroup_user_group ""
+terraform import epilot-usergroup_user_group.my_epilot-usergroup_user_group "..."
 ```

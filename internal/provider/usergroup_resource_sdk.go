@@ -3,23 +3,104 @@
 package provider
 
 import (
+	"context"
+	"encoding/json"
+	tfTypes "github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/provider/types"
+	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/shared"
+	"github.com/hashicorp/terraform-plugin-framework-jsontypes/jsontypes"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func (r *UserGroupResourceModel) ToSharedCreateGroupReq() *shared.CreateGroupReq {
+func (r *UserGroupResourceModel) RefreshFromSharedGroup(ctx context.Context, resp *shared.Group) diag.Diagnostics {
+	var diags diag.Diagnostics
+
+	if resp != nil {
+		r.ID = types.StringValue(resp.ID)
+		if resp.ImageURI == nil {
+			r.ImageURI = nil
+		} else {
+			r.ImageURI = &tfTypes.GroupImageURI{}
+			if resp.ImageURI.AdditionalProperties == nil {
+				r.ImageURI.AdditionalProperties = jsontypes.NewNormalizedNull()
+			} else {
+				additionalPropertiesResult, _ := json.Marshal(resp.ImageURI.AdditionalProperties)
+				r.ImageURI.AdditionalProperties = jsontypes.NewNormalizedValue(string(additionalPropertiesResult))
+			}
+			r.ImageURI.GradientColors = make([]types.String, 0, len(resp.ImageURI.GradientColors))
+			for _, v := range resp.ImageURI.GradientColors {
+				r.ImageURI.GradientColors = append(r.ImageURI.GradientColors, types.StringValue(v))
+			}
+			r.ImageURI.Original = types.StringPointerValue(resp.ImageURI.Original)
+			r.ImageURI.Thumbnail32 = types.StringPointerValue(resp.ImageURI.Thumbnail32)
+			r.ImageURI.Thumbnail64 = types.StringPointerValue(resp.ImageURI.Thumbnail64)
+		}
+		r.Name = types.StringValue(resp.Name)
+	}
+
+	return diags
+}
+
+func (r *UserGroupResourceModel) ToOperationsGetGroupRequest(ctx context.Context) (*operations.GetGroupRequest, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	var id string
+	id = r.ID.ValueString()
+
+	out := operations.GetGroupRequest{
+		ID: id,
+	}
+
+	return &out, diags
+}
+
+func (r *UserGroupResourceModel) ToSharedCreateGroupReq(ctx context.Context) (*shared.CreateGroupReq, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
 	var name string
 	name = r.Name.ValueString()
 
+	var imageURI *shared.GroupImageURI
+	if r.ImageURI != nil {
+		original := new(string)
+		if !r.ImageURI.Original.IsUnknown() && !r.ImageURI.Original.IsNull() {
+			*original = r.ImageURI.Original.ValueString()
+		} else {
+			original = nil
+		}
+		thumbnail32 := new(string)
+		if !r.ImageURI.Thumbnail32.IsUnknown() && !r.ImageURI.Thumbnail32.IsNull() {
+			*thumbnail32 = r.ImageURI.Thumbnail32.ValueString()
+		} else {
+			thumbnail32 = nil
+		}
+		thumbnail64 := new(string)
+		if !r.ImageURI.Thumbnail64.IsUnknown() && !r.ImageURI.Thumbnail64.IsNull() {
+			*thumbnail64 = r.ImageURI.Thumbnail64.ValueString()
+		} else {
+			thumbnail64 = nil
+		}
+		gradientColors := make([]string, 0, len(r.ImageURI.GradientColors))
+		for gradientColorsIndex := range r.ImageURI.GradientColors {
+			gradientColors = append(gradientColors, r.ImageURI.GradientColors[gradientColorsIndex].ValueString())
+		}
+		var additionalProperties map[string]any
+		if !r.ImageURI.AdditionalProperties.IsUnknown() && !r.ImageURI.AdditionalProperties.IsNull() {
+			_ = json.Unmarshal([]byte(r.ImageURI.AdditionalProperties.ValueString()), &additionalProperties)
+		}
+		imageURI = &shared.GroupImageURI{
+			Original:             original,
+			Thumbnail32:          thumbnail32,
+			Thumbnail64:          thumbnail64,
+			GradientColors:       gradientColors,
+			AdditionalProperties: additionalProperties,
+		}
+	}
 	out := shared.CreateGroupReq{
-		Name: name,
+		Name:     name,
+		ImageURI: imageURI,
 	}
-	return &out
-}
 
-func (r *UserGroupResourceModel) RefreshFromSharedGroup(resp *shared.Group) {
-	if resp != nil {
-		r.ID = types.StringValue(resp.ID)
-		r.Name = types.StringValue(resp.Name)
-	}
+	return &out, diags
 }

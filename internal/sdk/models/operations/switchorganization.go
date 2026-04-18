@@ -10,11 +10,11 @@ type SwitchOrganizationRequestBody struct {
 	OrgID string `json:"org_id"`
 }
 
-func (o *SwitchOrganizationRequestBody) GetOrgID() string {
-	if o == nil {
+func (s *SwitchOrganizationRequestBody) GetOrgID() string {
+	if s == nil {
 		return ""
 	}
-	return o.OrgID
+	return s.OrgID
 }
 
 // SwitchOrganizationResponseBody - A login token for the new organization to be used with CUSTOM_AUTH flow
@@ -23,11 +23,11 @@ type SwitchOrganizationResponseBody struct {
 	LoginToken string `json:"login_token"`
 }
 
-func (o *SwitchOrganizationResponseBody) GetLoginToken() string {
-	if o == nil {
+func (s *SwitchOrganizationResponseBody) GetLoginToken() string {
+	if s == nil {
 		return ""
 	}
-	return o.LoginToken
+	return s.LoginToken
 }
 
 type SwitchOrganizationResponse struct {
@@ -41,30 +41,30 @@ type SwitchOrganizationResponse struct {
 	Object *SwitchOrganizationResponseBody
 }
 
-func (o *SwitchOrganizationResponse) GetContentType() string {
-	if o == nil {
+func (s *SwitchOrganizationResponse) GetContentType() string {
+	if s == nil {
 		return ""
 	}
-	return o.ContentType
+	return s.ContentType
 }
 
-func (o *SwitchOrganizationResponse) GetStatusCode() int {
-	if o == nil {
+func (s *SwitchOrganizationResponse) GetStatusCode() int {
+	if s == nil {
 		return 0
 	}
-	return o.StatusCode
+	return s.StatusCode
 }
 
-func (o *SwitchOrganizationResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (s *SwitchOrganizationResponse) GetRawResponse() *http.Response {
+	if s == nil {
 		return nil
 	}
-	return o.RawResponse
+	return s.RawResponse
 }
 
-func (o *SwitchOrganizationResponse) GetObject() *SwitchOrganizationResponseBody {
-	if o == nil {
+func (s *SwitchOrganizationResponse) GetObject() *SwitchOrganizationResponseBody {
+	if s == nil {
 		return nil
 	}
-	return o.Object
+	return s.Object
 }

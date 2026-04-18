@@ -12,11 +12,11 @@ type GetUserLoginParametersRequest struct {
 	Username string `pathParam:"style=simple,explode=false,name=username"`
 }
 
-func (o *GetUserLoginParametersRequest) GetUsername() string {
-	if o == nil {
+func (g *GetUserLoginParametersRequest) GetUsername() string {
+	if g == nil {
 		return ""
 	}
-	return o.Username
+	return g.Username
 }
 
 // GetUserLoginParametersResponseBody - User
@@ -24,11 +24,11 @@ type GetUserLoginParametersResponseBody struct {
 	LoginParameters []shared.LoginParameters `json:"login_parameters,omitempty"`
 }
 
-func (o *GetUserLoginParametersResponseBody) GetLoginParameters() []shared.LoginParameters {
-	if o == nil {
+func (g *GetUserLoginParametersResponseBody) GetLoginParameters() []shared.LoginParameters {
+	if g == nil {
 		return nil
 	}
-	return o.LoginParameters
+	return g.LoginParameters
 }
 
 type GetUserLoginParametersResponse struct {
@@ -42,30 +42,30 @@ type GetUserLoginParametersResponse struct {
 	Object *GetUserLoginParametersResponseBody
 }
 
-func (o *GetUserLoginParametersResponse) GetContentType() string {
-	if o == nil {
+func (g *GetUserLoginParametersResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetUserLoginParametersResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetUserLoginParametersResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetUserLoginParametersResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetUserLoginParametersResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetUserLoginParametersResponse) GetObject() *GetUserLoginParametersResponseBody {
-	if o == nil {
+func (g *GetUserLoginParametersResponse) GetObject() *GetUserLoginParametersResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }

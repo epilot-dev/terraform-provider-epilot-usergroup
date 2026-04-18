@@ -18,32 +18,32 @@ type GetGroupsRequest struct {
 	Hydrate *bool `queryParam:"style=form,explode=true,name=hydrate"`
 }
 
-func (o *GetGroupsRequest) GetQuery() *string {
-	if o == nil {
+func (g *GetGroupsRequest) GetQuery() *string {
+	if g == nil {
 		return nil
 	}
-	return o.Query
+	return g.Query
 }
 
-func (o *GetGroupsRequest) GetLimit() *float64 {
-	if o == nil {
+func (g *GetGroupsRequest) GetLimit() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Limit
+	return g.Limit
 }
 
-func (o *GetGroupsRequest) GetOffset() *float64 {
-	if o == nil {
+func (g *GetGroupsRequest) GetOffset() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Offset
+	return g.Offset
 }
 
-func (o *GetGroupsRequest) GetHydrate() *bool {
-	if o == nil {
+func (g *GetGroupsRequest) GetHydrate() *bool {
+	if g == nil {
 		return nil
 	}
-	return o.Hydrate
+	return g.Hydrate
 }
 
 // GetGroupsResponseBody - List of groups
@@ -52,18 +52,18 @@ type GetGroupsResponseBody struct {
 	Groups []shared.Group `json:"groups,omitempty"`
 }
 
-func (o *GetGroupsResponseBody) GetHits() *float64 {
-	if o == nil {
+func (g *GetGroupsResponseBody) GetHits() *float64 {
+	if g == nil {
 		return nil
 	}
-	return o.Hits
+	return g.Hits
 }
 
-func (o *GetGroupsResponseBody) GetGroups() []shared.Group {
-	if o == nil {
+func (g *GetGroupsResponseBody) GetGroups() []shared.Group {
+	if g == nil {
 		return nil
 	}
-	return o.Groups
+	return g.Groups
 }
 
 type GetGroupsResponse struct {
@@ -77,30 +77,30 @@ type GetGroupsResponse struct {
 	Object *GetGroupsResponseBody
 }
 
-func (o *GetGroupsResponse) GetContentType() string {
-	if o == nil {
+func (g *GetGroupsResponse) GetContentType() string {
+	if g == nil {
 		return ""
 	}
-	return o.ContentType
+	return g.ContentType
 }
 
-func (o *GetGroupsResponse) GetStatusCode() int {
-	if o == nil {
+func (g *GetGroupsResponse) GetStatusCode() int {
+	if g == nil {
 		return 0
 	}
-	return o.StatusCode
+	return g.StatusCode
 }
 
-func (o *GetGroupsResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (g *GetGroupsResponse) GetRawResponse() *http.Response {
+	if g == nil {
 		return nil
 	}
-	return o.RawResponse
+	return g.RawResponse
 }
 
-func (o *GetGroupsResponse) GetObject() *GetGroupsResponseBody {
-	if o == nil {
+func (g *GetGroupsResponse) GetObject() *GetGroupsResponseBody {
+	if g == nil {
 		return nil
 	}
-	return o.Object
+	return g.Object
 }
