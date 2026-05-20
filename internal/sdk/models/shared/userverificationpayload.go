@@ -7,9 +7,9 @@ type UserVerificationPayload struct {
 	Password *string `json:"password,omitempty"`
 }
 
-func (o *UserVerificationPayload) GetPassword() *string {
-	if o == nil {
+func (u *UserVerificationPayload) GetPassword() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Password
+	return u.Password
 }

@@ -24,7 +24,7 @@ data "epilot-usergroup_user_group" "my_usergroup" {
 
 ### Required
 
-- `id` (String) Group id
+- `id` (String) Group unique identifier
 
 ### Optional
 
@@ -32,4 +32,17 @@ data "epilot-usergroup_user_group" "my_usergroup" {
 
 ### Read-Only
 
+- `abbreviation` (String) A short abbreviation for the group, up to 2 characters.
+- `image_uri` (Attributes) Group's profile image or gradient colors. Supports uploaded image URLs and generated gradient avatars. (see [below for nested schema](#nestedatt--image_uri))
 - `name` (String) The name of the group. Could be a department or a team.
+
+<a id="nestedatt--image_uri"></a>
+### Nested Schema for `image_uri`
+
+Read-Only:
+
+- `additional_properties` (String) Parsed as JSON.
+- `gradient_colors` (List of String) Two hex color strings [base_color, accent_color] for mesh gradient avatar.
+- `original` (String)
+- `thumbnail_32` (String)
+- `thumbnail_64` (String)

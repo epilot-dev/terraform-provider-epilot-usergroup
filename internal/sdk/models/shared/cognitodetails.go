@@ -9,30 +9,30 @@ type CognitoDetails struct {
 	CognitoUserPoolArn      *string `json:"cognito_user_pool_arn,omitempty"`
 }
 
-func (o *CognitoDetails) GetCognitoRegion() *string {
-	if o == nil {
+func (c *CognitoDetails) GetCognitoRegion() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CognitoRegion
+	return c.CognitoRegion
 }
 
-func (o *CognitoDetails) GetCognitoUserPoolID() *string {
-	if o == nil {
+func (c *CognitoDetails) GetCognitoUserPoolID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CognitoUserPoolID
+	return c.CognitoUserPoolID
 }
 
-func (o *CognitoDetails) GetCognitoUserPoolClientID() *string {
-	if o == nil {
+func (c *CognitoDetails) GetCognitoUserPoolClientID() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CognitoUserPoolClientID
+	return c.CognitoUserPoolClientID
 }
 
-func (o *CognitoDetails) GetCognitoUserPoolArn() *string {
-	if o == nil {
+func (c *CognitoDetails) GetCognitoUserPoolArn() *string {
+	if c == nil {
 		return nil
 	}
-	return o.CognitoUserPoolArn
+	return c.CognitoUserPoolArn
 }

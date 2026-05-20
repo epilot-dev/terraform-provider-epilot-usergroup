@@ -2,9 +2,12 @@
 
 package sdk
 
+// Generated from OpenAPI doc version 2.0.0 and generator version 2.884.4
+
 import (
 	"context"
 	"fmt"
+	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/internal/config"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/internal/hooks"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/internal/utils"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/shared"
@@ -18,7 +21,7 @@ var ServerList = []string{
 	"https://user.sls.epilot.io",
 }
 
-// HTTPClient provides an interface for suplying the SDK with a custom HTTP client
+// HTTPClient provides an interface for supplying the SDK with a custom HTTP client
 type HTTPClient interface {
 	Do(req *http.Request) (*http.Response, error)
 }
@@ -44,44 +47,25 @@ func Float64(f float64) *float64 { return &f }
 // Pointer provides a helper function to return a pointer to a type
 func Pointer[T any](v T) *T { return &v }
 
-type sdkConfiguration struct {
-	Client            HTTPClient
-	Security          func(context.Context) (interface{}, error)
-	ServerURL         string
-	ServerIndex       int
-	Language          string
-	OpenAPIDocVersion string
-	SDKVersion        string
-	GenVersion        string
-	UserAgent         string
-	RetryConfig       *retry.Config
-	Hooks             *hooks.Hooks
-	Timeout           *time.Duration
-}
-
-func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
-	if c.ServerURL != "" {
-		return c.ServerURL, nil
-	}
-
-	return ServerList[c.ServerIndex], nil
-}
-
 // SDK - User API: Manage users in epilot organization(s)
 type SDK struct {
+	SDKVersion string
 	// User API V2
 	UserV2 *UserV2
 	// User Groups
 	Group *Group
+	// Customized Workplace Navigation Configurations
+	Navigation *Navigation
 	// Legacy User API
 	UserV1 *UserV1
 
-	sdkConfiguration sdkConfiguration
+	sdkConfiguration config.SDKConfiguration
+	hooks            *hooks.Hooks
 }
 
 type SDKOption func(*SDK)
 
-// WithServerURL allows the overriding of the default server URL
+// WithServerURL allows providing an alternative server URL
 func WithServerURL(serverURL string) SDKOption {
 	return func(sdk *SDK) {
 		sdk.sdkConfiguration.ServerURL = serverURL
@@ -149,14 +133,12 @@ func WithTimeout(timeout time.Duration) SDKOption {
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		sdkConfiguration: sdkConfiguration{
-			Language:          "go",
-			OpenAPIDocVersion: "2.0.0",
-			SDKVersion:        "0.10.5",
-			GenVersion:        "2.497.0",
-			UserAgent:         "speakeasy-sdk/terraform 0.10.5 2.497.0 2.0.0 github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk",
-			Hooks:             hooks.New(),
+		SDKVersion: "0.11.0",
+		sdkConfiguration: config.SDKConfiguration{
+			UserAgent:  "speakeasy-sdk/terraform 0.11.0 2.884.4 2.0.0 github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk",
+			ServerList: ServerList,
 		},
+		hooks: hooks.New(),
 	}
 	for _, opt := range opts {
 		opt(sdk)
@@ -169,16 +151,15 @@ func New(opts ...SDKOption) *SDK {
 
 	currentServerURL, _ := sdk.sdkConfiguration.GetServerDetails()
 	serverURL := currentServerURL
-	serverURL, sdk.sdkConfiguration.Client = sdk.sdkConfiguration.Hooks.SDKInit(currentServerURL, sdk.sdkConfiguration.Client)
-	if serverURL != currentServerURL {
+	serverURL, sdk.sdkConfiguration.Client = sdk.hooks.SDKInit(currentServerURL, sdk.sdkConfiguration.Client)
+	if currentServerURL != serverURL {
 		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 
-	sdk.UserV2 = newUserV2(sdk.sdkConfiguration)
-
-	sdk.Group = newGroup(sdk.sdkConfiguration)
-
-	sdk.UserV1 = newUserV1(sdk.sdkConfiguration)
+	sdk.UserV2 = newUserV2(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Group = newGroup(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.Navigation = newNavigation(sdk, sdk.sdkConfiguration, sdk.hooks)
+	sdk.UserV1 = newUserV1(sdk, sdk.sdkConfiguration, sdk.hooks)
 
 	return sdk
 }

@@ -37,73 +37,90 @@ type LoginParameters struct {
 	OrganizationID          *string            `json:"organization_id,omitempty"`
 	OrganizationName        *string            `json:"organization_name,omitempty"`
 	OrganizationType        *string            `json:"organization_type,omitempty"`
+	OrganizationUse         *string            `json:"organization_use,omitempty"`
 	CognitoRegion           *string            `json:"cognito_region,omitempty"`
 	CognitoUserPoolID       *string            `json:"cognito_user_pool_id,omitempty"`
 	CognitoUserPoolClientID *string            `json:"cognito_user_pool_client_id,omitempty"`
 	CognitoOauthDomain      *string            `json:"cognito_oauth_domain,omitempty"`
 	CognitoOauthScopes      []string           `json:"cognito_oauth_scopes,omitempty"`
 	OauthResponseType       *OauthResponseType `json:"oauth_response_type,omitempty"`
+	// Whether passkey login is enabled for this organization
+	PasskeyEnabled *bool `json:"passkey_enabled,omitempty"`
 }
 
-func (o *LoginParameters) GetOrganizationID() *string {
-	if o == nil {
+func (l *LoginParameters) GetOrganizationID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.OrganizationID
+	return l.OrganizationID
 }
 
-func (o *LoginParameters) GetOrganizationName() *string {
-	if o == nil {
+func (l *LoginParameters) GetOrganizationName() *string {
+	if l == nil {
 		return nil
 	}
-	return o.OrganizationName
+	return l.OrganizationName
 }
 
-func (o *LoginParameters) GetOrganizationType() *string {
-	if o == nil {
+func (l *LoginParameters) GetOrganizationType() *string {
+	if l == nil {
 		return nil
 	}
-	return o.OrganizationType
+	return l.OrganizationType
 }
 
-func (o *LoginParameters) GetCognitoRegion() *string {
-	if o == nil {
+func (l *LoginParameters) GetOrganizationUse() *string {
+	if l == nil {
 		return nil
 	}
-	return o.CognitoRegion
+	return l.OrganizationUse
 }
 
-func (o *LoginParameters) GetCognitoUserPoolID() *string {
-	if o == nil {
+func (l *LoginParameters) GetCognitoRegion() *string {
+	if l == nil {
 		return nil
 	}
-	return o.CognitoUserPoolID
+	return l.CognitoRegion
 }
 
-func (o *LoginParameters) GetCognitoUserPoolClientID() *string {
-	if o == nil {
+func (l *LoginParameters) GetCognitoUserPoolID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.CognitoUserPoolClientID
+	return l.CognitoUserPoolID
 }
 
-func (o *LoginParameters) GetCognitoOauthDomain() *string {
-	if o == nil {
+func (l *LoginParameters) GetCognitoUserPoolClientID() *string {
+	if l == nil {
 		return nil
 	}
-	return o.CognitoOauthDomain
+	return l.CognitoUserPoolClientID
 }
 
-func (o *LoginParameters) GetCognitoOauthScopes() []string {
-	if o == nil {
+func (l *LoginParameters) GetCognitoOauthDomain() *string {
+	if l == nil {
 		return nil
 	}
-	return o.CognitoOauthScopes
+	return l.CognitoOauthDomain
 }
 
-func (o *LoginParameters) GetOauthResponseType() *OauthResponseType {
-	if o == nil {
+func (l *LoginParameters) GetCognitoOauthScopes() []string {
+	if l == nil {
 		return nil
 	}
-	return o.OauthResponseType
+	return l.CognitoOauthScopes
+}
+
+func (l *LoginParameters) GetOauthResponseType() *OauthResponseType {
+	if l == nil {
+		return nil
+	}
+	return l.OauthResponseType
+}
+
+func (l *LoginParameters) GetPasskeyEnabled() *bool {
+	if l == nil {
+		return nil
+	}
+	return l.PasskeyEnabled
 }

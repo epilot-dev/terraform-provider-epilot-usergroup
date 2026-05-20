@@ -5,11 +5,29 @@ package shared
 type UpdateGroupReq struct {
 	// The name of the group. Could be a department or a team.
 	Name *string `json:"name,omitempty"`
+	// Group's profile image or gradient colors. Supports uploaded image URLs and generated gradient avatars.
+	ImageURI *GroupImageURI `json:"image_uri,omitempty"`
+	// A short abbreviation for the group, up to 2 characters.
+	Abbreviation *string `json:"abbreviation,omitempty"`
 }
 
-func (o *UpdateGroupReq) GetName() *string {
-	if o == nil {
+func (u *UpdateGroupReq) GetName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Name
+	return u.Name
+}
+
+func (u *UpdateGroupReq) GetImageURI() *GroupImageURI {
+	if u == nil {
+		return nil
+	}
+	return u.ImageURI
+}
+
+func (u *UpdateGroupReq) GetAbbreviation() *string {
+	if u == nil {
+		return nil
+	}
+	return u.Abbreviation
 }

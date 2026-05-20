@@ -3,13 +3,62 @@
 package provider
 
 import (
+	"context"
+	"encoding/json"
+	tfTypes "github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/provider/types"
+	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/operations"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/shared"
+	"github.com/hashicorp/terraform-plugin-framework-jsontypes/jsontypes"
+	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-func (r *UserGroupDataSourceModel) RefreshFromSharedGroup(resp *shared.Group) {
+func (r *UserGroupDataSourceModel) RefreshFromSharedGroup(ctx context.Context, resp *shared.Group) diag.Diagnostics {
+	var diags diag.Diagnostics
+
 	if resp != nil {
+		r.Abbreviation = types.StringPointerValue(resp.Abbreviation)
 		r.ID = types.StringValue(resp.ID)
+		if resp.ImageURI == nil {
+			r.ImageURI = nil
+		} else {
+			r.ImageURI = &tfTypes.GroupImageURI{}
+			if resp.ImageURI.AdditionalProperties == nil {
+				r.ImageURI.AdditionalProperties = jsontypes.NewNormalizedNull()
+			} else {
+				additionalPropertiesResult, _ := json.Marshal(resp.ImageURI.AdditionalProperties)
+				r.ImageURI.AdditionalProperties = jsontypes.NewNormalizedValue(string(additionalPropertiesResult))
+			}
+			r.ImageURI.GradientColors = make([]types.String, 0, len(resp.ImageURI.GradientColors))
+			for _, v := range resp.ImageURI.GradientColors {
+				r.ImageURI.GradientColors = append(r.ImageURI.GradientColors, types.StringValue(v))
+			}
+			r.ImageURI.Original = types.StringPointerValue(resp.ImageURI.Original)
+			r.ImageURI.Thumbnail32 = types.StringPointerValue(resp.ImageURI.Thumbnail32)
+			r.ImageURI.Thumbnail64 = types.StringPointerValue(resp.ImageURI.Thumbnail64)
+		}
 		r.Name = types.StringValue(resp.Name)
 	}
+
+	return diags
+}
+
+func (r *UserGroupDataSourceModel) ToOperationsGetGroupRequest(ctx context.Context) (*operations.GetGroupRequest, diag.Diagnostics) {
+	var diags diag.Diagnostics
+
+	var id string
+	id = r.ID.ValueString()
+
+	hydrate := new(bool)
+	if !r.Hydrate.IsUnknown() && !r.Hydrate.IsNull() {
+		*hydrate = r.Hydrate.ValueBool()
+	} else {
+		hydrate = nil
+	}
+	out := operations.GetGroupRequest{
+		ID:      id,
+		Hydrate: hydrate,
+	}
+
+	return &out, diags
 }

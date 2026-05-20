@@ -5,14 +5,22 @@ package provider
 import (
 	"context"
 	"fmt"
+	speakeasy_listplanmodifier "github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/planmodifiers/listplanmodifier"
+	speakeasy_objectplanmodifier "github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/planmodifiers/objectplanmodifier"
 	speakeasy_stringplanmodifier "github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/planmodifiers/stringplanmodifier"
+	tfTypes "github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/provider/types"
 	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk"
-	"github.com/epilot-dev/terraform-provider-epilot-usergroup/internal/sdk/models/operations"
+	"github.com/hashicorp/terraform-plugin-framework-jsontypes/jsontypes"
+	"github.com/hashicorp/terraform-plugin-framework-validators/listvalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/listplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/objectplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
 )
@@ -27,13 +35,16 @@ func NewUserGroupResource() resource.Resource {
 
 // UserGroupResource defines the resource implementation.
 type UserGroupResource struct {
+	// Provider configured SDK client.
 	client *sdk.SDK
 }
 
 // UserGroupResourceModel describes the resource data model.
 type UserGroupResourceModel struct {
-	ID   types.String `tfsdk:"id"`
-	Name types.String `tfsdk:"name"`
+	Abbreviation types.String           `tfsdk:"abbreviation"`
+	ID           types.String           `tfsdk:"id"`
+	ImageURI     *tfTypes.GroupImageURI `tfsdk:"image_uri"`
+	Name         types.String           `tfsdk:"name"`
 }
 
 func (r *UserGroupResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
@@ -44,9 +55,83 @@ func (r *UserGroupResource) Schema(ctx context.Context, req resource.SchemaReque
 	resp.Schema = schema.Schema{
 		MarkdownDescription: "UserGroup Resource",
 		Attributes: map[string]schema.Attribute{
+			"abbreviation": schema.StringAttribute{
+				Computed: true,
+				Optional: true,
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.RequiresReplaceIfConfigured(),
+					speakeasy_stringplanmodifier.SuppressDiff(speakeasy_stringplanmodifier.ExplicitSuppress),
+				},
+				Description: `A short abbreviation for the group, up to 2 characters. Requires replacement if changed.`,
+				Validators: []validator.String{
+					stringvalidator.UTF8LengthAtMost(2),
+				},
+			},
 			"id": schema.StringAttribute{
 				Computed:    true,
 				Description: `Group unique identifier`,
+			},
+			"image_uri": schema.SingleNestedAttribute{
+				Computed: true,
+				Optional: true,
+				PlanModifiers: []planmodifier.Object{
+					objectplanmodifier.RequiresReplaceIfConfigured(),
+					speakeasy_objectplanmodifier.SuppressDiff(speakeasy_objectplanmodifier.ExplicitSuppress),
+				},
+				Attributes: map[string]schema.Attribute{
+					"additional_properties": schema.StringAttribute{
+						CustomType: jsontypes.NormalizedType{},
+						Computed:   true,
+						Optional:   true,
+						PlanModifiers: []planmodifier.String{
+							stringplanmodifier.RequiresReplaceIfConfigured(),
+							speakeasy_stringplanmodifier.SuppressDiff(speakeasy_stringplanmodifier.ExplicitSuppress),
+						},
+						Description: `Requires replacement if changed.; Parsed as JSON.`,
+					},
+					"gradient_colors": schema.ListAttribute{
+						Computed: true,
+						Optional: true,
+						PlanModifiers: []planmodifier.List{
+							listplanmodifier.RequiresReplaceIfConfigured(),
+							speakeasy_listplanmodifier.SuppressDiff(speakeasy_listplanmodifier.ExplicitSuppress),
+						},
+						ElementType: types.StringType,
+						Description: `Two hex color strings [base_color, accent_color] for mesh gradient avatar. Requires replacement if changed.`,
+						Validators: []validator.List{
+							listvalidator.SizeAtLeast(2),
+							listvalidator.SizeAtMost(2),
+						},
+					},
+					"original": schema.StringAttribute{
+						Computed: true,
+						Optional: true,
+						PlanModifiers: []planmodifier.String{
+							stringplanmodifier.RequiresReplaceIfConfigured(),
+							speakeasy_stringplanmodifier.SuppressDiff(speakeasy_stringplanmodifier.ExplicitSuppress),
+						},
+						Description: `Requires replacement if changed.`,
+					},
+					"thumbnail_32": schema.StringAttribute{
+						Computed: true,
+						Optional: true,
+						PlanModifiers: []planmodifier.String{
+							stringplanmodifier.RequiresReplaceIfConfigured(),
+							speakeasy_stringplanmodifier.SuppressDiff(speakeasy_stringplanmodifier.ExplicitSuppress),
+						},
+						Description: `Requires replacement if changed.`,
+					},
+					"thumbnail_64": schema.StringAttribute{
+						Computed: true,
+						Optional: true,
+						PlanModifiers: []planmodifier.String{
+							stringplanmodifier.RequiresReplaceIfConfigured(),
+							speakeasy_stringplanmodifier.SuppressDiff(speakeasy_stringplanmodifier.ExplicitSuppress),
+						},
+						Description: `Requires replacement if changed.`,
+					},
+				},
+				Description: `Group's profile image or gradient colors. Supports uploaded image URLs and generated gradient avatars. Requires replacement if changed.`,
 			},
 			"name": schema.StringAttribute{
 				Required: true,
@@ -98,7 +183,12 @@ func (r *UserGroupResource) Create(ctx context.Context, req resource.CreateReque
 		return
 	}
 
-	request := data.ToSharedCreateGroupReq()
+	request, requestDiags := data.ToSharedCreateGroupReq(ctx)
+	resp.Diagnostics.Append(requestDiags...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
 	res, err := r.client.Group.CreateGroup(ctx, request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
@@ -119,8 +209,54 @@ func (r *UserGroupResource) Create(ctx context.Context, req resource.CreateReque
 		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res.RawResponse))
 		return
 	}
-	data.RefreshFromSharedGroup(res.Group)
-	refreshPlan(ctx, plan, &data, resp.Diagnostics)
+	resp.Diagnostics.Append(data.RefreshFromSharedGroup(ctx, res.Group)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	resp.Diagnostics.Append(refreshPlan(ctx, plan, &data)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
+	request1, request1Diags := data.ToOperationsGetGroupRequest(ctx)
+	resp.Diagnostics.Append(request1Diags...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
+	res1, err := r.client.Group.GetGroup(ctx, *request1)
+	if err != nil {
+		resp.Diagnostics.AddError("failure to invoke API", err.Error())
+		if res1 != nil && res1.RawResponse != nil {
+			resp.Diagnostics.AddError("unexpected http request/response", debugResponse(res1.RawResponse))
+		}
+		return
+	}
+	if res1 == nil {
+		resp.Diagnostics.AddError("unexpected response from API", fmt.Sprintf("%v", res1))
+		return
+	}
+	if res1.StatusCode != 200 {
+		resp.Diagnostics.AddError(fmt.Sprintf("unexpected response from API. Got an unexpected response code %v", res1.StatusCode), debugResponse(res1.RawResponse))
+		return
+	}
+	if !(res1.Group != nil) {
+		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res1.RawResponse))
+		return
+	}
+	resp.Diagnostics.Append(data.RefreshFromSharedGroup(ctx, res1.Group)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	resp.Diagnostics.Append(refreshPlan(ctx, plan, &data)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
 
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
@@ -144,16 +280,13 @@ func (r *UserGroupResource) Read(ctx context.Context, req resource.ReadRequest, 
 		return
 	}
 
-	var id string
-	id = data.ID.ValueString()
+	request, requestDiags := data.ToOperationsGetGroupRequest(ctx)
+	resp.Diagnostics.Append(requestDiags...)
 
-	// read.user_group.hydrateread.user_group.hydrate impedance mismatch: boolean != classtrace=["UserGroup#create.req"]
-	var hydrate *bool
-	request := operations.GetGroupRequest{
-		ID:      id,
-		Hydrate: hydrate,
+	if resp.Diagnostics.HasError() {
+		return
 	}
-	res, err := r.client.Group.GetGroup(ctx, request)
+	res, err := r.client.Group.GetGroup(ctx, *request)
 	if err != nil {
 		resp.Diagnostics.AddError("failure to invoke API", err.Error())
 		if res != nil && res.RawResponse != nil {
@@ -177,7 +310,11 @@ func (r *UserGroupResource) Read(ctx context.Context, req resource.ReadRequest, 
 		resp.Diagnostics.AddError("unexpected response from API. Got an unexpected response body", debugResponse(res.RawResponse))
 		return
 	}
-	data.RefreshFromSharedGroup(res.Group)
+	resp.Diagnostics.Append(data.RefreshFromSharedGroup(ctx, res.Group)...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
 
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)

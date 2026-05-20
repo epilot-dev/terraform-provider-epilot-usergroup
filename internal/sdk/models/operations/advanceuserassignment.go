@@ -12,11 +12,11 @@ type AdvanceUserAssignmentRequest struct {
 	ID string `pathParam:"style=simple,explode=false,name=id"`
 }
 
-func (o *AdvanceUserAssignmentRequest) GetID() string {
-	if o == nil {
+func (a *AdvanceUserAssignmentRequest) GetID() string {
+	if a == nil {
 		return ""
 	}
-	return o.ID
+	return a.ID
 }
 
 type AdvanceUserAssignmentResponse struct {
@@ -30,30 +30,30 @@ type AdvanceUserAssignmentResponse struct {
 	Group *shared.Group
 }
 
-func (o *AdvanceUserAssignmentResponse) GetContentType() string {
-	if o == nil {
+func (a *AdvanceUserAssignmentResponse) GetContentType() string {
+	if a == nil {
 		return ""
 	}
-	return o.ContentType
+	return a.ContentType
 }
 
-func (o *AdvanceUserAssignmentResponse) GetStatusCode() int {
-	if o == nil {
+func (a *AdvanceUserAssignmentResponse) GetStatusCode() int {
+	if a == nil {
 		return 0
 	}
-	return o.StatusCode
+	return a.StatusCode
 }
 
-func (o *AdvanceUserAssignmentResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (a *AdvanceUserAssignmentResponse) GetRawResponse() *http.Response {
+	if a == nil {
 		return nil
 	}
-	return o.RawResponse
+	return a.RawResponse
 }
 
-func (o *AdvanceUserAssignmentResponse) GetGroup() *shared.Group {
-	if o == nil {
+func (a *AdvanceUserAssignmentResponse) GetGroup() *shared.Group {
+	if a == nil {
 		return nil
 	}
-	return o.Group
+	return a.Group
 }

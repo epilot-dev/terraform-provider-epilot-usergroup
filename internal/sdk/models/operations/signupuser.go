@@ -13,18 +13,18 @@ type SignUpUserRequest struct {
 	SignupUserPayload *shared.SignupUserPayload `request:"mediaType=application/json"`
 }
 
-func (o *SignUpUserRequest) GetToken() *string {
-	if o == nil {
+func (s *SignUpUserRequest) GetToken() *string {
+	if s == nil {
 		return nil
 	}
-	return o.Token
+	return s.Token
 }
 
-func (o *SignUpUserRequest) GetSignupUserPayload() *shared.SignupUserPayload {
-	if o == nil {
+func (s *SignUpUserRequest) GetSignupUserPayload() *shared.SignupUserPayload {
+	if s == nil {
 		return nil
 	}
-	return o.SignupUserPayload
+	return s.SignupUserPayload
 }
 
 // SignUpUserResponseBody - The created user and organization
@@ -33,18 +33,18 @@ type SignUpUserResponseBody struct {
 	Organization *shared.Organization `json:"organization,omitempty"`
 }
 
-func (o *SignUpUserResponseBody) GetUser() *shared.User {
-	if o == nil {
+func (s *SignUpUserResponseBody) GetUser() *shared.User {
+	if s == nil {
 		return nil
 	}
-	return o.User
+	return s.User
 }
 
-func (o *SignUpUserResponseBody) GetOrganization() *shared.Organization {
-	if o == nil {
+func (s *SignUpUserResponseBody) GetOrganization() *shared.Organization {
+	if s == nil {
 		return nil
 	}
-	return o.Organization
+	return s.Organization
 }
 
 type SignUpUserResponse struct {
@@ -58,30 +58,30 @@ type SignUpUserResponse struct {
 	Object *SignUpUserResponseBody
 }
 
-func (o *SignUpUserResponse) GetContentType() string {
-	if o == nil {
+func (s *SignUpUserResponse) GetContentType() string {
+	if s == nil {
 		return ""
 	}
-	return o.ContentType
+	return s.ContentType
 }
 
-func (o *SignUpUserResponse) GetStatusCode() int {
-	if o == nil {
+func (s *SignUpUserResponse) GetStatusCode() int {
+	if s == nil {
 		return 0
 	}
-	return o.StatusCode
+	return s.StatusCode
 }
 
-func (o *SignUpUserResponse) GetRawResponse() *http.Response {
-	if o == nil {
+func (s *SignUpUserResponse) GetRawResponse() *http.Response {
+	if s == nil {
 		return nil
 	}
-	return o.RawResponse
+	return s.RawResponse
 }
 
-func (o *SignUpUserResponse) GetObject() *SignUpUserResponseBody {
-	if o == nil {
+func (s *SignUpUserResponse) GetObject() *SignUpUserResponseBody {
+	if s == nil {
 		return nil
 	}
-	return o.Object
+	return s.Object
 }
