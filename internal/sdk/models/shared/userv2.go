@@ -83,51 +83,57 @@ func (u UserV2ImageURI) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UserV2ImageURI) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UserV2ImageURI) GetOriginal() *string {
-	if o == nil {
+func (u *UserV2ImageURI) GetOriginal() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Original
+	return u.Original
 }
 
-func (o *UserV2ImageURI) GetThumbnail32() *string {
-	if o == nil {
+func (u *UserV2ImageURI) GetThumbnail32() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Thumbnail32
+	return u.Thumbnail32
 }
 
-func (o *UserV2ImageURI) GetAdditionalProperties() any {
-	if o == nil {
+func (u *UserV2ImageURI) GetAdditionalProperties() any {
+	if u == nil {
 		return nil
 	}
-	return o.AdditionalProperties
+	return u.AdditionalProperties
 }
+
+// #region class-body-userv2imageuri
+// #endregion class-body-userv2imageuri
 
 type UserV2Properties struct {
 	Name  string `json:"name"`
 	Value string `json:"value"`
 }
 
-func (o *UserV2Properties) GetName() string {
-	if o == nil {
+func (u *UserV2Properties) GetName() string {
+	if u == nil {
 		return ""
 	}
-	return o.Name
+	return u.Name
 }
 
-func (o *UserV2Properties) GetValue() string {
-	if o == nil {
+func (u *UserV2Properties) GetValue() string {
+	if u == nil {
 		return ""
 	}
-	return o.Value
+	return u.Value
 }
+
+// #region class-body-userv2properties
+// #endregion class-body-userv2properties
 
 type UserV2 struct {
 	// User's unique identifier
@@ -142,6 +148,12 @@ type UserV2 struct {
 	Email *string `json:"email,omitempty"`
 	// User's pending email address
 	DraftEmail *string `json:"draft_email,omitempty"`
+	// Server-set expiry for the pending email change verification link (ISO 8601). Read-only.
+	DraftEmailExpiresAt *time.Time `json:"draft_email_expires_at,omitempty"`
+	// Internal: sha256 hash of the active password-reset token. Server-set, never returned in responses.
+	PasswordResetTokenHash *string `json:"password_reset_token_hash,omitempty"`
+	// Internal: expiry for the active password-reset token (ISO 8601). Server-set, never returned in responses.
+	PasswordResetTokenExpiresAt *time.Time `json:"password_reset_token_expires_at,omitempty"`
 	// User's department
 	Department *string `json:"department,omitempty"`
 	// User's phone number
@@ -150,6 +162,10 @@ type UserV2 struct {
 	SecondaryPhone *string `json:"secondary_phone,omitempty"`
 	// User's multi-factor authentication status
 	MfaEnabled *bool `json:"mfa_enabled,omitempty"`
+	// Whether the user has TOTP (authenticator app) MFA enabled
+	TotpEnabled *bool `json:"totp_enabled,omitempty"`
+	// Whether the user has any registered passkeys
+	HasPasskeys *bool `json:"has_passkeys,omitempty"`
 	// User's phone number verification status
 	PhoneVerified *bool `json:"phone_verified,omitempty"`
 	// Token used to invite a user to epilot
@@ -162,15 +178,21 @@ type UserV2 struct {
 	PreferredLanguage *string `json:"preferred_language,omitempty"`
 	// User's start page after login
 	CustomStartPage *string `default:"/app/dashboard" json:"custom_start_page"`
+	// Navigation unique identifier - a hash of the normalized navigation payload (name + configuration). Identical navigations across orgs will have the same ID.
+	CustomNavigation *string `json:"custom_navigation,omitempty"`
 	// This field is used to override the release channel for the user.
 	OverrideReleaseChannel *OverrideReleaseChannel `json:"override_release_channel,omitempty"`
 	// User's feature preferences
 	FeaturePreferences map[string]any `json:"feature_preferences,omitempty"`
 	// User's custom profile image
-	ImageURI                 *UserV2ImageURI    `json:"image_uri,omitempty"`
-	Favorites                map[string]any     `json:"favorites,omitempty"`
-	EmailNotificationSetting map[string]any     `json:"email_notification_setting,omitempty"`
+	ImageURI                 *UserV2ImageURI `json:"image_uri,omitempty"`
+	Favorites                map[string]any  `json:"favorites,omitempty"`
+	EmailNotificationSetting map[string]any  `json:"email_notification_setting,omitempty"`
+	// Per-notification-type in-app delivery preferences (notification type key -> enabled). Written by the my-account notification settings UI and honored by svc-notification-api at delivery time. Absent or partial keys fall back to each notification type's configured default. Mirrors email_notification_setting for the in-app channel.
+	InAppNotificationSetting map[string]any     `json:"in_app_notification_setting,omitempty"`
 	Properties               []UserV2Properties `json:"properties,omitempty"`
+	// User tags/labels assigned for classification (e.g. label slugs)
+	Tags []string `json:"tags,omitempty"`
 }
 
 func (u UserV2) MarshalJSON() ([]byte, error) {
@@ -178,179 +200,238 @@ func (u UserV2) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UserV2) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UserV2) GetID() *string {
-	if o == nil {
+func (u *UserV2) GetID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UserV2) GetOrganizationID() *string {
-	if o == nil {
+func (u *UserV2) GetOrganizationID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.OrganizationID
+	return u.OrganizationID
 }
 
-func (o *UserV2) GetCreatedAt() *time.Time {
-	if o == nil {
+func (u *UserV2) GetCreatedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return u.CreatedAt
 }
 
-func (o *UserV2) GetActivatedAt() *time.Time {
-	if o == nil {
+func (u *UserV2) GetActivatedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.ActivatedAt
+	return u.ActivatedAt
 }
 
-func (o *UserV2) GetDisplayName() *string {
-	if o == nil {
+func (u *UserV2) GetDisplayName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *UserV2) GetStatus() *Status {
-	if o == nil {
+func (u *UserV2) GetStatus() *Status {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }
 
-func (o *UserV2) GetEmail() *string {
-	if o == nil {
+func (u *UserV2) GetEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UserV2) GetDraftEmail() *string {
-	if o == nil {
+func (u *UserV2) GetDraftEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DraftEmail
+	return u.DraftEmail
 }
 
-func (o *UserV2) GetDepartment() *string {
-	if o == nil {
+func (u *UserV2) GetDraftEmailExpiresAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.Department
+	return u.DraftEmailExpiresAt
 }
 
-func (o *UserV2) GetPhone() *string {
-	if o == nil {
+func (u *UserV2) GetPasswordResetTokenHash() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Phone
+	return u.PasswordResetTokenHash
 }
 
-func (o *UserV2) GetSecondaryPhone() *string {
-	if o == nil {
+func (u *UserV2) GetPasswordResetTokenExpiresAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.SecondaryPhone
+	return u.PasswordResetTokenExpiresAt
 }
 
-func (o *UserV2) GetMfaEnabled() *bool {
-	if o == nil {
+func (u *UserV2) GetDepartment() *string {
+	if u == nil {
 		return nil
 	}
-	return o.MfaEnabled
+	return u.Department
 }
 
-func (o *UserV2) GetPhoneVerified() *bool {
-	if o == nil {
+func (u *UserV2) GetPhone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.PhoneVerified
+	return u.Phone
 }
 
-func (o *UserV2) GetToken() *string {
-	if o == nil {
+func (u *UserV2) GetSecondaryPhone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Token
+	return u.SecondaryPhone
 }
 
-func (o *UserV2) GetSignature() *string {
-	if o == nil {
+func (u *UserV2) GetMfaEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Signature
+	return u.MfaEnabled
 }
 
-func (o *UserV2) GetIsSignatureEnabled() *bool {
-	if o == nil {
+func (u *UserV2) GetTotpEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.IsSignatureEnabled
+	return u.TotpEnabled
 }
 
-func (o *UserV2) GetPreferredLanguage() *string {
-	if o == nil {
+func (u *UserV2) GetHasPasskeys() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.PreferredLanguage
+	return u.HasPasskeys
 }
 
-func (o *UserV2) GetCustomStartPage() *string {
-	if o == nil {
+func (u *UserV2) GetPhoneVerified() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.CustomStartPage
+	return u.PhoneVerified
 }
 
-func (o *UserV2) GetOverrideReleaseChannel() *OverrideReleaseChannel {
-	if o == nil {
+func (u *UserV2) GetToken() *string {
+	if u == nil {
 		return nil
 	}
-	return o.OverrideReleaseChannel
+	return u.Token
 }
 
-func (o *UserV2) GetFeaturePreferences() map[string]any {
-	if o == nil {
+func (u *UserV2) GetSignature() *string {
+	if u == nil {
 		return nil
 	}
-	return o.FeaturePreferences
+	return u.Signature
 }
 
-func (o *UserV2) GetImageURI() *UserV2ImageURI {
-	if o == nil {
+func (u *UserV2) GetIsSignatureEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.ImageURI
+	return u.IsSignatureEnabled
 }
 
-func (o *UserV2) GetFavorites() map[string]any {
-	if o == nil {
+func (u *UserV2) GetPreferredLanguage() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Favorites
+	return u.PreferredLanguage
 }
 
-func (o *UserV2) GetEmailNotificationSetting() map[string]any {
-	if o == nil {
+func (u *UserV2) GetCustomStartPage() *string {
+	if u == nil {
 		return nil
 	}
-	return o.EmailNotificationSetting
+	return u.CustomStartPage
 }
 
-func (o *UserV2) GetProperties() []UserV2Properties {
-	if o == nil {
+func (u *UserV2) GetCustomNavigation() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Properties
+	return u.CustomNavigation
 }
+
+func (u *UserV2) GetOverrideReleaseChannel() *OverrideReleaseChannel {
+	if u == nil {
+		return nil
+	}
+	return u.OverrideReleaseChannel
+}
+
+func (u *UserV2) GetFeaturePreferences() map[string]any {
+	if u == nil {
+		return nil
+	}
+	return u.FeaturePreferences
+}
+
+func (u *UserV2) GetImageURI() *UserV2ImageURI {
+	if u == nil {
+		return nil
+	}
+	return u.ImageURI
+}
+
+func (u *UserV2) GetFavorites() map[string]any {
+	if u == nil {
+		return nil
+	}
+	return u.Favorites
+}
+
+func (u *UserV2) GetEmailNotificationSetting() map[string]any {
+	if u == nil {
+		return nil
+	}
+	return u.EmailNotificationSetting
+}
+
+func (u *UserV2) GetInAppNotificationSetting() map[string]any {
+	if u == nil {
+		return nil
+	}
+	return u.InAppNotificationSetting
+}
+
+func (u *UserV2) GetProperties() []UserV2Properties {
+	if u == nil {
+		return nil
+	}
+	return u.Properties
+}
+
+func (u *UserV2) GetTags() []string {
+	if u == nil {
+		return nil
+	}
+	return u.Tags
+}
+
+// #region class-body-userv2
+// #endregion class-body-userv2
 
 type UserV2Input struct {
 	OrganizationID *string    `json:"organization_id,omitempty"`
@@ -371,6 +452,10 @@ type UserV2Input struct {
 	SecondaryPhone *string `json:"secondary_phone,omitempty"`
 	// User's multi-factor authentication status
 	MfaEnabled *bool `json:"mfa_enabled,omitempty"`
+	// Whether the user has TOTP (authenticator app) MFA enabled
+	TotpEnabled *bool `json:"totp_enabled,omitempty"`
+	// Whether the user has any registered passkeys
+	HasPasskeys *bool `json:"has_passkeys,omitempty"`
 	// User's phone number verification status
 	PhoneVerified *bool `json:"phone_verified,omitempty"`
 	// Token used to invite a user to epilot
@@ -383,15 +468,21 @@ type UserV2Input struct {
 	PreferredLanguage *string `json:"preferred_language,omitempty"`
 	// User's start page after login
 	CustomStartPage *string `default:"/app/dashboard" json:"custom_start_page"`
+	// Navigation unique identifier - a hash of the normalized navigation payload (name + configuration). Identical navigations across orgs will have the same ID.
+	CustomNavigation *string `json:"custom_navigation,omitempty"`
 	// This field is used to override the release channel for the user.
 	OverrideReleaseChannel *OverrideReleaseChannel `json:"override_release_channel,omitempty"`
 	// User's feature preferences
 	FeaturePreferences map[string]any `json:"feature_preferences,omitempty"`
 	// User's custom profile image
-	ImageURI                 *UserV2ImageURI    `json:"image_uri,omitempty"`
-	Favorites                map[string]any     `json:"favorites,omitempty"`
-	EmailNotificationSetting map[string]any     `json:"email_notification_setting,omitempty"`
+	ImageURI                 *UserV2ImageURI `json:"image_uri,omitempty"`
+	Favorites                map[string]any  `json:"favorites,omitempty"`
+	EmailNotificationSetting map[string]any  `json:"email_notification_setting,omitempty"`
+	// Per-notification-type in-app delivery preferences (notification type key -> enabled). Written by the my-account notification settings UI and honored by svc-notification-api at delivery time. Absent or partial keys fall back to each notification type's configured default. Mirrors email_notification_setting for the in-app channel.
+	InAppNotificationSetting map[string]any     `json:"in_app_notification_setting,omitempty"`
 	Properties               []UserV2Properties `json:"properties,omitempty"`
+	// User tags/labels assigned for classification (e.g. label slugs)
+	Tags []string `json:"tags,omitempty"`
 }
 
 func (u UserV2Input) MarshalJSON() ([]byte, error) {
@@ -399,169 +490,207 @@ func (u UserV2Input) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UserV2Input) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UserV2Input) GetOrganizationID() *string {
-	if o == nil {
+func (u *UserV2Input) GetOrganizationID() *string {
+	if u == nil {
 		return nil
 	}
-	return o.OrganizationID
+	return u.OrganizationID
 }
 
-func (o *UserV2Input) GetCreatedAt() *time.Time {
-	if o == nil {
+func (u *UserV2Input) GetCreatedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.CreatedAt
+	return u.CreatedAt
 }
 
-func (o *UserV2Input) GetActivatedAt() *time.Time {
-	if o == nil {
+func (u *UserV2Input) GetActivatedAt() *time.Time {
+	if u == nil {
 		return nil
 	}
-	return o.ActivatedAt
+	return u.ActivatedAt
 }
 
-func (o *UserV2Input) GetDisplayName() *string {
-	if o == nil {
+func (u *UserV2Input) GetDisplayName() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DisplayName
+	return u.DisplayName
 }
 
-func (o *UserV2Input) GetStatus() *Status {
-	if o == nil {
+func (u *UserV2Input) GetStatus() *Status {
+	if u == nil {
 		return nil
 	}
-	return o.Status
+	return u.Status
 }
 
-func (o *UserV2Input) GetEmail() *string {
-	if o == nil {
+func (u *UserV2Input) GetEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UserV2Input) GetDraftEmail() *string {
-	if o == nil {
+func (u *UserV2Input) GetDraftEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.DraftEmail
+	return u.DraftEmail
 }
 
-func (o *UserV2Input) GetDepartment() *string {
-	if o == nil {
+func (u *UserV2Input) GetDepartment() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Department
+	return u.Department
 }
 
-func (o *UserV2Input) GetPhone() *string {
-	if o == nil {
+func (u *UserV2Input) GetPhone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Phone
+	return u.Phone
 }
 
-func (o *UserV2Input) GetSecondaryPhone() *string {
-	if o == nil {
+func (u *UserV2Input) GetSecondaryPhone() *string {
+	if u == nil {
 		return nil
 	}
-	return o.SecondaryPhone
+	return u.SecondaryPhone
 }
 
-func (o *UserV2Input) GetMfaEnabled() *bool {
-	if o == nil {
+func (u *UserV2Input) GetMfaEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.MfaEnabled
+	return u.MfaEnabled
 }
 
-func (o *UserV2Input) GetPhoneVerified() *bool {
-	if o == nil {
+func (u *UserV2Input) GetTotpEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.PhoneVerified
+	return u.TotpEnabled
 }
 
-func (o *UserV2Input) GetToken() *string {
-	if o == nil {
+func (u *UserV2Input) GetHasPasskeys() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Token
+	return u.HasPasskeys
 }
 
-func (o *UserV2Input) GetSignature() *string {
-	if o == nil {
+func (u *UserV2Input) GetPhoneVerified() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.Signature
+	return u.PhoneVerified
 }
 
-func (o *UserV2Input) GetIsSignatureEnabled() *bool {
-	if o == nil {
+func (u *UserV2Input) GetToken() *string {
+	if u == nil {
 		return nil
 	}
-	return o.IsSignatureEnabled
+	return u.Token
 }
 
-func (o *UserV2Input) GetPreferredLanguage() *string {
-	if o == nil {
+func (u *UserV2Input) GetSignature() *string {
+	if u == nil {
 		return nil
 	}
-	return o.PreferredLanguage
+	return u.Signature
 }
 
-func (o *UserV2Input) GetCustomStartPage() *string {
-	if o == nil {
+func (u *UserV2Input) GetIsSignatureEnabled() *bool {
+	if u == nil {
 		return nil
 	}
-	return o.CustomStartPage
+	return u.IsSignatureEnabled
 }
 
-func (o *UserV2Input) GetOverrideReleaseChannel() *OverrideReleaseChannel {
-	if o == nil {
+func (u *UserV2Input) GetPreferredLanguage() *string {
+	if u == nil {
 		return nil
 	}
-	return o.OverrideReleaseChannel
+	return u.PreferredLanguage
 }
 
-func (o *UserV2Input) GetFeaturePreferences() map[string]any {
-	if o == nil {
+func (u *UserV2Input) GetCustomStartPage() *string {
+	if u == nil {
 		return nil
 	}
-	return o.FeaturePreferences
+	return u.CustomStartPage
 }
 
-func (o *UserV2Input) GetImageURI() *UserV2ImageURI {
-	if o == nil {
+func (u *UserV2Input) GetCustomNavigation() *string {
+	if u == nil {
 		return nil
 	}
-	return o.ImageURI
+	return u.CustomNavigation
 }
 
-func (o *UserV2Input) GetFavorites() map[string]any {
-	if o == nil {
+func (u *UserV2Input) GetOverrideReleaseChannel() *OverrideReleaseChannel {
+	if u == nil {
 		return nil
 	}
-	return o.Favorites
+	return u.OverrideReleaseChannel
 }
 
-func (o *UserV2Input) GetEmailNotificationSetting() map[string]any {
-	if o == nil {
+func (u *UserV2Input) GetFeaturePreferences() map[string]any {
+	if u == nil {
 		return nil
 	}
-	return o.EmailNotificationSetting
+	return u.FeaturePreferences
 }
 
-func (o *UserV2Input) GetProperties() []UserV2Properties {
-	if o == nil {
+func (u *UserV2Input) GetImageURI() *UserV2ImageURI {
+	if u == nil {
 		return nil
 	}
-	return o.Properties
+	return u.ImageURI
 }
+
+func (u *UserV2Input) GetFavorites() map[string]any {
+	if u == nil {
+		return nil
+	}
+	return u.Favorites
+}
+
+func (u *UserV2Input) GetEmailNotificationSetting() map[string]any {
+	if u == nil {
+		return nil
+	}
+	return u.EmailNotificationSetting
+}
+
+func (u *UserV2Input) GetInAppNotificationSetting() map[string]any {
+	if u == nil {
+		return nil
+	}
+	return u.InAppNotificationSetting
+}
+
+func (u *UserV2Input) GetProperties() []UserV2Properties {
+	if u == nil {
+		return nil
+	}
+	return u.Properties
+}
+
+func (u *UserV2Input) GetTags() []string {
+	if u == nil {
+		return nil
+	}
+	return u.Tags
+}
+
+// #region class-body-userv2input
+// #endregion class-body-userv2input

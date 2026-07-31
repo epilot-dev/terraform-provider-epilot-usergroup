@@ -7,18 +7,36 @@ type Group struct {
 	ID string `json:"id"`
 	// The name of the group. Could be a department or a team.
 	Name string `json:"name"`
+	// Group's profile image or gradient colors. Supports uploaded image URLs and generated gradient avatars.
+	ImageURI *GroupImageURI `json:"image_uri,omitempty"`
+	// A short abbreviation for the group, up to 2 characters.
+	Abbreviation *string `json:"abbreviation,omitempty"`
 }
 
-func (o *Group) GetID() string {
-	if o == nil {
+func (g *Group) GetID() string {
+	if g == nil {
 		return ""
 	}
-	return o.ID
+	return g.ID
 }
 
-func (o *Group) GetName() string {
-	if o == nil {
+func (g *Group) GetName() string {
+	if g == nil {
 		return ""
 	}
-	return o.Name
+	return g.Name
+}
+
+func (g *Group) GetImageURI() *GroupImageURI {
+	if g == nil {
+		return nil
+	}
+	return g.ImageURI
+}
+
+func (g *Group) GetAbbreviation() *string {
+	if g == nil {
+		return nil
+	}
+	return g.Abbreviation
 }

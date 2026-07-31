@@ -47,29 +47,29 @@ func (s SignupUserPayload) MarshalJSON() ([]byte, error) {
 }
 
 func (s *SignupUserPayload) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &s, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *SignupUserPayload) GetOrganizationDetail() *OrganizationDetail {
-	if o == nil {
+func (s *SignupUserPayload) GetOrganizationDetail() *OrganizationDetail {
+	if s == nil {
 		return nil
 	}
-	return o.OrganizationDetail
+	return s.OrganizationDetail
 }
 
-func (o *SignupUserPayload) GetUserDetail() *UserDetail {
-	if o == nil {
+func (s *SignupUserPayload) GetUserDetail() *UserDetail {
+	if s == nil {
 		return nil
 	}
-	return o.UserDetail
+	return s.UserDetail
 }
 
-func (o *SignupUserPayload) GetLanguage() *Language {
-	if o == nil {
+func (s *SignupUserPayload) GetLanguage() *Language {
+	if s == nil {
 		return nil
 	}
-	return o.Language
+	return s.Language
 }

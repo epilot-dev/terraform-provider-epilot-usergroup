@@ -48,29 +48,29 @@ func (u UserInvitationPayload) MarshalJSON() ([]byte, error) {
 }
 
 func (u *UserInvitationPayload) UnmarshalJSON(data []byte) error {
-	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+	if err := utils.UnmarshalJSON(data, &u, "", false, nil); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (o *UserInvitationPayload) GetEmail() *string {
-	if o == nil {
+func (u *UserInvitationPayload) GetEmail() *string {
+	if u == nil {
 		return nil
 	}
-	return o.Email
+	return u.Email
 }
 
-func (o *UserInvitationPayload) GetLanguage() *UserInvitationPayloadLanguage {
-	if o == nil {
+func (u *UserInvitationPayload) GetLanguage() *UserInvitationPayloadLanguage {
+	if u == nil {
 		return nil
 	}
-	return o.Language
+	return u.Language
 }
 
-func (o *UserInvitationPayload) GetRoles() []string {
-	if o == nil {
+func (u *UserInvitationPayload) GetRoles() []string {
+	if u == nil {
 		return nil
 	}
-	return o.Roles
+	return u.Roles
 }

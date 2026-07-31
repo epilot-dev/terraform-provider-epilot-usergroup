@@ -13,19 +13,22 @@ type UpdateUserV2Request struct {
 	UserV2 *shared.UserV2Input `request:"mediaType=application/json"`
 }
 
-func (o *UpdateUserV2Request) GetID() string {
-	if o == nil {
+func (u *UpdateUserV2Request) GetID() string {
+	if u == nil {
 		return ""
 	}
-	return o.ID
+	return u.ID
 }
 
-func (o *UpdateUserV2Request) GetUserV2() *shared.UserV2Input {
-	if o == nil {
+func (u *UpdateUserV2Request) GetUserV2() *shared.UserV2Input {
+	if u == nil {
 		return nil
 	}
-	return o.UserV2
+	return u.UserV2
 }
+
+// #region class-body-updateuserv2request
+// #endregion class-body-updateuserv2request
 
 type UpdateUserV2Response struct {
 	// HTTP response content type for this operation
@@ -38,30 +41,33 @@ type UpdateUserV2Response struct {
 	UserV2 *shared.UserV2
 }
 
-func (o *UpdateUserV2Response) GetContentType() string {
-	if o == nil {
+func (u *UpdateUserV2Response) GetContentType() string {
+	if u == nil {
 		return ""
 	}
-	return o.ContentType
+	return u.ContentType
 }
 
-func (o *UpdateUserV2Response) GetStatusCode() int {
-	if o == nil {
+func (u *UpdateUserV2Response) GetStatusCode() int {
+	if u == nil {
 		return 0
 	}
-	return o.StatusCode
+	return u.StatusCode
 }
 
-func (o *UpdateUserV2Response) GetRawResponse() *http.Response {
-	if o == nil {
+func (u *UpdateUserV2Response) GetRawResponse() *http.Response {
+	if u == nil {
 		return nil
 	}
-	return o.RawResponse
+	return u.RawResponse
 }
 
-func (o *UpdateUserV2Response) GetUserV2() *shared.UserV2 {
-	if o == nil {
+func (u *UpdateUserV2Response) GetUserV2() *shared.UserV2 {
+	if u == nil {
 		return nil
 	}
-	return o.UserV2
+	return u.UserV2
 }
+
+// #region class-body-updateuserv2response
+// #endregion class-body-updateuserv2response

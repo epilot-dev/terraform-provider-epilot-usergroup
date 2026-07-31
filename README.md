@@ -82,16 +82,30 @@ User API: Manage users in epilot organization(s)
 <!-- $toc-max-depth=2 -->
   * [Installation](#installation)
   * [Testing the provider locally](#testing-the-provider-locally)
+  * [Authentication](#authentication)
   * [Available Resources and Data Sources](#available-resources-and-data-sources)
 
 <!-- End Table of Contents [toc] -->
 
+<!-- Start Authentication [security] -->
+## Authentication
+
+This provider supports authentication configuration via provider configuration.
+
+Available configuration:
+
+| Provider Attribute | Description |
+|---|---|
+| `epilot_auth` | Authorization header with epilot OAuth2 bearer token. |
+<!-- End Authentication [security] -->
+
 <!-- Start Available Resources and Data Sources [operations] -->
 ## Available Resources and Data Sources
 
-### Resources
+### Managed Resources
 
 * [epilot-usergroup_user_group](docs/resources/user_group.md)
+
 ### Data Sources
 
 * [epilot-usergroup_user_group](docs/data-sources/user_group.md)
